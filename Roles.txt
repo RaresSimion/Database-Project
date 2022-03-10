@@ -1,0 +1,4 @@
+ASSIGNMENT 2 Database PROJECT 
+Rares worked on Teachers (Variant B) 
+Philip worked on Rooms (Variant C)
+Gabriella worked on Students (Variant A)
