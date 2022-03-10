@@ -32,7 +32,7 @@ namespace SomerenDAL
                 {
                     Number = (int)(dr["Student_number"]),
                     Name = (string)(dr["Student_name"]),
-                    RoomNumber = (int)dr["Room_number"],
+                    //RoomNumber = (int)dr["Room_number"],
                 };
                 students.Add(student);
             }
