@@ -68,6 +68,10 @@ namespace SomerenUI
                         li.SubItems.Add(fullName[0]);
                         li.SubItems.Add(s.Name.Substring(fullName[0].Length));
 
+                        //if the student number is even change the background color
+                        if (s.Number % 2 == 0)
+                            li.BackColor = Color.FromArgb(169, 210, 229);
+
                         listViewStudents.Items.Add(li);
                     }
                 }
@@ -103,6 +107,10 @@ namespace SomerenUI
                             li.SubItems.Add("Teacher");
                         else
                             li.SubItems.Add("Student");
+
+                        //if the room number is even change the background color
+                        if (r.Number % 2 == 0)
+                            li.BackColor = Color.FromArgb(169, 210, 229);
 
                         listViewRoom.Items.Add(li);
                     }
@@ -142,7 +150,11 @@ namespace SomerenUI
                             li.SubItems.Add("Yes");
                         else
                             li.SubItems.Add("No");
-
+                        
+                        //if the teacher number is even change the background color
+                        if (t.Number % 2 == 0)
+                            li.BackColor = Color.FromArgb(169, 210, 229);
+                        
                         listViewTeachers.Items.Add(li);// add items to listview
                     }
                 }
@@ -193,5 +205,19 @@ namespace SomerenUI
             showPanel("Rooms");
         }
 
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("What happens in Someren, stays in Someren!");
+        }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("What happens in Someren, stays in Someren!");
+        }
+
+        private void pictureBox3_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("What happens in Someren, stays in Someren!");
+        }
     }
 }
