@@ -2,6 +2,8 @@
 using System.Data.SqlClient;
 using System.Configuration;
 using System.Data;
+using System.IO;
+using System.Diagnostics;
 
 namespace SomerenDAL
 {
@@ -29,7 +31,7 @@ namespace SomerenDAL
             }
             catch (Exception e)
             {
-                //Print.ErrorLog(e);
+                LogError(e); //error log
                 throw;
             }
             return conn;
@@ -100,7 +102,7 @@ namespace SomerenDAL
             }
             catch (SqlException e)
             {
-                // Print.ErrorLog(e);
+                LogError(e); //error log
                 return null;
                 throw;
             }
@@ -109,6 +111,24 @@ namespace SomerenDAL
                 CloseConnection();
             }
             return dataTable;
+        }
+
+        protected void LogError(Exception ex)
+        {
+            string message = string.Format($"Time: {DateTime.Now:dd/MM/yyyy hh:mm:ss tt}");
+            message += Environment.NewLine;
+            message += "-----------------------------------------------------------";
+            message += Environment.NewLine;
+            message += string.Format($"Message: {ex.Message}");
+            message += Environment.NewLine;
+            message += "-----------------------------------------------------------";
+            message += Environment.NewLine;
+            string path = "../../../ErrorLog.txt";
+            using (StreamWriter writer = new StreamWriter(path, true))
+            {
+                writer.WriteLine(message);
+                writer.Close();
+            }
         }
     }
 }

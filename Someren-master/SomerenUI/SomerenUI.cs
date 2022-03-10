@@ -1,7 +1,5 @@
 ﻿using SomerenLogic;
-using SomerenLogic;
 using SomerenModel;
-
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -11,6 +9,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
+using System.Diagnostics;
 
 namespace SomerenUI
 {
@@ -77,7 +77,8 @@ namespace SomerenUI
                 }
                 catch (Exception e)
                 {
-                    MessageBox.Show("Something went wrong while loading the students: " + e.Message);
+                    MessageBox.Show("Something went wrong while loading the students: " + e.Message); //error pop up
+                    LogError(e); //error log
                 }
             }
             else if (panelName == "Rooms")
@@ -117,7 +118,8 @@ namespace SomerenUI
                 }
                 catch (Exception e)
                 {
-                    MessageBox.Show("Something went wrong while loading the rooms: " + e.Message);
+                    MessageBox.Show("Something went wrong while loading the rooms: " + e.Message); //error pop up
+                    LogError(e); //error log
                 }
 
             }
@@ -160,8 +162,27 @@ namespace SomerenUI
                 }
                 catch (Exception e)
                 {
-                    MessageBox.Show("Something went wrong while loading the teachers: " + e.Message);
+                    MessageBox.Show("Something went wrong while loading the teachers: " + e.Message); //error pop up
+                    LogError(e); //error log
                 }
+            }
+        }
+
+        private void LogError(Exception ex)
+        {
+            string message = string.Format($"Time: {DateTime.Now:dd/MM/yyyy hh:mm:ss tt}");
+            message += Environment.NewLine;
+            message += "-----------------------------------------------------------";
+            message += Environment.NewLine;
+            message += string.Format($"Message: {ex.Message}");
+            message += Environment.NewLine;
+            message += "-----------------------------------------------------------";
+            message += Environment.NewLine;
+            string path = "../../../ErrorLog.txt";
+            using (StreamWriter writer = new StreamWriter(path, true))
+            {
+                writer.WriteLine(message);
+                writer.Close();
             }
         }
 

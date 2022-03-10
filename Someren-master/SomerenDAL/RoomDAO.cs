@@ -23,7 +23,7 @@ namespace SomerenDAL
         {
             //create list to store the rooms 
             List<Room> rooms = new List<Room>();
-
+            
             foreach (DataRow dr in dataTable.Rows)
             {
                 //store each room with the following fields from the database
