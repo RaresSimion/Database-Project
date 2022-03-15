@@ -37,5 +37,23 @@ namespace SomerenDAL
             }
             return rooms;
         }
+        public void Update(Room room)
+        {
+     
+            SqlCommand command = new SqlCommand(
+            "UPDATE Rooms SET Room_number = @Room_number, Capacity= @Room_capacity ,Type = @Room_type " +
+            "WHERE Id = @Room_number");
+            command.Parameters.AddWithValue("@Room_number", room.Number);
+            command.Parameters.AddWithValue("@Title", room.Capacity);
+            command.Parameters.AddWithValue("@Author", room.Type);
+            int nrOfRowsAffected = command.ExecuteNonQuery();
+        }
+        public void Delete(Room room)
+        {
+            SqlCommand command = new SqlCommand(
+            "DELETE FROM Books WHERE Id = @Room_number");
+            command.Parameters.AddWithValue("@Room_number", room.Number);
+            int nrOfRowsAffected = command.ExecuteNonQuery();
+        }
     }
 }

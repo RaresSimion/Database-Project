@@ -35,6 +35,9 @@ namespace SomerenUI
                 pnlStudents.Hide();
                 pnlTeachers.Hide();
                 pnlRooms.Hide();
+                pnlDrink.Hide();
+                pnlCashRegister.Hide();
+
 
                 // show dashboard
                 pnlDashboard.Show();
@@ -47,6 +50,8 @@ namespace SomerenUI
                 imgDashboard.Hide();
                 pnlTeachers.Hide();
                 pnlRooms.Hide();
+                pnlDrink.Hide();
+                pnlCashRegister.Hide();
 
                 // show students
                 pnlStudents.Show();
@@ -88,6 +93,8 @@ namespace SomerenUI
                 imgDashboard.Hide();
                 pnlStudents.Hide();
                 pnlTeachers.Hide();
+                pnlDrink.Hide();
+                pnlCashRegister.Hide();
 
                 //show room panel
                 pnlRooms.Show();
@@ -102,7 +109,7 @@ namespace SomerenUI
                     {
                         ListViewItem li = new ListViewItem(r.Number.ToString());// add the room number to the list 
                         li.SubItems.Add(r.Capacity.ToString());// add the capacity to the list 
-                        
+
                         // if room type is true then display teacher else display student 
                         if (r.Type)
                             li.SubItems.Add("Teacher");
@@ -130,6 +137,8 @@ namespace SomerenUI
                 imgDashboard.Hide();
                 pnlStudents.Hide();
                 pnlRooms.Hide();
+                pnlDrink.Hide();
+                pnlCashRegister.Hide();
                 //show teachers panel
                 pnlTeachers.Show();
 
@@ -152,17 +161,128 @@ namespace SomerenUI
                             li.SubItems.Add("Yes");
                         else
                             li.SubItems.Add("No");
-                        
+
                         //if the teacher number is even change the background color
                         if (t.Number % 2 == 0)
                             li.BackColor = Color.FromArgb(169, 210, 229);
-                        
+
                         listViewTeachers.Items.Add(li);// add items to listview
                     }
                 }
                 catch (Exception e)
                 {
                     MessageBox.Show("Something went wrong while loading the teachers: " + e.Message); //error pop up
+                    LogError(e); //error log
+                }
+            }
+            else if (panelName == "Drinks")
+            {
+                //hide these panels
+                pnlDashboard.Hide();
+                imgDashboard.Hide();
+                pnlStudents.Hide();
+                pnlRooms.Hide();
+                pnlTeachers.Hide();
+                pnlCashRegister.Hide();
+                //show drinks panel
+
+                pnlDrink.Show();
+
+                try
+                {
+                    DrinkService drinkService = new DrinkService(); ;// create connection to the drink service layer
+                    List<Drink> drinkList = drinkService.GetDrinks(); ;//retrieve list from the drink layer and save to the variable teacherList
+
+                    listViewDrink.Items.Clear();// clear teacher panel
+                    foreach (Drink d in drinkList)
+                    {
+                        // add these items to the listview
+                        ListViewItem li = new ListViewItem(d.Number.ToString());
+
+
+                        li.SubItems.Add(d.Name);
+                        //if drink is alcoholic display yes else no
+                        if (d.IsAlcoholic)
+                            li.SubItems.Add("Yes");
+                        else
+                            li.SubItems.Add("No");
+                        li.SubItems.Add(d.Price.ToString());
+                        li.SubItems.Add(d.Stock.ToString());
+
+
+                        //if the drink number is even change the background color
+                        if (d.Number % 2 == 0)
+                            li.BackColor = Color.FromArgb(169, 210, 229);
+
+                        listViewDrink.Items.Add(li);// add items to listview
+                    }
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show("Something went wrong while loading the drinks: " + e.Message); //error pop up
+                    LogError(e); //error log
+                }
+            }
+            else if (panelName == "Cash Register")
+            {
+                //hide these panels
+                pnlDashboard.Hide();
+                imgDashboard.Hide();
+                pnlStudents.Hide();
+                pnlRooms.Hide();
+                pnlTeachers.Hide();
+                pnlDrink.Hide();
+                //show drinks panel
+
+                pnlCashRegister.Show();
+
+                try
+                {
+                    /**************DRINKS**************/
+
+                    DrinkService drinkService = new DrinkService(); ;// create connection to the drink service layer
+                    List<Drink> drinkList = drinkService.GetDrinks(); ;//retrieve list from the drink layer and save to the variable teacherList
+
+                    listViewCRDrink.Items.Clear();// clear drink panel
+                    listViewCRStudents.Items.Clear();// clear list view in student 
+                    foreach (Drink d in drinkList)
+                    {
+                        // add these items to the listview
+                        ListViewItem li = new ListViewItem(d.Number.ToString());
+                        li.SubItems.Add(d.Name);
+                        //if drink is alcoholic display yes else no
+
+                        li.SubItems.Add(d.Price.ToString());
+                        li.SubItems.Add(d.Stock.ToString());
+
+
+                        //if the drink number is even change the background color
+                        if (d.Number % 2 == 0)
+                            li.BackColor = Color.FromArgb(169, 210, 229);
+
+                        listViewCRDrink.Items.Add(li);// add items to listview
+                    }
+                    /**************STUDENTS**************/
+                    // fill the students listview within the students panel with a list of students
+                    StudentService studService = new StudentService(); ;
+                    List<Student> studentList = studService.GetStudents(); ;
+
+                    // clear the listview before filling it again
+
+                    foreach (Student s in studentList)
+                    {
+                        ListViewItem l = new ListViewItem(s.Number.ToString());
+                        l.SubItems.Add(s.Name);
+                        //if the student number is even change the background color
+                        if (s.Number % 2 == 0)
+                            l.BackColor = Color.FromArgb(169, 210, 229);
+                        listViewCRStudents.Items.Add(l);
+                    }
+                   
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show("Something went wrong while loading the drinks: " + e.Message); //error pop up
                     LogError(e); //error log
                 }
             }
@@ -239,6 +359,32 @@ namespace SomerenUI
         private void pictureBox3_Click(object sender, EventArgs e)
         {
             MessageBox.Show("What happens in Someren, stays in Someren!");
+        }
+
+        private void pnlTeachers_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void pnlDrink_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void activitiesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void drinktoolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            showPanel("Drinks");
+        }
+
+
+        private void CashRegtoolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            showPanel("Cash Register");
         }
     }
 }
