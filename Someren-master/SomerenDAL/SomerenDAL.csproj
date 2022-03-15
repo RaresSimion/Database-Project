@@ -46,6 +46,7 @@
     <Compile Include="BaseDao.cs" />
     <Compile Include="DrinkDAO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RevenueReportDAO.cs" />
     <Compile Include="RoomDAO.cs" />
     <Compile Include="StudentDao.cs" />
     <Compile Include="TeacherDAO.cs" />

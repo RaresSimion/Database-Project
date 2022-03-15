@@ -37,6 +37,7 @@ namespace SomerenUI
                 pnlRooms.Hide();
                 pnlDrink.Hide();
                 pnlCashRegister.Hide();
+                pnlRevenueReport.Hide();
 
 
                 // show dashboard
@@ -52,6 +53,7 @@ namespace SomerenUI
                 pnlRooms.Hide();
                 pnlDrink.Hide();
                 pnlCashRegister.Hide();
+                pnlRevenueReport.Hide();
 
                 // show students
                 pnlStudents.Show();
@@ -95,6 +97,7 @@ namespace SomerenUI
                 pnlTeachers.Hide();
                 pnlDrink.Hide();
                 pnlCashRegister.Hide();
+                pnlRevenueReport.Hide();
 
                 //show room panel
                 pnlRooms.Show();
@@ -139,6 +142,7 @@ namespace SomerenUI
                 pnlRooms.Hide();
                 pnlDrink.Hide();
                 pnlCashRegister.Hide();
+                pnlRevenueReport.Hide();
                 //show teachers panel
                 pnlTeachers.Show();
 
@@ -184,6 +188,7 @@ namespace SomerenUI
                 pnlRooms.Hide();
                 pnlTeachers.Hide();
                 pnlCashRegister.Hide();
+                pnlRevenueReport.Hide();
                 //show drinks panel
 
                 pnlDrink.Show();
@@ -232,6 +237,7 @@ namespace SomerenUI
                 pnlRooms.Hide();
                 pnlTeachers.Hide();
                 pnlDrink.Hide();
+                pnlRevenueReport.Hide();
                 //show drinks panel
 
                 pnlCashRegister.Show();
@@ -282,7 +288,47 @@ namespace SomerenUI
                 }
                 catch (Exception e)
                 {
-                    MessageBox.Show("Something went wrong while loading the drinks: " + e.Message); //error pop up
+                    MessageBox.Show("Something went wrong while loading the cash register: " + e.Message); //error pop up
+                    LogError(e); //error log
+                }
+            }
+            else if(panelName == "Revenue Report")
+            {
+                //hide these panels
+                pnlDashboard.Hide();
+                imgDashboard.Hide();
+                pnlStudents.Hide();
+                pnlRooms.Hide();
+                pnlTeachers.Hide();
+                pnlDrink.Hide();
+                pnlCashRegister.Hide();
+
+                //show revenue report panel
+                pnlRevenueReport.Show();
+
+                try
+                {
+
+                    dateTimePickerStart.MaxDate = DateTime.Now;
+                    dateTimePickerEnd.MaxDate = DateTime.Now;
+
+                    dateTimePickerEnd.Enabled = false;
+                    listViewRevenueReport.Items.Clear();
+
+                    //RevenueReportService revenueService = new RevenueReportService();
+                    //RevenueReport revenueReport = revenueService.GetReport();
+
+                   // lblSales.Text = $"Sales: {revenueReport.NumberOfDrinks}";
+                    //lblTurnover.Text = $"Ttal profit: {revenueReport.Turnover:0.00}";
+                    //lblNumberOfCustomers.Text = $"Number of customers: {revenueReport.NumberOfCustomers}";
+
+                    //DateTime miau = dateTimePickerStart.Value;
+                    //MessageBox.Show($"{miau:yyyy-MM-dd}");
+                }
+
+                catch(Exception e)
+                {
+                    MessageBox.Show("Something went wrong while loading the revenue report: " + e.Message); //error pop up
                     LogError(e); //error log
                 }
             }
@@ -385,6 +431,30 @@ namespace SomerenUI
         private void CashRegtoolStripMenuItem1_Click(object sender, EventArgs e)
         {
             showPanel("Cash Register");
+        }
+
+        private void RevenueReportToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            showPanel("Revenue Report");
+        }
+
+        private void dateTimePickerStart_ValueChanged(object sender, EventArgs e)
+        {
+            dateTimePickerEnd.Enabled = true;
+            dateTimePickerEnd.MinDate = dateTimePickerStart.Value;
+
+        }
+
+        private void dateTimePickerEnd_ValueChanged(object sender, EventArgs e)
+        {
+            RevenueReportService revenueService = new RevenueReportService();
+            RevenueReport revenueReport = revenueService.GetReport(dateTimePickerStart.Value, dateTimePickerEnd.Value);
+
+            listViewRevenueReport.Items.Clear();
+            ListViewItem li = new ListViewItem(revenueReport.NumberOfDrinks.ToString());
+            li.SubItems.Add($"{revenueReport.Turnover}$");
+            li.SubItems.Add(revenueReport.NumberOfCustomers.ToString());
+            listViewRevenueReport.Items.Add(li);
         }
     }
 }
