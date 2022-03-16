@@ -249,15 +249,13 @@ namespace SomerenUI
                     DrinkService drinkService = new DrinkService(); ;// create connection to the drink service layer
                     List<Drink> drinkList = drinkService.GetDrinks(); ;//retrieve list from the drink layer and save to the variable teacherList
 
-                    listViewCRDrink.Items.Clear();// clear drink panel
-                    listViewCRStudents.Items.Clear();// clear list view in student 
+                    listViewCRDrinks.Items.Clear();// clear drink panel
+                    listViewCRStudent.Items.Clear();// clear list view in student 
                     foreach (Drink d in drinkList)
                     {
                         // add these items to the listview
                         ListViewItem li = new ListViewItem(d.Number.ToString());
-                        li.SubItems.Add(d.Name);
-                        //if drink is alcoholic display yes else no
-
+                        li.SubItems.Add(d.Name.ToString());
                         li.SubItems.Add(d.Price.ToString());
                         li.SubItems.Add(d.Stock.ToString());
 
@@ -266,8 +264,9 @@ namespace SomerenUI
                         if (d.Number % 2 == 0)
                             li.BackColor = Color.FromArgb(169, 210, 229);
 
-                        listViewCRDrink.Items.Add(li);// add items to listview
+                        listViewCRDrinks.Items.Add(li);// add items to listview
                     }
+
                     /**************STUDENTS**************/
                     // fill the students listview within the students panel with a list of students
                     StudentService studService = new StudentService(); ;
@@ -278,13 +277,17 @@ namespace SomerenUI
                     foreach (Student s in studentList)
                     {
                         ListViewItem l = new ListViewItem(s.Number.ToString());
-                        l.SubItems.Add(s.Name);
+                        l.SubItems.Add(s.Name.ToString());
                         //if the student number is even change the background color
                         if (s.Number % 2 == 0)
                             l.BackColor = Color.FromArgb(169, 210, 229);
-                        listViewCRStudents.Items.Add(l);
+                        listViewCRStudent.Items.Add(l);
+                        //listBoxStudents.Items.Add();
+
+
+
                     }
-                   
+
                 }
                 catch (Exception e)
                 {
@@ -292,7 +295,7 @@ namespace SomerenUI
                     LogError(e); //error log
                 }
             }
-            else if(panelName == "Revenue Report")
+            else if (panelName == "Revenue Report")
             {
                 //hide these panels
                 pnlDashboard.Hide();
@@ -318,7 +321,7 @@ namespace SomerenUI
                     //RevenueReportService revenueService = new RevenueReportService();
                     //RevenueReport revenueReport = revenueService.GetReport();
 
-                   // lblSales.Text = $"Sales: {revenueReport.NumberOfDrinks}";
+                    // lblSales.Text = $"Sales: {revenueReport.NumberOfDrinks}";
                     //lblTurnover.Text = $"Ttal profit: {revenueReport.Turnover:0.00}";
                     //lblNumberOfCustomers.Text = $"Number of customers: {revenueReport.NumberOfCustomers}";
 
@@ -326,7 +329,7 @@ namespace SomerenUI
                     //MessageBox.Show($"{miau:yyyy-MM-dd}");
                 }
 
-                catch(Exception e)
+                catch (Exception e)
                 {
                     MessageBox.Show("Something went wrong while loading the revenue report: " + e.Message); //error pop up
                     LogError(e); //error log
@@ -431,6 +434,7 @@ namespace SomerenUI
         private void CashRegtoolStripMenuItem1_Click(object sender, EventArgs e)
         {
             showPanel("Cash Register");
+            listBoxStudents_SelectedIndexChanged(sender, e);
         }
 
         private void RevenueReportToolStripMenuItem_Click(object sender, EventArgs e)
@@ -442,7 +446,6 @@ namespace SomerenUI
         {
             dateTimePickerEnd.Enabled = true;
             dateTimePickerEnd.MinDate = dateTimePickerStart.Value;
-
         }
 
         private void dateTimePickerEnd_ValueChanged(object sender, EventArgs e)
@@ -455,6 +458,36 @@ namespace SomerenUI
             li.SubItems.Add($"{revenueReport.Turnover}$");
             li.SubItems.Add(revenueReport.NumberOfCustomers.ToString());
             listViewRevenueReport.Items.Add(li);
+        }
+
+        private void listBoxStudents_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+
+        }
+
+        private void listViewCRStudent_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (listViewCRStudent.SelectedItems.Count >= 0)
+            {
+                ListViewItem selectedItem = (ListViewItem)listViewCRStudent.SelectedItems[0];
+                Student selectedStudent = (Student)selectedItem.Tag;
+
+                txtBStudentID.Text = selectedStudent.Number.ToString();
+                txtBStudentName.Text = selectedStudent.Name;
+            }
+        }
+
+        private void listViewCRDrinks_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (listViewCRDrinks.SelectedItems.Count >= 0)
+            {
+                ListViewItem selectedItem = (ListViewItem)listViewCRDrinks.SelectedItems[0];
+                Drink selectedDrink = (Drink)selectedItem.Tag;
+
+                txtBDrinkName.Text = selectedDrink.Name;
+                txtBDrinkPrice.Text = selectedDrink.Price.ToString();
+            }
         }
     }
 }

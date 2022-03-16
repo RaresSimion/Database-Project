@@ -31,15 +31,13 @@ namespace SomerenDAL
                     Number = (int)(dr["Drink_number"]),
                     Name = (string)(dr["Drink_name"]),
                     IsAlcoholic = (bool)(dr["IsAlcoholic"]),
-                    Price=(double)(dr ["Drink_price"]),
-                    Stock=(int)(dr["Drink_stock"])
+                    Price = (double)(dr["Drink_price"]),
+                    Stock = (int)(dr["Drink_stock"])
 
                 };
                 drinks.Add(drink);
             }
             return drinks;
         }
-       
-
     }
 }
