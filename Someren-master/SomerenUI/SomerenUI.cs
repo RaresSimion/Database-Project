@@ -452,10 +452,10 @@ namespace SomerenUI
             }
             else
             {
-               Student student = (Student)listViewCRStudent.CheckedItems[0].Tag;
+               Student student = (Student)listViewCRStudent.SelectedItems[0].Tag;
 
-                txtBStudentID.Text = student.Number.ToString();
-                txtBStudentName.Text = student.Name.ToString();
+                txtBStudentID.Text = listViewCRStudent.SelectedItems[0].SubItems[0].Text;
+                txtBStudentName.Text = listViewCRStudent.SelectedItems[0].SubItems[1].Text;
             }
         }
 
@@ -468,10 +468,10 @@ namespace SomerenUI
             }
             else
             {
-                Drink drink = (Drink)listViewCRDrinks.CheckedItems[0].Tag;
+                Drink drink = (Drink)listViewCRDrinks.SelectedItems[0].Tag;
 
-                txtBDrinkName.Text = drink.Name;
-                txtBDrinkPrice.Text = drink.Price.ToString();
+                txtBDrinkName.Text = listViewCRDrinks.SelectedItems[0].SubItems[1].Text;
+                txtBDrinkPrice.Text = listViewCRDrinks.SelectedItems[0].SubItems[2].Text;
             }
         }
         private void btnCheckOut_Click(object sender, EventArgs e)
