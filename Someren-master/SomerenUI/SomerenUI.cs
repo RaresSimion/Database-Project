@@ -244,6 +244,7 @@ namespace SomerenUI
 
                 try
                 {
+                    btnCheckOut.Enabled = false;    
                     /**************DRINKS**************/
 
                     DrinkService drinkService = new DrinkService(); ;// create connection to the drink service layer
@@ -284,10 +285,8 @@ namespace SomerenUI
                         listViewCRStudent.Items.Add(l);
                         //listBoxStudents.Items.Add();
 
-
-
                     }
-
+                    
                 }
                 catch (Exception e)
                 {
@@ -452,7 +451,7 @@ namespace SomerenUI
             }
             else
             {
-               Student student = (Student)listViewCRStudent.SelectedItems[0].Tag;
+               //Student student = (Student)listViewCRStudent.SelectedItems[0].Tag;
 
                 txtBStudentID.Text = listViewCRStudent.SelectedItems[0].SubItems[0].Text;
                 txtBStudentName.Text = listViewCRStudent.SelectedItems[0].SubItems[1].Text;
@@ -468,33 +467,48 @@ namespace SomerenUI
             }
             else
             {
-                Drink drink = (Drink)listViewCRDrinks.SelectedItems[0].Tag;
+                //Drink drink = (Drink)listViewCRDrinks.SelectedItems[0].Tag;
 
                 txtBDrinkName.Text = listViewCRDrinks.SelectedItems[0].SubItems[1].Text;
                 txtBDrinkPrice.Text = listViewCRDrinks.SelectedItems[0].SubItems[2].Text;
             }
+            if (txtBDrinkName != null && txtBDrinkPrice!= null && txtBStudentID !=null&& txtBStudentName !=null)
+            {
+                btnCheckOut.Enabled = true;
+            }
+           
         }
         private void btnCheckOut_Click(object sender, EventArgs e)
         {
+            
             List<int> drinkReserved = new List<int>();
+            
             int selectedStudent = int.Parse(listViewCRStudent.SelectedItems[0].SubItems[0].Text);
-
-
-            for (int i = 0; i < listViewDrink.Items.Count; i++)
+            
+            for (int i = 0; i < listViewCRDrinks.Items.Count; i++)
             {
-                if (listViewCRDrinks.Items[i].Checked)
+                if (listViewCRDrinks.Items[i].Selected)
                 {
-                    drinkReserved.Add(int.Parse(listViewDrink.Items[i].SubItems[0].Text));
+                    drinkReserved.Add(int.Parse(listViewCRDrinks.Items[i].SubItems[0].Text));
                 }
             }
 
             CashRegisterService registerService = new CashRegisterService();
-            foreach (int DrinkID in drinkReserved)
+            for (int i = 0; i < drinkReserved.Count; i++)
             {
-                registerService.AddRegister(selectedStudent, DrinkID);
+                int DrinkID = drinkReserved[i];
+                registerService.AddToRegister(selectedStudent, DrinkID);
             }
-            showPanel("Register");
-
+            Refresh();
+            
+            MessageBox.Show("Order succesful!");
+        }
+        private void Refresh()
+        {
+            txtBDrinkName.Clear();  
+            txtBDrinkPrice.Clear(); 
+            txtBStudentID.Clear();  
+            txtBStudentName.Clear();    
         }
     }
 }

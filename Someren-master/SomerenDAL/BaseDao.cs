@@ -54,8 +54,8 @@ namespace SomerenDAL
             }
             catch (Exception e)
             {
-                //Print.ErrorLog(e);
-                throw;
+              LogError(e);
+                //throw;
             }
         }
 
@@ -74,8 +74,8 @@ namespace SomerenDAL
             }
             catch (SqlException e)
             {
-                // Print.ErrorLog(e);
-                throw;
+                LogError(e);
+               // throw;
             }
             finally
             {

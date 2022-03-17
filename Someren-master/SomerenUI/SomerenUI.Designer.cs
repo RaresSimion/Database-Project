@@ -156,7 +156,7 @@
             this.RevenueReportToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1680, 40);
+            this.menuStrip1.Size = new System.Drawing.Size(1680, 42);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -588,9 +588,9 @@
             this.columnHeader11});
             this.listViewCRDrinks.FullRowSelect = true;
             this.listViewCRDrinks.HideSelection = false;
-            this.listViewCRDrinks.Location = new System.Drawing.Point(745, 148);
+            this.listViewCRDrinks.Location = new System.Drawing.Point(621, 152);
             this.listViewCRDrinks.Name = "listViewCRDrinks";
-            this.listViewCRDrinks.Size = new System.Drawing.Size(416, 404);
+            this.listViewCRDrinks.Size = new System.Drawing.Size(550, 404);
             this.listViewCRDrinks.TabIndex = 14;
             this.listViewCRDrinks.UseCompatibleStateImageBehavior = false;
             this.listViewCRDrinks.View = System.Windows.Forms.View.Details;
@@ -603,7 +603,7 @@
             // columnHeader9
             // 
             this.columnHeader9.Text = "Drink Name";
-            this.columnHeader9.Width = 150;
+            this.columnHeader9.Width = 120;
             // 
             // columnHeader10
             // 
@@ -613,7 +613,7 @@
             // columnHeader11
             // 
             this.columnHeader11.Text = "Drink Stock";
-            this.columnHeader11.Width = 100;
+            this.columnHeader11.Width = 70;
             // 
             // listViewCRStudent
             // 
@@ -623,6 +623,7 @@
             this.columnHeader6,
             this.columnHeader7});
             this.listViewCRStudent.FullRowSelect = true;
+            this.listViewCRStudent.HideSelection = false;
             this.listViewCRStudent.Location = new System.Drawing.Point(132, 148);
             this.listViewCRStudent.Name = "listViewCRStudent";
             this.listViewCRStudent.Size = new System.Drawing.Size(388, 404);
@@ -721,7 +722,7 @@
             // 
             // btnCheckOut
             // 
-            this.btnCheckOut.Location = new System.Drawing.Point(1217, 733);
+            this.btnCheckOut.Location = new System.Drawing.Point(1225, 733);
             this.btnCheckOut.Name = "btnCheckOut";
             this.btnCheckOut.Size = new System.Drawing.Size(277, 57);
             this.btnCheckOut.TabIndex = 11;
