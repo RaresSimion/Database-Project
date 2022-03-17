@@ -17,11 +17,10 @@ namespace SomerenLogic
             //create connection to database
             cashRegisterdb = new CashRegisterDAO();
         }
-        public void AddRegister(int studentNumber, int drinkNumber)
+        public void AddToRegister(int studentNumber, int drinkNumber)
         {
-            cashRegisterdb.AddRegister(studentNumber, drinkNumber);
-        }
-       
+            cashRegisterdb.AddToRegister(studentNumber, drinkNumber);
+        }   
     }
 
 }
