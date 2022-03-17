@@ -28,8 +28,11 @@ namespace SomerenDAL
             RevenueReport revenueReport = new RevenueReport();
             DataRow dr = dataTable.Rows[0];
 
+            if (dr["Total profit"] == DBNull.Value)
+                throw new Exception("No orders in the time period specified");
+
             revenueReport.NumberOfDrinks = (int)(dr["Number of drinks ordered"]);
-            revenueReport.Turnover = (double)(dr["Total profit"]);
+            revenueReport.Turnover = Convert.ToDouble(dr["Total profit"]);
             revenueReport.NumberOfCustomers = (int)(dr["Number of customers"]);
             
             return revenueReport;

@@ -433,14 +433,22 @@ namespace SomerenUI
 
         private void dateTimePickerEnd_ValueChanged(object sender, EventArgs e)
         {
-            RevenueReportService revenueService = new RevenueReportService();
-            RevenueReport revenueReport = revenueService.GetReport(dateTimePickerStart.Value, dateTimePickerEnd.Value);
+            try
+            {
+                RevenueReportService revenueService = new RevenueReportService();
+                RevenueReport revenueReport = revenueService.GetReport(dateTimePickerStart.Value, dateTimePickerEnd.Value);
 
-            listViewRevenueReport.Items.Clear();
-            ListViewItem li = new ListViewItem(revenueReport.NumberOfDrinks.ToString());
-            li.SubItems.Add($"{revenueReport.Turnover}$");
-            li.SubItems.Add(revenueReport.NumberOfCustomers.ToString());
-            listViewRevenueReport.Items.Add(li);
+                listViewRevenueReport.Items.Clear();
+                ListViewItem li = new ListViewItem(revenueReport.NumberOfDrinks.ToString());
+                li.SubItems.Add($"{revenueReport.Turnover}$");
+                li.SubItems.Add(revenueReport.NumberOfCustomers.ToString());
+                listViewRevenueReport.Items.Add(li);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Something went wrong while loading the revenue report: " + ex.Message); //error pop up
+                LogError(ex);
+            }
         }
 
         private void listViewCRStudent_SelectedIndexChanged(object sender, EventArgs e)
