@@ -14,10 +14,9 @@ namespace SomerenDAL
         public void AddRegister(int studentNumber, int drinkNumber)
         {
             // add avlues into database
-            string query = $"INSERT into Cash_register (Student_number,Drink_number) VALUES {studentNumber}, {drinkNumber} ";
+            string query = $"INSERT into Cash_register (Student_number,Drink_number) VALUES {studentNumber}, {drinkNumber}";
             SqlParameter[] sqlParameters = new SqlParameter[0];
             ExecuteEditQuery(query, sqlParameters);
-        }
-        
+        }   
     }
 }

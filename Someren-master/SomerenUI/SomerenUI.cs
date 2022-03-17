@@ -410,21 +410,6 @@ namespace SomerenUI
             MessageBox.Show("What happens in Someren, stays in Someren!");
         }
 
-        private void pnlTeachers_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void pnlDrink_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void activitiesToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void drinktoolStripMenuItem1_Click(object sender, EventArgs e)
         {
             showPanel("Drinks");
@@ -433,9 +418,7 @@ namespace SomerenUI
 
         private void CashRegtoolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            showPanel("Cash Register");
-            listBoxStudents_SelectedIndexChanged(sender, e);
-        }
+            showPanel("Cash Register"); }
 
         private void RevenueReportToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -460,34 +443,58 @@ namespace SomerenUI
             listViewRevenueReport.Items.Add(li);
         }
 
-        private void listBoxStudents_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-
-        }
-
         private void listViewCRStudent_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (listViewCRStudent.SelectedItems.Count >= 0)
+            if (listViewCRStudent.SelectedItems.Count == 0)
             {
-                ListViewItem selectedItem = (ListViewItem)listViewCRStudent.SelectedItems[0];
-                Student selectedStudent = (Student)selectedItem.Tag;
+                txtBStudentID.Text = "";
+                txtBStudentName.Text = "";
+            }
+            else
+            {
+               Student student = (Student)listViewCRStudent.CheckedItems[0].Tag;
 
-                txtBStudentID.Text = selectedStudent.Number.ToString();
-                txtBStudentName.Text = selectedStudent.Name;
+                txtBStudentID.Text = student.Number.ToString();
+                txtBStudentName.Text = student.Name.ToString();
             }
         }
 
         private void listViewCRDrinks_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (listViewCRDrinks.SelectedItems.Count >= 0)
+            if (listViewCRDrinks.SelectedItems.Count == 0)
             {
-                ListViewItem selectedItem = (ListViewItem)listViewCRDrinks.SelectedItems[0];
-                Drink selectedDrink = (Drink)selectedItem.Tag;
-
-                txtBDrinkName.Text = selectedDrink.Name;
-                txtBDrinkPrice.Text = selectedDrink.Price.ToString();
+                txtBDrinkName.Text = "";
+                txtBDrinkPrice.Text = "";
             }
+            else
+            {
+                Drink drink = (Drink)listViewCRDrinks.CheckedItems[0].Tag;
+
+                txtBDrinkName.Text = drink.Name;
+                txtBDrinkPrice.Text = drink.Price.ToString();
+            }
+        }
+        private void btnCheckOut_Click(object sender, EventArgs e)
+        {
+            List<int> drinkReserved = new List<int>();
+            int selectedStudent = int.Parse(listViewCRStudent.SelectedItems[0].SubItems[0].Text);
+
+
+            for (int i = 0; i < listViewDrink.Items.Count; i++)
+            {
+                if (listViewCRDrinks.Items[i].Checked)
+                {
+                    drinkReserved.Add(int.Parse(listViewDrink.Items[i].SubItems[0].Text));
+                }
+            }
+
+            CashRegisterService registerService = new CashRegisterService();
+            foreach (int DrinkID in drinkReserved)
+            {
+                registerService.AddRegister(selectedStudent, DrinkID);
+            }
+            showPanel("Register");
+
         }
     }
 }

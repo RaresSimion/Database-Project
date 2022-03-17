@@ -21,7 +21,6 @@ namespace SomerenDAL
             SqlParameter[] sqlParameters = new SqlParameter[0];
             return ReadTable(ExecuteSelectQuery(query, sqlParameters));
         }
-        
 
         private RevenueReport ReadTable(DataTable dataTable)
         {
