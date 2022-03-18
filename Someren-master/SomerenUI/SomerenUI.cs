@@ -244,6 +244,7 @@ namespace SomerenUI
 
                 try
                 {
+                    //disable button until student and drink are selected
                     btnCheckOut.Enabled = false;    
                     
                     //DRINKS
@@ -255,12 +256,13 @@ namespace SomerenUI
 
                     foreach (Drink d in drinkList)
                     {
-                        // add items to listview
+                        // add items to listviewitem
                         ListViewItem li = new ListViewItem(d.Number.ToString());
                         li.SubItems.Add(d.Name.ToString());
                         li.SubItems.Add(d.Price.ToString());
                         li.SubItems.Add(d.Stock.ToString());
 
+                        //add item to listview
                         listViewCRDrinks.Items.Add(li);   
 
                     }
@@ -466,48 +468,28 @@ namespace SomerenUI
         }
         private void btnCheckOut_Click(object sender, EventArgs e)
         {
-
-            /* List<int> drinkReserved = new List<int>();
-
-             int selectedStudent = int.Parse(listViewCRStudent.SelectedItems[0].SubItems[0].Text);
-
-             for (int i = 0; i < listViewCRDrinks.Items.Count; i++)
-             {
-                 if (listViewCRDrinks.Items[i].Selected)
-                 {
-                     drinkReserved.Add(int.Parse(listViewCRDrinks.Items[i].SubItems[0].Text));
-                 }
-             }
-
-             CashRegisterService registerService = new CashRegisterService();
-             for (int i = 0; i < drinkReserved.Count; i++)
-             {
-                 int DrinkID = drinkReserved[i];
-               //  registerService.AddToRegister(selectedStudent, DrinkID);
-             }
-            */
+            //get text from textboxes for student id and drink id
             int studentNumber = int.Parse(txtBStudentID.Text);
             int drinkNumber = int.Parse(listViewCRDrinks.SelectedItems[0].SubItems[0].Text);
             DateTime orderDate = DateTime.Now;
 
+            //create connection to register database
             CashRegisterService registerService = new CashRegisterService();
+            //add the data to the rgister database
             registerService.AddToRegister(studentNumber, drinkNumber, orderDate);
-
+            
+            //create connection to drink database
             DrinkService drinkService = new DrinkService();
+
+            //update drinks
             drinkService.UpdateDrink(drinkNumber);
 
-           
+           //show that the order was successful
             MessageBox.Show("Order succesful!");
+
+            //refresh the panel
             showPanel("Cash Register");
         }
-        private void Refresh()
-        {
-            txtBDrinkName.Clear();  
-            txtBDrinkPrice.Clear(); 
-            txtBStudentID.Clear();  
-            txtBStudentName.Clear();    
-        }
-
         private void pictureBox6_Click(object sender, EventArgs e)
         {
             MessageBox.Show("What happens in Someren, stays in Someren!");
