@@ -1,0 +1,39 @@
+using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlDrinks;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using SomerenModel;
+
+namespace SomerenDAL
+{
+    public Drink List : BaseDao
+    {
+        public List<Drinks> GetAllDrinks()
+        {
+                               Number = (int)(dr["Drink_number"]),
+                    Name = (string)(dr["Drink_name"]),
+                    IsAlcoholic = (bool)(dr["IsAlcoholic"]),
+                    Price=(double)(dr ["Drink_price"]),
+                    Stock=(int)(dr["Drink_stock"])
+                    Price = (double)(dr["Drink_price"]),
+                    Stock = (int)(dr["Drink_stock"])
+                    
+            }
+            return drinks;
+        }
+        
+foreach (Drink d in drinkList)
+                    {
+                        // add these items to the listview
+                        ListViewItem li = new ListViewItem(d.Number.ToString());
+                        li.SubItems.Add(d.Name);
+                        //if drink is <10 display 'Stock nearly depleted' else 'Stock sufficient'
+
+                        li.SubItems.Add(d.Name.ToString());
+                        li.SubItems.Add(d.Price.ToString());
+                        li.SubItems.Add(d.Stock.ToString());
+                        
+    
