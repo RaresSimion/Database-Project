@@ -42,6 +42,7 @@ namespace SomerenDAL
 
         public void UpdateDrink(int drinkNumber)
         {
+            //lower the stock by one for every order
             string query = $"UPDATE Drink SET Drink_stock=Drink_stock-1 WHERE Drink_number={drinkNumber}";
             SqlParameter[] sqlParameters = new SqlParameter[0];
             ExecuteEditQuery(query, sqlParameters);
