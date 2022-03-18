@@ -214,11 +214,6 @@ namespace SomerenUI
                         li.SubItems.Add(d.Price.ToString());
                         li.SubItems.Add(d.Stock.ToString());
 
-
-                        //if the drink number is even change the background color
-                        if (d.Number % 2 == 0)
-                            li.BackColor = Color.FromArgb(169, 210, 229);
-
                         listViewDrink.Items.Add(li);// add items to listview
                     }
                 }
