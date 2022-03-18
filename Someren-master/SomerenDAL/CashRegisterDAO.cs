@@ -11,10 +11,10 @@ namespace SomerenDAL
 {
     public class CashRegisterDAO:BaseDao
     {
-        public void AddToRegister(int studentNumber, int drinkNumber)
+        public void AddToRegister(int studentNumber, int drinkNumber, DateTime orderDate)
         {
             // add student number and drink numbers to the database
-            string query = $"INSERT into CashRegister (Student_number,Drink_number) VALUES {studentNumber}, {drinkNumber}";
+            string query = $"INSERT INTO Cash_register (Student_number, Drink_number, Order_date) VALUES ({studentNumber}, {drinkNumber}, '{orderDate:yyyy-MM-dd}')";
             SqlParameter[] sqlParameters = new SqlParameter[0];
             ExecuteEditQuery(query, sqlParameters);
         }   

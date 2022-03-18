@@ -245,48 +245,37 @@ namespace SomerenUI
                 try
                 {
                     btnCheckOut.Enabled = false;    
-                    /**************DRINKS**************/
-
+                    
+                    //DRINKS
                     DrinkService drinkService = new DrinkService(); ;// create connection to the drink service layer
-                    List<Drink> drinkList = drinkService.GetDrinks(); ;//retrieve list from the drink layer and save to the variable teacherList
+                    List<Drink> drinkList = drinkService.GetDrinks(); ;// retrieve drink list
 
-                    listViewCRDrinks.Items.Clear();// clear drink panel
-                    listViewCRStudent.Items.Clear();// clear list view in student 
+                    listViewCRDrinks.Items.Clear();// clear drink list view
+                    listViewCRStudent.Items.Clear();// clear student list view
+
                     foreach (Drink d in drinkList)
                     {
-                        // add these items to the listview
+                        // add items to listview
                         ListViewItem li = new ListViewItem(d.Number.ToString());
                         li.SubItems.Add(d.Name.ToString());
                         li.SubItems.Add(d.Price.ToString());
                         li.SubItems.Add(d.Stock.ToString());
 
-
-                        //if the drink number is even change the background color
-                        if (d.Number % 2 == 0)
-                            li.BackColor = Color.FromArgb(169, 210, 229);
-
-                        listViewCRDrinks.Items.Add(li);// add items to listview
+                        listViewCRDrinks.Items.Add(li);
                     }
 
-                    /**************STUDENTS**************/
-                    // fill the students listview within the students panel with a list of students
-                    StudentService studService = new StudentService(); ;
-                    List<Student> studentList = studService.GetStudents(); ;
-
-                    // clear the listview before filling it again
+                    //STUDENTS
+                    StudentService studService = new StudentService(); ;// create connection to the student service layer 
+                    List<Student> studentList = studService.GetStudents(); ;// retrieve student list
 
                     foreach (Student s in studentList)
                     {
+                        // add these items to the listview
                         ListViewItem l = new ListViewItem(s.Number.ToString());
-                        l.SubItems.Add(s.Name.ToString());
-                        //if the student number is even change the background color
-                        if (s.Number % 2 == 0)
-                            l.BackColor = Color.FromArgb(169, 210, 229);
-                        listViewCRStudent.Items.Add(l);
-                        //listBoxStudents.Items.Add();
+                        l.SubItems.Add(s.Name);
 
+                        listViewCRStudent.Items.Add(l);
                     }
-                    
                 }
                 catch (Exception e)
                 {
@@ -308,31 +297,12 @@ namespace SomerenUI
                 //show revenue report panel
                 pnlRevenueReport.Show();
 
-                try
-                {
+                dateTimePickerStart.MaxDate = DateTime.Now;
+                dateTimePickerEnd.MaxDate = DateTime.Now;
 
-                    dateTimePickerStart.MaxDate = DateTime.Now;
-                    dateTimePickerEnd.MaxDate = DateTime.Now;
 
-                    dateTimePickerEnd.Enabled = false;
-                    listViewRevenueReport.Items.Clear();
-
-                    //RevenueReportService revenueService = new RevenueReportService();
-                    //RevenueReport revenueReport = revenueService.GetReport();
-
-                    // lblSales.Text = $"Sales: {revenueReport.NumberOfDrinks}";
-                    //lblTurnover.Text = $"Ttal profit: {revenueReport.Turnover:0.00}";
-                    //lblNumberOfCustomers.Text = $"Number of customers: {revenueReport.NumberOfCustomers}";
-
-                    //DateTime miau = dateTimePickerStart.Value;
-                    //MessageBox.Show($"{miau:yyyy-MM-dd}");
-                }
-
-                catch (Exception e)
-                {
-                    MessageBox.Show("Something went wrong while loading the revenue report: " + e.Message); //error pop up
-                    LogError(e); //error log
-                }
+                dateTimePickerEnd.Enabled = false;
+                listViewRevenueReport.Items.Clear();
             }
         }
 
@@ -439,12 +409,13 @@ namespace SomerenUI
 
                 listViewRevenueReport.Items.Clear();
                 ListViewItem li = new ListViewItem(revenueReport.NumberOfDrinks.ToString());
-                li.SubItems.Add($"{revenueReport.Turnover}$");
+                li.SubItems.Add($"€{revenueReport.Turnover}");
                 li.SubItems.Add(revenueReport.NumberOfCustomers.ToString());
                 listViewRevenueReport.Items.Add(li);
             }
             catch (Exception ex)
             {
+                listViewRevenueReport.Items.Clear();
                 MessageBox.Show("Something went wrong while loading the revenue report: " + ex.Message); //error pop up
                 LogError(ex);
             }
@@ -464,6 +435,11 @@ namespace SomerenUI
                 txtBStudentID.Text = listViewCRStudent.SelectedItems[0].SubItems[0].Text;
                 txtBStudentName.Text = listViewCRStudent.SelectedItems[0].SubItems[1].Text;
             }
+            if (txtBDrinkName.Text != "" && txtBDrinkPrice.Text != "" && txtBStudentID.Text != "" && txtBStudentName.Text != "")
+            {
+                btnCheckOut.Enabled = true;
+                btnCheckOut.BackColor = Color.FromArgb(39, 126, 172);
+            }
         }
 
         private void listViewCRDrinks_SelectedIndexChanged(object sender, EventArgs e)
@@ -478,37 +454,47 @@ namespace SomerenUI
                 //Drink drink = (Drink)listViewCRDrinks.SelectedItems[0].Tag;
 
                 txtBDrinkName.Text = listViewCRDrinks.SelectedItems[0].SubItems[1].Text;
-                txtBDrinkPrice.Text = listViewCRDrinks.SelectedItems[0].SubItems[2].Text;
+                txtBDrinkPrice.Text = $"€{listViewCRDrinks.SelectedItems[0].SubItems[2].Text}";
             }
-            if (txtBDrinkName != null && txtBDrinkPrice!= null && txtBStudentID !=null&& txtBStudentName !=null)
+            if (txtBDrinkName.Text != "" && txtBDrinkPrice.Text != "" && txtBStudentID.Text != "" && txtBStudentName.Text != "")
             {
                 btnCheckOut.Enabled = true;
+                btnCheckOut.BackColor = Color.FromArgb(39, 126, 172);
             }
-           
         }
         private void btnCheckOut_Click(object sender, EventArgs e)
         {
-            
-            List<int> drinkReserved = new List<int>();
-            
-            int selectedStudent = int.Parse(listViewCRStudent.SelectedItems[0].SubItems[0].Text);
-            
-            for (int i = 0; i < listViewCRDrinks.Items.Count; i++)
-            {
-                if (listViewCRDrinks.Items[i].Selected)
-                {
-                    drinkReserved.Add(int.Parse(listViewCRDrinks.Items[i].SubItems[0].Text));
-                }
-            }
+
+            /* List<int> drinkReserved = new List<int>();
+
+             int selectedStudent = int.Parse(listViewCRStudent.SelectedItems[0].SubItems[0].Text);
+
+             for (int i = 0; i < listViewCRDrinks.Items.Count; i++)
+             {
+                 if (listViewCRDrinks.Items[i].Selected)
+                 {
+                     drinkReserved.Add(int.Parse(listViewCRDrinks.Items[i].SubItems[0].Text));
+                 }
+             }
+
+             CashRegisterService registerService = new CashRegisterService();
+             for (int i = 0; i < drinkReserved.Count; i++)
+             {
+                 int DrinkID = drinkReserved[i];
+               //  registerService.AddToRegister(selectedStudent, DrinkID);
+             }
+            */
+            int studentNumber = int.Parse(txtBStudentID.Text);
+            int drinkNumber = int.Parse(listViewCRDrinks.SelectedItems[0].SubItems[0].Text);
+            DateTime orderDate = DateTime.Now;
 
             CashRegisterService registerService = new CashRegisterService();
-            for (int i = 0; i < drinkReserved.Count; i++)
-            {
-                int DrinkID = drinkReserved[i];
-                registerService.AddToRegister(selectedStudent, DrinkID);
-            }
+            registerService.AddToRegister(studentNumber, drinkNumber, orderDate);
+
+            DrinkService drinkService = new DrinkService();
+            drinkService.UpdateDrink(drinkNumber);
+
             Refresh();
-            
             MessageBox.Show("Order succesful!");
         }
         private void Refresh()
@@ -517,6 +503,16 @@ namespace SomerenUI
             txtBDrinkPrice.Clear(); 
             txtBStudentID.Clear();  
             txtBStudentName.Clear();    
+        }
+
+        private void pictureBox6_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("What happens in Someren, stays in Someren!");
+        }
+
+        private void pictureBox5_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("What happens in Someren, stays in Someren!");
         }
     }
 }
