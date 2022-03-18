@@ -261,7 +261,8 @@ namespace SomerenUI
                         li.SubItems.Add(d.Price.ToString());
                         li.SubItems.Add(d.Stock.ToString());
 
-                        listViewCRDrinks.Items.Add(li);
+                        listViewCRDrinks.Items.Add(li);   
+
                     }
 
                     //STUDENTS
@@ -276,6 +277,7 @@ namespace SomerenUI
 
                         listViewCRStudent.Items.Add(l);
                     }
+                    
                 }
                 catch (Exception e)
                 {
@@ -494,8 +496,9 @@ namespace SomerenUI
             DrinkService drinkService = new DrinkService();
             drinkService.UpdateDrink(drinkNumber);
 
-            Refresh();
+           
             MessageBox.Show("Order succesful!");
+            showPanel("Cash Register");
         }
         private void Refresh()
         {
