@@ -448,6 +448,7 @@ namespace SomerenUI
 
         private void listViewCRDrinks_SelectedIndexChanged(object sender, EventArgs e)
         {
+            //if nothing is selected the textbox remains empty
             if (listViewCRDrinks.SelectedItems.Count == 0)
             {
                 txtBDrinkName.Text = "";
@@ -455,8 +456,6 @@ namespace SomerenUI
             }
             else
             {
-                //Drink drink = (Drink)listViewCRDrinks.SelectedItems[0].Tag;
-
                 txtBDrinkName.Text = listViewCRDrinks.SelectedItems[0].SubItems[1].Text;
                 txtBDrinkPrice.Text = $"€{listViewCRDrinks.SelectedItems[0].SubItems[2].Text}";
             }
