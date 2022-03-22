@@ -122,14 +122,14 @@
             this.dateTimePickerStart = new System.Windows.Forms.DateTimePicker();
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
             this.lblRevenueReport = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.txtActivityID = new System.Windows.Forms.TextBox();
+            this.txtActivityDesc = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
+            this.dateTimePIcker_ActivityStart = new System.Windows.Forms.DateTimePicker();
+            this.dateTimePicker_ActivityEnd = new System.Windows.Forms.DateTimePicker();
             teacherNumber = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             ((System.ComponentModel.ISupportInitialize)(this.imgDashboard)).BeginInit();
             this.menuStrip1.SuspendLayout();
@@ -183,7 +183,7 @@
             this.RevenueReportToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1680, 40);
+            this.menuStrip1.Size = new System.Drawing.Size(1680, 42);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -196,7 +196,7 @@
             this.dashboardToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dashboardToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.dashboardToolStripMenuItem.Name = "dashboardToolStripMenuItem";
-            this.dashboardToolStripMenuItem.Size = new System.Drawing.Size(150, 38);
+            this.dashboardToolStripMenuItem.Size = new System.Drawing.Size(150, 36);
             this.dashboardToolStripMenuItem.Text = "Application";
             this.dashboardToolStripMenuItem.Click += new System.EventHandler(this.dashboardToolStripMenuItem_Click);
             // 
@@ -224,7 +224,7 @@
             this.studentsToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.studentsToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.studentsToolStripMenuItem.Name = "studentsToolStripMenuItem";
-            this.studentsToolStripMenuItem.Size = new System.Drawing.Size(123, 38);
+            this.studentsToolStripMenuItem.Size = new System.Drawing.Size(123, 36);
             this.studentsToolStripMenuItem.Text = "Students";
             this.studentsToolStripMenuItem.Click += new System.EventHandler(this.studentsToolStripMenuItem_Click);
             // 
@@ -233,7 +233,7 @@
             this.lecturersToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lecturersToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.lecturersToolStripMenuItem.Name = "lecturersToolStripMenuItem";
-            this.lecturersToolStripMenuItem.Size = new System.Drawing.Size(126, 38);
+            this.lecturersToolStripMenuItem.Size = new System.Drawing.Size(126, 36);
             this.lecturersToolStripMenuItem.Text = "Lecturers";
             this.lecturersToolStripMenuItem.Click += new System.EventHandler(this.lecturersToolStripMenuItem_Click);
             // 
@@ -251,7 +251,7 @@
             this.roomsToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.roomsToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.roomsToolStripMenuItem.Name = "roomsToolStripMenuItem";
-            this.roomsToolStripMenuItem.Size = new System.Drawing.Size(102, 38);
+            this.roomsToolStripMenuItem.Size = new System.Drawing.Size(102, 36);
             this.roomsToolStripMenuItem.Text = "Rooms";
             this.roomsToolStripMenuItem.Click += new System.EventHandler(this.roomsToolStripMenuItem_Click);
             // 
@@ -260,7 +260,7 @@
             this.drinktoolStripMenuItem1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.drinktoolStripMenuItem1.ForeColor = System.Drawing.Color.White;
             this.drinktoolStripMenuItem1.Name = "drinktoolStripMenuItem1";
-            this.drinktoolStripMenuItem1.Size = new System.Drawing.Size(97, 38);
+            this.drinktoolStripMenuItem1.Size = new System.Drawing.Size(97, 36);
             this.drinktoolStripMenuItem1.Text = "Drinks";
             this.drinktoolStripMenuItem1.Click += new System.EventHandler(this.drinktoolStripMenuItem1_Click);
             // 
@@ -269,7 +269,7 @@
             this.CashRegtoolStripMenuItem1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CashRegtoolStripMenuItem1.ForeColor = System.Drawing.Color.White;
             this.CashRegtoolStripMenuItem1.Name = "CashRegtoolStripMenuItem1";
-            this.CashRegtoolStripMenuItem1.Size = new System.Drawing.Size(173, 38);
+            this.CashRegtoolStripMenuItem1.Size = new System.Drawing.Size(173, 36);
             this.CashRegtoolStripMenuItem1.Text = "Cash Register";
             this.CashRegtoolStripMenuItem1.Click += new System.EventHandler(this.CashRegtoolStripMenuItem1_Click);
             // 
@@ -278,7 +278,7 @@
             this.RevenueReportToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.RevenueReportToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.RevenueReportToolStripMenuItem.Name = "RevenueReportToolStripMenuItem";
-            this.RevenueReportToolStripMenuItem.Size = new System.Drawing.Size(199, 38);
+            this.RevenueReportToolStripMenuItem.Size = new System.Drawing.Size(199, 36);
             this.RevenueReportToolStripMenuItem.Text = "Revenue Report";
             this.RevenueReportToolStripMenuItem.Click += new System.EventHandler(this.RevenueReportToolStripMenuItem_Click);
             // 
@@ -299,14 +299,14 @@
             // pnlActivity
             // 
             this.pnlActivity.BackColor = System.Drawing.Color.White;
+            this.pnlActivity.Controls.Add(this.dateTimePicker_ActivityEnd);
+            this.pnlActivity.Controls.Add(this.dateTimePIcker_ActivityStart);
             this.pnlActivity.Controls.Add(this.label6);
             this.pnlActivity.Controls.Add(this.label5);
             this.pnlActivity.Controls.Add(this.label4);
             this.pnlActivity.Controls.Add(this.label3);
-            this.pnlActivity.Controls.Add(this.textBox4);
-            this.pnlActivity.Controls.Add(this.textBox3);
-            this.pnlActivity.Controls.Add(this.textBox2);
-            this.pnlActivity.Controls.Add(this.textBox1);
+            this.pnlActivity.Controls.Add(this.txtActivityDesc);
+            this.pnlActivity.Controls.Add(this.txtActivityID);
             this.pnlActivity.Controls.Add(this.btn_removeActivity);
             this.pnlActivity.Controls.Add(this.btn_updateActivity);
             this.pnlActivity.Controls.Add(this.btn_addActivity);
@@ -326,7 +326,7 @@
             this.btn_removeActivity.Name = "btn_removeActivity";
             this.btn_removeActivity.Size = new System.Drawing.Size(232, 58);
             this.btn_removeActivity.TabIndex = 8;
-            this.btn_removeActivity.Text = "Remove activity";
+            this.btn_removeActivity.Text = "&Remove activity";
             this.btn_removeActivity.UseVisualStyleBackColor = true;
             // 
             // btn_updateActivity
@@ -336,8 +336,9 @@
             this.btn_updateActivity.Name = "btn_updateActivity";
             this.btn_updateActivity.Size = new System.Drawing.Size(232, 58);
             this.btn_updateActivity.TabIndex = 7;
-            this.btn_updateActivity.Text = "Update activity";
+            this.btn_updateActivity.Text = "&Update activity";
             this.btn_updateActivity.UseVisualStyleBackColor = true;
+            this.btn_updateActivity.Click += new System.EventHandler(this.btn_updateActivity_Click);
             // 
             // btn_addActivity
             // 
@@ -346,8 +347,9 @@
             this.btn_addActivity.Name = "btn_addActivity";
             this.btn_addActivity.Size = new System.Drawing.Size(232, 58);
             this.btn_addActivity.TabIndex = 6;
-            this.btn_addActivity.Text = "Add activity";
+            this.btn_addActivity.Text = "&Add activity";
             this.btn_addActivity.UseVisualStyleBackColor = true;
+            this.btn_addActivity.Click += new System.EventHandler(this.btn_addActivity_Click);
             // 
             // listViewActivities
             // 
@@ -368,6 +370,7 @@
             this.listViewActivities.TabIndex = 5;
             this.listViewActivities.UseCompatibleStateImageBehavior = false;
             this.listViewActivities.View = System.Windows.Forms.View.Details;
+            this.listViewActivities.SelectedIndexChanged += new System.EventHandler(this.listViewActivities_SelectedIndexChanged);
             // 
             // columnHeader12
             // 
@@ -1124,33 +1127,19 @@
             this.lblRevenueReport.TabIndex = 3;
             this.lblRevenueReport.Text = "Revenue Report";
             // 
-            // textBox1
+            // txtActivityID
             // 
-            this.textBox1.Location = new System.Drawing.Point(172, 737);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 26);
-            this.textBox1.TabIndex = 9;
+            this.txtActivityID.Location = new System.Drawing.Point(172, 737);
+            this.txtActivityID.Name = "txtActivityID";
+            this.txtActivityID.Size = new System.Drawing.Size(100, 26);
+            this.txtActivityID.TabIndex = 9;
             // 
-            // textBox2
+            // txtActivityDesc
             // 
-            this.textBox2.Location = new System.Drawing.Point(383, 737);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(151, 26);
-            this.textBox2.TabIndex = 9;
-            // 
-            // textBox3
-            // 
-            this.textBox3.Location = new System.Drawing.Point(630, 732);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(185, 26);
-            this.textBox3.TabIndex = 9;
-            // 
-            // textBox4
-            // 
-            this.textBox4.Location = new System.Drawing.Point(912, 737);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(188, 26);
-            this.textBox4.TabIndex = 9;
+            this.txtActivityDesc.Location = new System.Drawing.Point(383, 737);
+            this.txtActivityDesc.Name = "txtActivityDesc";
+            this.txtActivityDesc.Size = new System.Drawing.Size(151, 26);
+            this.txtActivityDesc.TabIndex = 9;
             // 
             // label3
             // 
@@ -1175,18 +1164,36 @@
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(651, 709);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(125, 20);
+            this.label5.Size = new System.Drawing.Size(152, 20);
             this.label5.TabIndex = 10;
-            this.label5.Text = "Start Date & Time";
+            this.label5.Text = "Start Date and Time";
             // 
             // label6
             // 
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(929, 709);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(119, 20);
+            this.label6.Size = new System.Drawing.Size(146, 20);
             this.label6.TabIndex = 10;
-            this.label6.Text = "End Date & Time";
+            this.label6.Text = "End Date and Time";
+            // 
+            // dateTimePIcker_ActivityStart
+            // 
+            this.dateTimePIcker_ActivityStart.CustomFormat = "dd-MM-yyyy HH:mm:ss";
+            this.dateTimePIcker_ActivityStart.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateTimePIcker_ActivityStart.Location = new System.Drawing.Point(655, 737);
+            this.dateTimePIcker_ActivityStart.Name = "dateTimePIcker_ActivityStart";
+            this.dateTimePIcker_ActivityStart.Size = new System.Drawing.Size(205, 26);
+            this.dateTimePIcker_ActivityStart.TabIndex = 11;
+            // 
+            // dateTimePicker_ActivityEnd
+            // 
+            this.dateTimePicker_ActivityEnd.CustomFormat = "dd-MM-yyyy HH:mm:ss";
+            this.dateTimePicker_ActivityEnd.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateTimePicker_ActivityEnd.Location = new System.Drawing.Point(923, 735);
+            this.dateTimePicker_ActivityEnd.Name = "dateTimePicker_ActivityEnd";
+            this.dateTimePicker_ActivityEnd.Size = new System.Drawing.Size(233, 26);
+            this.dateTimePicker_ActivityEnd.TabIndex = 11;
             // 
             // SomerenUI
             // 
@@ -1343,10 +1350,10 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtActivityDesc;
+        private System.Windows.Forms.TextBox txtActivityID;
+        private System.Windows.Forms.DateTimePicker dateTimePicker_ActivityEnd;
+        private System.Windows.Forms.DateTimePicker dateTimePIcker_ActivityStart;
     }
 }
 

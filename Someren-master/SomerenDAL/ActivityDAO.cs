@@ -46,10 +46,10 @@ namespace SomerenDAL
             SqlParameter[] sqlParameters = new SqlParameter[0];
             ExecuteEditQuery(query, sqlParameters);
         }
-        public void AddToActivity(string activityName,int activityID, DateTime startDateTime, DateTime endDateTime)
+        public void AddToActivity(int activityID,string activityName, DateTime startDateTime, DateTime endDateTime)
         {
             // add new information to activity table
-            string query = $"INSERT INTO Cash_register (ActivityID,Activity_name,ActicityStartDateTime,ActivityEndDateTime) VALUES ({activityName},{activityID}, {startDateTime:yyyy - MM - dd HH-mm-s}, '{endDateTime:yyyy-MM-dd HH-mm-s}')";
+            string query = $"INSERT INTO Activity (ActivityID,Activity_name,ActicityStartDateTime,ActivityEndDateTime) VALUES ({activityID},{activityName}, {startDateTime:yyyy - MM - dd HH-mm-ss}, '{endDateTime:yyyy-MM-dd HH-mm-s}')";
             SqlParameter[] sqlParameters = new SqlParameter[0];
             ExecuteEditQuery(query, sqlParameters);
         }

@@ -458,6 +458,32 @@ namespace SomerenUI
                 btnCheckOut.BackColor = Color.FromArgb(39, 126, 172);
             }
         }
+        /****************ACTIVITY LIST VIEW***************/
+        private void listViewActivities_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (listViewActivities.SelectedItems.Count == 0)
+            {
+                txtActivityID.Text = "";
+                txtActivityDesc.Text = "";
+              }
+            else
+            {
+                //if the txtbox is not empty fill it with the details of the selected activities
+                txtActivityID.Text = listViewActivities.SelectedItems[0].SubItems[0].Text;
+                txtActivityDesc.Text = listViewActivities.SelectedItems[0].SubItems[1].Text;
+                dateTimePIcker_ActivityStart.Value = Convert.ToDateTime(listViewActivities.SelectedItems[0].SubItems[2].Text);
+                dateTimePicker_ActivityEnd.Value = Convert.ToDateTime(listViewActivities.SelectedItems[0].SubItems[3].Text);
+
+            }
+            // if the textbox of the activities arent empty enable the button 
+            if (txtActivityID.Text != "" && txtActivityDesc.Text != "" && dateTimePIcker_ActivityStart.Value!= null && dateTimePicker_ActivityEnd.Value!= null)
+            {
+                btn_addActivity.Enabled = true;
+                btn_removeActivity.Enabled = true;
+                btn_updateActivity.Enabled=true;    
+            }
+        }
+        /********************BUTTONS***************************/
         private void btnCheckOut_Click(object sender, EventArgs e)
         {
             //get text from textboxes for student id and drink id
@@ -481,6 +507,31 @@ namespace SomerenUI
 
             //refresh the panel
             showPanel("Cash Register");
+        }
+        private void btn_updateActivity_Click(object sender, EventArgs e)
+        {
+            int studentNumber = int.Parse(txtBStudentID.Text);
+            int drinkNumber = int.Parse(listViewCRDrinks.SelectedItems[0].SubItems[0].Text);
+            DateTime orderDate = DateTime.Now;
+        }
+        private void btn_addActivity_Click(object sender, EventArgs e)
+        {
+            //get text from textboxes for student id and drink id
+            int activityID = int.Parse(txtActivityID.Text);
+            string activityName = txtActivityDesc.Text;
+           DateTime startDateTime = DateTime.Parse(dateTimePIcker_ActivityStart.Text);
+            DateTime endDateTime = DateTime.Parse(dateTimePicker_ActivityEnd.Text);
+
+            //create connection to register database
+            ActivityService activityService = new ActivityService();
+            //add the data to the rgister database
+            activityService.AddToActivity(activityID, activityName, startDateTime, endDateTime);
+
+            //show that the add was successful
+            MessageBox.Show("Succeesfully added actiivty!");
+
+            //refresh the panel
+            showPanel("Activities");
         }
         private void pictureBox6_Click(object sender, EventArgs e)
         {

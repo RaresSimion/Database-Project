@@ -29,10 +29,10 @@ namespace SomerenLogic
             //update the activity stock in the database
             activitydb.UpdateActivity(newName,drinkNumber);
         }
-        public void AddToActivity(string activityName, int activityID, DateTime startDateTime, DateTime endDateTime)
+        public void AddToActivity(int activityID,string activityName,  DateTime startDateTime, DateTime endDateTime)
         {
             //update the activity stock in the database
-            activitydb.AddToActivity(activityName,activityID,startDateTime,endDateTime);
+            activitydb.AddToActivity(activityID,activityName,startDateTime,endDateTime);
         }
         public void DeleteActivity( int activityID)
         {
