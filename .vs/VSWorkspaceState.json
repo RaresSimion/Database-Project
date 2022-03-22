@@ -2,8 +2,9 @@
   "ExpandedNodes": [
     "",
     "\\Someren-master",
-    "\\Someren-master\\SomerenDAL"
+    "\\Someren-master\\SomerenDAL",
+    "\\Someren-master\\SomerenUI"
   ],
-  "SelectedNode": "\\Someren-master\\SomerenDAL\\RoomDAO.cs",
+  "SelectedNode": "\\Someren-master\\SomerenUI\\SomerenUI.cs",
   "PreviewInSolutionExplorer": false
 }

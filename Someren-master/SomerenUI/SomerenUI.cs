@@ -31,14 +31,7 @@ namespace SomerenUI
 
             if (panelName == "Dashboard")
             {
-                // hide all other panels
-                pnlStudents.Hide();
-                pnlTeachers.Hide();
-                pnlRooms.Hide();
-                pnlDrink.Hide();
-                pnlCashRegister.Hide();
-                pnlRevenueReport.Hide();
-
+               HidePanels();
 
                 // show dashboard
                 pnlDashboard.Show();
@@ -47,13 +40,7 @@ namespace SomerenUI
             else if (panelName == "Students")
             {
                 // hide all other panels
-                pnlDashboard.Hide();
-                imgDashboard.Hide();
-                pnlTeachers.Hide();
-                pnlRooms.Hide();
-                pnlDrink.Hide();
-                pnlCashRegister.Hide();
-                pnlRevenueReport.Hide();
+                 HidePanels();
 
                 // show students
                 pnlStudents.Show();
@@ -91,13 +78,7 @@ namespace SomerenUI
             else if (panelName == "Rooms")
             {
                 //hide these panels
-                pnlDashboard.Hide();
-                imgDashboard.Hide();
-                pnlStudents.Hide();
-                pnlTeachers.Hide();
-                pnlDrink.Hide();
-                pnlCashRegister.Hide();
-                pnlRevenueReport.Hide();
+                HidePanels();
 
                 //show room panel
                 pnlRooms.Show();
@@ -136,13 +117,7 @@ namespace SomerenUI
             else if (panelName == "Lecturers")
             {
                 //hide these panels
-                pnlDashboard.Hide();
-                imgDashboard.Hide();
-                pnlStudents.Hide();
-                pnlRooms.Hide();
-                pnlDrink.Hide();
-                pnlCashRegister.Hide();
-                pnlRevenueReport.Hide();
+                HidePanels();
                 //show teachers panel
                 pnlTeachers.Show();
 
@@ -182,13 +157,7 @@ namespace SomerenUI
             else if (panelName == "Drinks")
             {
                 //hide these panels
-                pnlDashboard.Hide();
-                imgDashboard.Hide();
-                pnlStudents.Hide();
-                pnlRooms.Hide();
-                pnlTeachers.Hide();
-                pnlCashRegister.Hide();
-                pnlRevenueReport.Hide();
+                HidePanels();
 
                 //show drinks panel
                 pnlDrink.Show();
@@ -226,13 +195,7 @@ namespace SomerenUI
             else if (panelName == "Cash Register")
             {
                 //hide these panels
-                pnlDashboard.Hide();
-                imgDashboard.Hide();
-                pnlStudents.Hide();
-                pnlRooms.Hide();
-                pnlTeachers.Hide();
-                pnlDrink.Hide();
-                pnlRevenueReport.Hide();
+                HidePanels();
 
                 //show cash register panel
                 pnlCashRegister.Show();
@@ -240,8 +203,8 @@ namespace SomerenUI
                 try
                 {
                     //disable button until student and drink are selected
-                    btnCheckOut.Enabled = false;    
-                    
+                    btnCheckOut.Enabled = false;
+
                     //DRINKS
                     DrinkService drinkService = new DrinkService(); ;// create connection to the drink service layer
                     List<Drink> drinkList = drinkService.GetDrinks(); ;// retrieve drink list
@@ -258,7 +221,7 @@ namespace SomerenUI
                         li.SubItems.Add(d.Stock.ToString());
 
                         //add item to listview
-                        listViewCRDrinks.Items.Add(li);   
+                        listViewCRDrinks.Items.Add(li);
 
                     }
 
@@ -274,7 +237,7 @@ namespace SomerenUI
 
                         listViewCRStudent.Items.Add(l);
                     }
-                    
+
                 }
                 catch (Exception e)
                 {
@@ -285,14 +248,7 @@ namespace SomerenUI
             else if (panelName == "Revenue Report")
             {
                 //hide these panels
-                pnlDashboard.Hide();
-                imgDashboard.Hide();
-                pnlStudents.Hide();
-                pnlRooms.Hide();
-                pnlTeachers.Hide();
-                pnlDrink.Hide();
-                pnlCashRegister.Hide();
-
+                HidePanels();
                 //show revenue report panel
                 pnlRevenueReport.Show();
 
@@ -303,6 +259,38 @@ namespace SomerenUI
                 //the end date picker is disabled until a start date is chosen
                 dateTimePickerEnd.Enabled = false;
                 listViewRevenueReport.Items.Clear();
+            }
+            /*************ACTIVITIES************/
+            else if (panelName == "Activities")
+            {
+                //hide these panels
+                HidePanels();
+
+                //show drinks panel
+                pnlActivity.Show();
+
+                try
+                {
+                   ActivityService activityService = new ActivityService(); ;// create connection to the activity service layer
+                    List<Activity> activityList = activityService.GetActivity(); ;// retrieve list from the activity layer
+
+                    listViewActivities.Items.Clear();// clear drink panel
+                    foreach (Activity a in activityList)
+                    {
+                        // add these items to the listview
+                        ListViewItem li = new ListViewItem(a.Id.ToString());
+                        li.SubItems.Add(a.Name);
+                        li.SubItems.Add(a.StartDateTime.ToString());
+                        li.SubItems.Add(a.EndDateTime.ToString());
+                        
+                        listViewActivities.Items.Add(li);// add items to listview
+                    }
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show("Something went wrong while loading the drinks: " + e.Message); //error pop up
+                    LogError(e); //error log
+                }
             }
         }
 
@@ -384,11 +372,15 @@ namespace SomerenUI
         {
             showPanel("Drinks");
         }
-
+        private void activitiesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            showPanel("Activities");
+        }
 
         private void CashRegtoolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            showPanel("Cash Register"); }
+            showPanel("Cash Register");
+        }
 
         private void RevenueReportToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -433,7 +425,7 @@ namespace SomerenUI
             }
             else
             {
-               //Student student = (Student)listViewCRStudent.SelectedItems[0].Tag;
+                //Student student = (Student)listViewCRStudent.SelectedItems[0].Tag;
 
                 txtBStudentID.Text = listViewCRStudent.SelectedItems[0].SubItems[0].Text;
                 txtBStudentName.Text = listViewCRStudent.SelectedItems[0].SubItems[1].Text;
@@ -455,9 +447,11 @@ namespace SomerenUI
             }
             else
             {
+                //if the txtbox is not empty fill it with the details of the selected drink
                 txtBDrinkName.Text = listViewCRDrinks.SelectedItems[0].SubItems[1].Text;
                 txtBDrinkPrice.Text = $"€{listViewCRDrinks.SelectedItems[0].SubItems[2].Text}";
             }
+            // if the textbox of the drinks and students arent empty enable the button and change the color 
             if (txtBDrinkName.Text != "" && txtBDrinkPrice.Text != "" && txtBStudentID.Text != "" && txtBStudentName.Text != "")
             {
                 btnCheckOut.Enabled = true;
@@ -475,14 +469,14 @@ namespace SomerenUI
             CashRegisterService registerService = new CashRegisterService();
             //add the data to the rgister database
             registerService.AddToRegister(studentNumber, drinkNumber, orderDate);
-            
+
             //create connection to drink database
             DrinkService drinkService = new DrinkService();
 
             //update drinks
             drinkService.UpdateDrink(drinkNumber);
 
-           //show that the order was successful
+            //show that the order was successful
             MessageBox.Show("Order succesful!");
 
             //refresh the panel
@@ -497,5 +491,21 @@ namespace SomerenUI
         {
             MessageBox.Show("What happens in Someren, stays in Someren!");
         }
+        public void HidePanels()
+        {
+            // hide all other panels
+         
+            pnlDashboard.Hide();
+            imgDashboard.Hide();
+            pnlStudents.Hide();
+            pnlTeachers.Hide();
+            pnlRooms.Hide();
+            pnlDrink.Hide();
+            pnlCashRegister.Hide();
+            pnlRevenueReport.Hide();
+            pnlActivity.Hide();
+        }
+
+       
     }
 }
