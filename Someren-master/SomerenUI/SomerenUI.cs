@@ -271,7 +271,7 @@ namespace SomerenUI
 
                 try
                 {
-                   ActivityService activityService = new ActivityService(); ;// create connection to the activity service layer
+                    ActivityService activityService = new ActivityService(); ;// create connection to the activity service layer
                     List<Activity> activityList = activityService.GetActivity(); ;// retrieve list from the activity layer
 
                     listViewActivities.Items.Clear();// clear drink panel
@@ -288,7 +288,39 @@ namespace SomerenUI
                 }
                 catch (Exception e)
                 {
-                    MessageBox.Show("Something went wrong while loading the drinks: " + e.Message); //error pop up
+                    MessageBox.Show("Something went wrong while loading the activities: " + e.Message); //error pop up
+                    LogError(e); //error log
+                }
+            }
+            else if (panelName == "Supervisors")
+            {
+                HidePanels();
+
+                pnlSupervisors.Show();
+
+                try
+                {
+                    ActivityService activityService = new ActivityService(); ;
+                    List<Activity> activityList = activityService.GetActivity(); ;
+
+                    listViewSupervisorActivities.Items.Clear();
+                    listViewSupervisors.Items.Clear();
+                    listViewNotSupervisors.Items.Clear();
+
+                    foreach (Activity a in activityList)
+                    {
+                        // add these items to the listview
+                        ListViewItem li = new ListViewItem(a.Id.ToString());
+                        li.SubItems.Add(a.Name);
+                        li.SubItems.Add(a.StartDateTime.ToString("yyyy-MM-dd    HH:mm"));
+                        li.SubItems.Add(a.EndDateTime.ToString("yyyy-MM-dd    HH:mm"));
+
+                        listViewSupervisorActivities.Items.Add(li);// add items to listview
+                    }
+                }
+                catch(Exception e)
+                {
+                    MessageBox.Show("Something went wrong while loading the activities: " + e.Message); //error pop up
                     LogError(e); //error log
                 }
             }
@@ -525,7 +557,7 @@ namespace SomerenUI
             //create connection to register database
             ActivityService activityService = new ActivityService();
             //add the data to the rgister database
-            activityService.AddToActivity(activityID, activityName, startDateTime, endDateTime);
+            activityService.AddToActivity(activityName, startDateTime, endDateTime);
 
             //show that the add was successful
             MessageBox.Show("Succeesfully added actiivty!");
@@ -555,8 +587,57 @@ namespace SomerenUI
             pnlCashRegister.Hide();
             pnlRevenueReport.Hide();
             pnlActivity.Hide();
+            pnlSupervisors.Hide();
         }
 
-       
+        private void SupervisorsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            showPanel("Supervisors");
+        }
+
+        private void listViewSupervisorActivities_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (listViewSupervisorActivities.SelectedIndices.Count == 0)
+                {
+                    listViewSupervisors.Items.Clear();
+                    listViewNotSupervisors.Items.Clear();
+                }
+                else
+
+                {
+                    int activityID = int.Parse(listViewSupervisorActivities.SelectedItems[0].SubItems[0].Text);
+                    TeacherService teacherService = new TeacherService();
+                    List<Teacher> supervisors = teacherService.GetSupervisors(activityID);
+                    List<Teacher> teachers = teacherService.GetTeachersNotSupervising(activityID);
+
+                    foreach (Teacher t in supervisors)
+                    {
+                        //add these items to the listview
+                        ListViewItem li = new ListViewItem(t.Number.ToString());
+                        li.SubItems.Add(t.Name);
+
+                        //add items to listview
+                        listViewSupervisors.Items.Add(li);
+                    }
+
+                    foreach (Teacher t in teachers)
+                    {
+                        //add these items to the listview
+                        ListViewItem li = new ListViewItem(t.Number.ToString());
+                        li.SubItems.Add(t.Name);
+
+                        //add items to listview
+                        listViewNotSupervisors.Items.Add(li);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Something went wrong while loading the supervisors: " + ex.Message); //error pop up
+                LogError(ex); //error log
+            }
+        }
     }
 }

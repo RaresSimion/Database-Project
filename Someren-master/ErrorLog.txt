@@ -334,3 +334,63 @@ Time: 22/03/2022 02:22:28 PM
 Message: Incorrect syntax near '11'.
 -----------------------------------------------------------
 
+Time: 22/03/2022 05:46:17 pm
+-----------------------------------------------------------
+Message: Invalid column name 'ActivityID'.
+Invalid column name 'ActicityStartDateTime'.
+Invalid column name 'ActivityEndDateTime'.
+-----------------------------------------------------------
+
+Time: 22/03/2022 05:46:19 pm
+-----------------------------------------------------------
+Message: Object reference not set to an instance of an object.
+-----------------------------------------------------------
+
+Time: 22/03/2022 06:40:11 pm
+-----------------------------------------------------------
+Message: InvalidArgument=Value of '0' is not valid for 'index'.
+Parameter name: index
+-----------------------------------------------------------
+
+Time: 22/03/2022 06:43:07 pm
+-----------------------------------------------------------
+Message: InvalidArgument=Value of '0' is not valid for 'index'.
+Parameter name: index
+-----------------------------------------------------------
+
+Time: 22/03/2022 06:43:12 pm
+-----------------------------------------------------------
+Message: InvalidArgument=Value of '0' is not valid for 'index'.
+Parameter name: index
+-----------------------------------------------------------
+
+Time: 22/03/2022 06:45:20 pm
+-----------------------------------------------------------
+Message: InvalidArgument=Value of '0' is not valid for 'index'.
+Parameter name: index
+-----------------------------------------------------------
+
+Time: 22/03/2022 06:45:27 pm
+-----------------------------------------------------------
+Message: InvalidArgument=Value of '0' is not valid for 'index'.
+Parameter name: index
+-----------------------------------------------------------
+
+Time: 22/03/2022 06:45:31 pm
+-----------------------------------------------------------
+Message: InvalidArgument=Value of '0' is not valid for 'index'.
+Parameter name: index
+-----------------------------------------------------------
+
+Time: 22/03/2022 06:45:34 pm
+-----------------------------------------------------------
+Message: InvalidArgument=Value of '0' is not valid for 'index'.
+Parameter name: index
+-----------------------------------------------------------
+
+Time: 22/03/2022 06:45:56 pm
+-----------------------------------------------------------
+Message: InvalidArgument=Value of '0' is not valid for 'index'.
+Parameter name: index
+-----------------------------------------------------------
+
