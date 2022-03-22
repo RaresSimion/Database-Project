@@ -27,6 +27,7 @@ namespace SomerenLogic
 
         public void UpdateDrink(int drinkNumber)
         {
+            //update the drink stock in the database
             drinkdb.UpdateDrink(drinkNumber);
         }
 

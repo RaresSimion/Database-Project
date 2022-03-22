@@ -108,6 +108,9 @@
             this.dateTimePickerStart = new System.Windows.Forms.DateTimePicker();
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
             this.lblRevenueReport = new System.Windows.Forms.Label();
+            this.btnAddDrink = new System.Windows.Forms.Button();
+            this.btnUpdateDrink = new System.Windows.Forms.Button();
+            this.btnRemoveDrink = new System.Windows.Forms.Button();
             teacherNumber = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             ((System.ComponentModel.ISupportInitialize)(this.imgDashboard)).BeginInit();
             this.menuStrip1.SuspendLayout();
@@ -231,9 +234,10 @@
             // 
             // drinktoolStripMenuItem1
             // 
-            this.drinktoolStripMenuItem1.ForeColor = System.Drawing.SystemColors.Control;
+            this.drinktoolStripMenuItem1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.drinktoolStripMenuItem1.ForeColor = System.Drawing.Color.White;
             this.drinktoolStripMenuItem1.Name = "drinktoolStripMenuItem1";
-            this.drinktoolStripMenuItem1.Size = new System.Drawing.Size(52, 25);
+            this.drinktoolStripMenuItem1.Size = new System.Drawing.Size(67, 25);
             this.drinktoolStripMenuItem1.Text = "Drinks";
             this.drinktoolStripMenuItem1.Click += new System.EventHandler(this.drinktoolStripMenuItem1_Click);
             // 
@@ -496,6 +500,9 @@
             // pnlDrink
             // 
             this.pnlDrink.BackColor = System.Drawing.Color.White;
+            this.pnlDrink.Controls.Add(this.btnRemoveDrink);
+            this.pnlDrink.Controls.Add(this.btnUpdateDrink);
+            this.pnlDrink.Controls.Add(this.btnAddDrink);
             this.pnlDrink.Controls.Add(this.listViewDrink);
             this.pnlDrink.Controls.Add(this.pictureBox4);
             this.pnlDrink.Controls.Add(this.label1);
@@ -506,7 +513,7 @@
             // 
             // listViewDrink
             // 
-            this.listViewDrink.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(126)))), ((int)(((byte)(172)))));
+            this.listViewDrink.BackColor = System.Drawing.Color.White;
             this.listViewDrink.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.listViewDrink.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader1,
@@ -515,10 +522,11 @@
             this.columnHeader4,
             this.columnHeader5});
             this.listViewDrink.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.listViewDrink.FullRowSelect = true;
             this.listViewDrink.HideSelection = false;
-            this.listViewDrink.Location = new System.Drawing.Point(187, 95);
+            this.listViewDrink.Location = new System.Drawing.Point(115, 108);
             this.listViewDrink.Name = "listViewDrink";
-            this.listViewDrink.Size = new System.Drawing.Size(529, 341);
+            this.listViewDrink.Size = new System.Drawing.Size(628, 341);
             this.listViewDrink.TabIndex = 5;
             this.listViewDrink.UseCompatibleStateImageBehavior = false;
             this.listViewDrink.View = System.Windows.Forms.View.Details;
@@ -929,6 +937,33 @@
             this.lblRevenueReport.TabIndex = 3;
             this.lblRevenueReport.Text = "Revenue Report";
             // 
+            // btnAddDrink
+            // 
+            this.btnAddDrink.Location = new System.Drawing.Point(793, 171);
+            this.btnAddDrink.Name = "btnAddDrink";
+            this.btnAddDrink.Size = new System.Drawing.Size(155, 38);
+            this.btnAddDrink.TabIndex = 6;
+            this.btnAddDrink.Text = "Add drink";
+            this.btnAddDrink.UseVisualStyleBackColor = true;
+            // 
+            // btnUpdateDrink
+            // 
+            this.btnUpdateDrink.Location = new System.Drawing.Point(793, 245);
+            this.btnUpdateDrink.Name = "btnUpdateDrink";
+            this.btnUpdateDrink.Size = new System.Drawing.Size(155, 38);
+            this.btnUpdateDrink.TabIndex = 7;
+            this.btnUpdateDrink.Text = "Update drink";
+            this.btnUpdateDrink.UseVisualStyleBackColor = true;
+            // 
+            // btnRemoveDrink
+            // 
+            this.btnRemoveDrink.Location = new System.Drawing.Point(793, 325);
+            this.btnRemoveDrink.Name = "btnRemoveDrink";
+            this.btnRemoveDrink.Size = new System.Drawing.Size(155, 38);
+            this.btnRemoveDrink.TabIndex = 8;
+            this.btnRemoveDrink.Text = "Remove drink";
+            this.btnRemoveDrink.UseVisualStyleBackColor = true;
+            // 
             // SomerenUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -936,13 +971,13 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(126)))), ((int)(((byte)(172)))));
             this.ClientSize = new System.Drawing.Size(1120, 573);
             this.Controls.Add(this.menuStrip1);
+            this.Controls.Add(this.pnlDrink);
             this.Controls.Add(this.pnlDashboard);
             this.Controls.Add(this.pnlRooms);
             this.Controls.Add(this.pnlRevenueReport);
             this.Controls.Add(this.pnlTeachers);
             this.Controls.Add(this.pnlStudents);
             this.Controls.Add(this.pnlCashRegister);
-            this.Controls.Add(this.pnlDrink);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "SomerenUI";
@@ -1061,6 +1096,9 @@
         private System.Windows.Forms.ColumnHeader columnHeader7;
         private System.Windows.Forms.Label lblCRDrink;
         private System.Windows.Forms.Label lblCRStudent;
+        private System.Windows.Forms.Button btnRemoveDrink;
+        private System.Windows.Forms.Button btnUpdateDrink;
+        private System.Windows.Forms.Button btnAddDrink;
     }
 }
 

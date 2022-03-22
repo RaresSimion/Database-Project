@@ -14,11 +14,13 @@ namespace SomerenLogic
 
         public RevenueReportService()
         {
+            //create connection to database
             revenueReportDAO = new RevenueReportDAO();
         }
 
         public RevenueReport GetReport(DateTime startDate, DateTime endDate)
         {
+            //get the report from the db
             return revenueReportDAO.GetReport(startDate, endDate);
         }
     }

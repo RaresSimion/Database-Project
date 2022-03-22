@@ -189,16 +189,16 @@ namespace SomerenUI
                 pnlTeachers.Hide();
                 pnlCashRegister.Hide();
                 pnlRevenueReport.Hide();
-                //show drinks panel
 
+                //show drinks panel
                 pnlDrink.Show();
 
                 try
                 {
                     DrinkService drinkService = new DrinkService(); ;// create connection to the drink service layer
-                    List<Drink> drinkList = drinkService.GetDrinks(); ;//retrieve list from the drink layer and save to the variable teacherList
+                    List<Drink> drinkList = drinkService.GetDrinks(); ;// retrieve list from the drink layer
 
-                    listViewDrink.Items.Clear();// clear teacher panel
+                    listViewDrink.Items.Clear();// clear drink panel
                     foreach (Drink d in drinkList)
                     {
                         // add these items to the listview
@@ -213,11 +213,6 @@ namespace SomerenUI
                             li.SubItems.Add("No");
                         li.SubItems.Add(d.Price.ToString());
                         li.SubItems.Add(d.Stock.ToString());
-
-
-                        //if the drink number is even change the background color
-                        if (d.Number % 2 == 0)
-                            li.BackColor = Color.FromArgb(169, 210, 229);
 
                         listViewDrink.Items.Add(li);// add items to listview
                     }
@@ -238,8 +233,8 @@ namespace SomerenUI
                 pnlTeachers.Hide();
                 pnlDrink.Hide();
                 pnlRevenueReport.Hide();
-                //show drinks panel
 
+                //show cash register panel
                 pnlCashRegister.Show();
 
                 try
@@ -301,15 +296,17 @@ namespace SomerenUI
                 //show revenue report panel
                 pnlRevenueReport.Show();
 
+                //the max date for the 2 pickers is the present day
                 dateTimePickerStart.MaxDate = DateTime.Now;
                 dateTimePickerEnd.MaxDate = DateTime.Now;
 
-
+                //the end date picker is disabled until a start date is chosen
                 dateTimePickerEnd.Enabled = false;
                 listViewRevenueReport.Items.Clear();
             }
         }
 
+        //method to log the errors to file
         private void LogError(Exception ex)
         {
             string message = string.Format($"Time: {DateTime.Now:dd/MM/yyyy hh:mm:ss tt}");
@@ -400,17 +397,19 @@ namespace SomerenUI
 
         private void dateTimePickerStart_ValueChanged(object sender, EventArgs e)
         {
-            dateTimePickerEnd.Enabled = true;
-            dateTimePickerEnd.MinDate = dateTimePickerStart.Value;
+            dateTimePickerEnd.Enabled = true; //once a start date has been chosen, the end date picker is enabled
+            dateTimePickerEnd.MinDate = dateTimePickerStart.Value; //the minimum date for the end date picker becomes the value of the start date picker, so that the user can only choose valid dates
         }
 
         private void dateTimePickerEnd_ValueChanged(object sender, EventArgs e)
         {
             try
             {
+                //get the revenue report for the selected date
                 RevenueReportService revenueService = new RevenueReportService();
                 RevenueReport revenueReport = revenueService.GetReport(dateTimePickerStart.Value, dateTimePickerEnd.Value);
 
+                //remove the report from before and add the new one
                 listViewRevenueReport.Items.Clear();
                 ListViewItem li = new ListViewItem(revenueReport.NumberOfDrinks.ToString());
                 li.SubItems.Add($"€{revenueReport.Turnover}");

@@ -19,6 +19,7 @@ namespace SomerenLogic
         }
         public void AddToRegister(int studentNumber, int drinkNumber, DateTime orderDate)
         {
+            //add the order to the database
             cashRegisterdb.AddToRegister(studentNumber, drinkNumber, orderDate);
         }   
     }
