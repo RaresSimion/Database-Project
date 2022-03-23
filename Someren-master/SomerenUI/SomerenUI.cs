@@ -31,7 +31,7 @@ namespace SomerenUI
 
             if (panelName == "Dashboard")
             {
-               HidePanels();
+                HidePanels();
 
                 // show dashboard
                 pnlDashboard.Show();
@@ -40,7 +40,7 @@ namespace SomerenUI
             else if (panelName == "Students")
             {
                 // hide all other panels
-                 HidePanels();
+                HidePanels();
 
                 // show students
                 pnlStudents.Show();
@@ -271,7 +271,7 @@ namespace SomerenUI
 
                 try
                 {
-                   ActivityService activityService = new ActivityService(); ;// create connection to the activity service layer
+                    ActivityService activityService = new ActivityService(); ;// create connection to the activity service layer
                     List<Activity> activityList = activityService.GetActivity(); ;// retrieve list from the activity layer
 
                     listViewActivities.Items.Clear();// clear drink panel
@@ -282,18 +282,50 @@ namespace SomerenUI
                         li.SubItems.Add(a.Name);
                         li.SubItems.Add(a.StartDateTime.ToString());
                         li.SubItems.Add(a.EndDateTime.ToString());
-                        
+
                         listViewActivities.Items.Add(li);// add items to listview
                     }
                 }
                 catch (Exception e)
                 {
-                    MessageBox.Show("Something went wrong while loading the drinks: " + e.Message); //error pop up
+                    MessageBox.Show("Something went wrong while loading the activities: " + e.Message); //error pop up
                     LogError(e); //error log
                 }
             }
-        }
+            else if (panelName == "Supervisors")
+            {
+                HidePanels();
 
+                pnlSupervisors.Show();
+
+                try
+                {
+                    ActivityService activityService = new ActivityService(); ;
+                    List<Activity> activityList = activityService.GetActivity(); ;
+
+                    listViewSupervisorActivities.Items.Clear();
+                    listViewSupervisors.Items.Clear();
+                    listViewNotSupervisors.Items.Clear();
+
+                    foreach (Activity a in activityList)
+                    {
+                        // add these items to the listview
+                        ListViewItem li = new ListViewItem(a.Id.ToString());
+                        li.SubItems.Add(a.Name);
+                        li.SubItems.Add(a.StartDateTime.ToString("yyyy-MM-dd    HH:mm"));
+                        li.SubItems.Add(a.EndDateTime.ToString("yyyy-MM-dd    HH:mm"));
+
+                        listViewSupervisorActivities.Items.Add(li);// add items to listview
+                    }
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show("Something went wrong while loading the activities: " + e.Message); //error pop up
+                    LogError(e); //error log
+                }
+            }
+
+        }
         //method to log the errors to file
         private void LogError(Exception ex)
         {
@@ -465,7 +497,7 @@ namespace SomerenUI
             {
                 txtActivityID.Text = "";
                 txtActivityDesc.Text = "";
-              }
+            }
             else
             {
                 //if the txtbox is not empty fill it with the details of the selected activities
@@ -476,14 +508,14 @@ namespace SomerenUI
 
             }
             // if the textbox of the activities arent empty enable the button 
-            if (txtActivityID.Text != "" && txtActivityDesc.Text != "" && dateTimePIcker_ActivityStart.Value!= null && dateTimePicker_ActivityEnd.Value!= null)
+            if (txtActivityID.Text != "" && txtActivityDesc.Text != "" && dateTimePIcker_ActivityStart.Value != null && dateTimePicker_ActivityEnd.Value != null)
             {
                 btn_addActivity.Enabled = true;
                 btn_removeActivity.Enabled = true;
-                btn_updateActivity.Enabled=true;    
+                btn_updateActivity.Enabled = true;
             }
         }
-        /********************BUTTONS***************************/
+        /********************CASH REGISTER BUTTONS***************************/
         private void btnCheckOut_Click(object sender, EventArgs e)
         {
             //get text from textboxes for student id and drink id
@@ -508,30 +540,40 @@ namespace SomerenUI
             //refresh the panel
             showPanel("Cash Register");
         }
+
+        /*****************ACTIVITY BUTTONS****************/
+
+        //create connection to register database
+        ActivityService activityService = new ActivityService();
+
         private void btn_updateActivity_Click(object sender, EventArgs e)
         {
-            int activityID = int.Parse(txtActivityID.Text);
-            string activityName = txtActivityDesc.Text;
-            DateTime startDateTime = DateTime.Parse(dateTimePIcker_ActivityStart.Text);
-            DateTime endDateTime = DateTime.Parse(dateTimePicker_ActivityEnd.Text);
+            //create activity object
+            Activity activity = new Activity();
+            {
+                activity.Id = int.Parse(txtActivityID.Text);
+                activity.Name = txtActivityDesc.Text;
+                activity.StartDateTime = DateTime.Parse(dateTimePIcker_ActivityStart.Text);
+                activity.EndDateTime = DateTime.Parse(dateTimePicker_ActivityEnd.Text);
+            };
 
-            ActivityService activityService = new ActivityService();
             //add the data to the register database
-            activityService.UpdateActivity(activityID, activityName, startDateTime, endDateTime);
+            activityService.UpdateActivity(activity);
+            //refresh panel
+            showPanel("Activities");
         }
         private void btn_addActivity_Click(object sender, EventArgs e)
         {
-            //get text from textboxes for student id and drink id
-            int activityID = int.Parse(txtActivityID.Text);
-            string activityName = txtActivityDesc.Text;
-           DateTime startDateTime = DateTime.Parse(dateTimePIcker_ActivityStart.Text);
-            DateTime endDateTime = DateTime.Parse(dateTimePicker_ActivityEnd.Text);
-
-            //create connection to register database
-            ActivityService activityService = new ActivityService();
-            //add the data to the rgister database
-            activityService.AddToActivity(activityID, activityName, startDateTime, endDateTime);
-
+            //create activity object
+            Activity activity = new Activity();
+            {
+                activity.Id = int.Parse(txtActivityID.Text);
+                activity.Name = txtActivityDesc.Text;
+                activity.StartDateTime = DateTime.Parse(dateTimePIcker_ActivityStart.Text);
+                activity.EndDateTime = DateTime.Parse(dateTimePicker_ActivityEnd.Text);
+            };
+            //add the data to the activity database
+            activityService.AddToActivity(activity);
             //show that the add was successful
             MessageBox.Show("Succeesfully added actiivty!");
 
@@ -540,13 +582,21 @@ namespace SomerenUI
         }
         private void btn_removeActivity_Click(object sender, EventArgs e)
         {
-            int activityID = int.Parse(txtActivityID.Text);
-            string activityName = txtActivityDesc.Text;
-            DateTime startDateTime = DateTime.Parse(dateTimePIcker_ActivityStart.Text);
-            DateTime endDateTime = DateTime.Parse(dateTimePicker_ActivityEnd.Text);
+            //create activity object
+            Activity activity = new Activity();
+            {
+                activity.Id = int.Parse(txtActivityID.Text);
+                activity.Name = txtActivityDesc.Text;
+                activity.StartDateTime = DateTime.Parse(dateTimePIcker_ActivityStart.Text);
+                activity.EndDateTime = DateTime.Parse(dateTimePicker_ActivityEnd.Text);
+            };
 
-            ActivityService activityService = new ActivityService();
-            activityService.DeleteActivity
+            //delete activity
+            activityService.DeleteActivity(activity);
+            // show that delete was successfull
+            MessageBox.Show("Succeesfully deleted actiivty!");
+            //refresh panel
+            showPanel("Activities");
         }
         private void pictureBox6_Click(object sender, EventArgs e)
         {
@@ -560,7 +610,7 @@ namespace SomerenUI
         public void HidePanels()
         {
             // hide all other panels
-         
+
             pnlDashboard.Hide();
             imgDashboard.Hide();
             pnlStudents.Hide();
@@ -570,6 +620,7 @@ namespace SomerenUI
             pnlCashRegister.Hide();
             pnlRevenueReport.Hide();
             pnlActivity.Hide();
-        }      
+        }
+
     }
 }

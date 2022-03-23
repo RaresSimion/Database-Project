@@ -24,20 +24,20 @@ namespace SomerenLogic
             return activities;
         }
 
-        public void UpdateActivity(string newName,int activityID)
+        public void UpdateActivity(Activity activity)
         {
             //update the activity stock in the database
-            activitydb.UpdateActivity(newName, activityID);
+            activitydb.UpdateActivity(activity);
         }
-        public void AddToActivity(string activityName,  DateTime startDateTime, DateTime endDateTime)
+        public void AddToActivity(Activity activity)
         {
             //update the activity stock in the database
-            activitydb.AddToActivity(activityName,startDateTime,endDateTime);
+            activitydb.AddToActivity(activity);
         }
-        public void DeleteActivity(int activityID)
+        public void DeleteActivity(Activity activity)
         {
             //update the activity stock in the database
-            activitydb.DeleteActivity(activityID);
+            activitydb.DeleteActivity(activity);
         }
 
     }

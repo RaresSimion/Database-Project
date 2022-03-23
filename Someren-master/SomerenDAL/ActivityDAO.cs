@@ -15,7 +15,8 @@ namespace SomerenDAL
         public List<Activity> GetAllActivities()
         {
             // select columns from database
-            string query = "SELECT ActivityID,Activity_name,ActicityStartDateTime,ActivityEndDateTime FROM Activity";
+            // string query = "SELECT ActivityID,Activity_name,ActicityStartDateTime,ActivityEndDateTime FROM Activity";
+            string query = "SELECT Activity_id, Activity_name, Activity_start_datetime, Activity_end_datetime FROM Activity";
             SqlParameter[] sqlParameters = new SqlParameter[0];
             return ReadTables(ExecuteSelectQuery(query, sqlParameters));
         }
@@ -29,33 +30,32 @@ namespace SomerenDAL
                 //store each room with the following fields from the database
                 Activity activity = new Activity()
                 {
-                    Id = (int)(dr["ActivityID"]),
+                    Id = (int)(dr["Activity_id"]),
                     Name = (string)(dr["Activity_name"]),
-                    StartDateTime = (DateTime)(dr["ActicityStartDateTime"]),
-                    EndDateTime = (DateTime)(dr["ActivityEndDateTime"]),
+                    StartDateTime = (DateTime)(dr["Activity_start_datetime"]),
+                    EndDateTime = (DateTime)(dr["Activity_end_datetime"]),
                 };
                 activities.Add(activity);
             }
             return activities;
         }
 
-        public void UpdateActivity(string newName,int activityID, DateTime startDateTime, DateTime endDateTime)
+        public void UpdateActivity(Activity activity)
         {
             //lower the stock by one for every order
-            string query = $"UPDATE Activity SET Activity_name= '{newName}',ActicityStartDateTime ={startDateTime} WHERE ActivityID={activityID}";
+            string query = $"UPDATE Activity SET Activity_name='{activity.Name}' WHERE Activity_id={activity.Id}";
             SqlParameter[] sqlParameters = new SqlParameter[0];
             ExecuteEditQuery(query, sqlParameters);
         }
-        public void AddToActivity(int activityID,string activityName, DateTime startDateTime, DateTime endDateTime)
+        public void AddToActivity(Activity activity)
         {
             // add new information to activity table
-            string query = $"INSERT INTO Activity (ActivityID,Activity_name,ActicityStartDateTime,ActivityEndDateTime) VALUES ({activityID},'{activityName}', '{startDateTime:yyyy - MM - dd HH-mm-ss}', '{endDateTime:yyyy-MM-dd HH-mm-s}')";
-            SqlParameter[] sqlParameters = new SqlParameter[0];
+            string query = $"INSERT INTO Activity (Activity_name, Activity_start_datetime, Activity_end_datetime) VALUES ('{activity.Name}', '{activity.StartDateTime:yyyy-MM-dd HH:mm:ss}', '{activity.EndDateTime:yyyy-MM-dd HH:mm:s}');"; SqlParameter[] sqlParameters = new SqlParameter[0];
             ExecuteEditQuery(query, sqlParameters);
         }
-        public void DeleteActivity(int activityID)
+        public void DeleteActivity(Activity activity)
         {
-            string query = $"DELETE from Activity WHERE ActivityID={activityID}";
+            string query = $"DELETE FROM Activity WHERE Activity_id={activity.Id}";
             SqlParameter[] sqlParameters = new SqlParameter[0];
             ExecuteEditQuery(query, sqlParameters);
         }
