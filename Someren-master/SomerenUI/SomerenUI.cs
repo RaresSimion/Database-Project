@@ -581,24 +581,7 @@ namespace SomerenUI
             //refresh the panel
             showPanel("Activities");
         }
-        private void btn_removeActivity_Click(object sender, EventArgs e)
-        {
-            //create activity object
-            Activity activity = new Activity();
-            {
-                activity.Id = int.Parse(txtActivityID.Text);
-                activity.Name = txtActivityDesc.Text;
-                activity.StartDateTime = DateTime.Parse(dateTimePIcker_ActivityStart.Text);
-                activity.EndDateTime = DateTime.Parse(dateTimePicker_ActivityEnd.Text);
-            };
-
-            //delete activity
-            activityService.DeleteActivity(activity);
-            // show that delete was successfull
-            MessageBox.Show("Succeesfully deleted actiivty!");
-            //refresh panel
-            showPanel("Activities");
-        }
+ 
         private void pictureBox6_Click(object sender, EventArgs e)
         {
             MessageBox.Show("What happens in Someren, stays in Someren!");
@@ -621,6 +604,7 @@ namespace SomerenUI
             pnlCashRegister.Hide();
             pnlRevenueReport.Hide();
             pnlActivity.Hide();
+            pnlSupervisors.Hide();
         }
 
         private void SupervisorsToolStripMenuItem_Click(object sender, EventArgs e)
@@ -711,6 +695,25 @@ namespace SomerenUI
         private void listViewNotSupervisors_SelectedIndexChanged(object sender, EventArgs e)
         {
             btnAddSupervisor.Enabled = true;
+        }
+
+        private void btn_removeActivity_Click_1(object sender, EventArgs e)
+        {
+            //create activity object
+            Activity activity = new Activity();
+            {
+                activity.Id = int.Parse(txtActivityID.Text);
+                activity.Name = txtActivityDesc.Text;
+                activity.StartDateTime = DateTime.Parse(dateTimePIcker_ActivityStart.Text);
+                activity.EndDateTime = DateTime.Parse(dateTimePicker_ActivityEnd.Text);
+            };
+
+            //delete activity
+            activityService.DeleteActivity(activity);
+            // show that delete was successfull
+            MessageBox.Show("Succeesfully deleted actiivty!");
+            //refresh panel
+            showPanel("Activities");
         }
     }
 }
