@@ -328,6 +328,7 @@
             this.btn_removeActivity.TabIndex = 8;
             this.btn_removeActivity.Text = "&Remove activity";
             this.btn_removeActivity.UseVisualStyleBackColor = true;
+            this.btn_removeActivity.Click += new System.EventHandler(this.btn_removeActivity_Click);
             // 
             // btn_updateActivity
             // 

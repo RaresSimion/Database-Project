@@ -39,17 +39,17 @@ namespace SomerenDAL
             return activities;
         }
 
-        public void UpdateActivity(string newName,int activityID)
+        public void UpdateActivity(string newName,int activityID, DateTime startDateTime, DateTime endDateTime)
         {
             //lower the stock by one for every order
-            string query = $"UPDATE Activity SET Activity_name= '{newName}' WHERE ActivityID={activityID}";
+            string query = $"UPDATE Activity SET Activity_name= '{newName}',ActicityStartDateTime ={startDateTime} WHERE ActivityID={activityID}";
             SqlParameter[] sqlParameters = new SqlParameter[0];
             ExecuteEditQuery(query, sqlParameters);
         }
         public void AddToActivity(int activityID,string activityName, DateTime startDateTime, DateTime endDateTime)
         {
             // add new information to activity table
-            string query = $"INSERT INTO Activity (ActivityID,Activity_name,ActicityStartDateTime,ActivityEndDateTime) VALUES ({activityID},{activityName}, {startDateTime:yyyy - MM - dd HH-mm-ss}, '{endDateTime:yyyy-MM-dd HH-mm-s}')";
+            string query = $"INSERT INTO Activity (ActivityID,Activity_name,ActicityStartDateTime,ActivityEndDateTime) VALUES ({activityID},'{activityName}', '{startDateTime:yyyy - MM - dd HH-mm-ss}', '{endDateTime:yyyy-MM-dd HH-mm-s}')";
             SqlParameter[] sqlParameters = new SqlParameter[0];
             ExecuteEditQuery(query, sqlParameters);
         }

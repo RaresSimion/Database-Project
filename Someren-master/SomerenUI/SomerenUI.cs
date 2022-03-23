@@ -510,9 +510,14 @@ namespace SomerenUI
         }
         private void btn_updateActivity_Click(object sender, EventArgs e)
         {
-            int studentNumber = int.Parse(txtBStudentID.Text);
-            int drinkNumber = int.Parse(listViewCRDrinks.SelectedItems[0].SubItems[0].Text);
-            DateTime orderDate = DateTime.Now;
+            int activityID = int.Parse(txtActivityID.Text);
+            string activityName = txtActivityDesc.Text;
+            DateTime startDateTime = DateTime.Parse(dateTimePIcker_ActivityStart.Text);
+            DateTime endDateTime = DateTime.Parse(dateTimePicker_ActivityEnd.Text);
+
+            ActivityService activityService = new ActivityService();
+            //add the data to the register database
+            activityService.UpdateActivity(activityID, activityName, startDateTime, endDateTime);
         }
         private void btn_addActivity_Click(object sender, EventArgs e)
         {
@@ -532,6 +537,16 @@ namespace SomerenUI
 
             //refresh the panel
             showPanel("Activities");
+        }
+        private void btn_removeActivity_Click(object sender, EventArgs e)
+        {
+            int activityID = int.Parse(txtActivityID.Text);
+            string activityName = txtActivityDesc.Text;
+            DateTime startDateTime = DateTime.Parse(dateTimePIcker_ActivityStart.Text);
+            DateTime endDateTime = DateTime.Parse(dateTimePicker_ActivityEnd.Text);
+
+            ActivityService activityService = new ActivityService();
+            activityService.DeleteActivity
         }
         private void pictureBox6_Click(object sender, EventArgs e)
         {
@@ -555,8 +570,6 @@ namespace SomerenUI
             pnlCashRegister.Hide();
             pnlRevenueReport.Hide();
             pnlActivity.Hide();
-        }
-
-       
+        }      
     }
 }
