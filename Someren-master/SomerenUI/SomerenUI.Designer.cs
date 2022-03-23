@@ -147,6 +147,7 @@
             this.columnActivityEnd = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.pictureBox8 = new System.Windows.Forms.PictureBox();
             this.lblSupervisors = new System.Windows.Forms.Label();
+            this.btnAddSupervisor = new System.Windows.Forms.Button();
             teacherNumber = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             ((System.ComponentModel.ISupportInitialize)(this.imgDashboard)).BeginInit();
             this.menuStrip1.SuspendLayout();
@@ -306,8 +307,9 @@
             // SupervisorsToolStripMenuItem
             // 
             this.SupervisorsToolStripMenuItem.Name = "SupervisorsToolStripMenuItem";
-            this.SupervisorsToolStripMenuItem.Size = new System.Drawing.Size(120, 36);
+            this.SupervisorsToolStripMenuItem.Size = new System.Drawing.Size(79, 25);
             this.SupervisorsToolStripMenuItem.Text = "Supervisors";
+            this.SupervisorsToolStripMenuItem.Click += new System.EventHandler(this.SupervisorsToolStripMenuItem_Click);
             // 
             // pnlDashboard
             // 
@@ -363,7 +365,8 @@
             // 
             this.dateTimePicker_ActivityEnd.CustomFormat = "dd-MM-yyyy HH:mm:ss";
             this.dateTimePicker_ActivityEnd.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePicker_ActivityEnd.Location = new System.Drawing.Point(922, 735);
+            this.dateTimePicker_ActivityEnd.Location = new System.Drawing.Point(615, 478);
+            this.dateTimePicker_ActivityEnd.Margin = new System.Windows.Forms.Padding(2);
             this.dateTimePicker_ActivityEnd.Name = "dateTimePicker_ActivityEnd";
             this.dateTimePicker_ActivityEnd.Size = new System.Drawing.Size(234, 26);
             this.dateTimePicker_ActivityEnd.TabIndex = 11;
@@ -372,7 +375,8 @@
             // 
             this.dateTimePIcker_ActivityStart.CustomFormat = "dd-MM-yyyy HH:mm:ss";
             this.dateTimePIcker_ActivityStart.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePIcker_ActivityStart.Location = new System.Drawing.Point(656, 737);
+            this.dateTimePIcker_ActivityStart.Location = new System.Drawing.Point(437, 479);
+            this.dateTimePIcker_ActivityStart.Margin = new System.Windows.Forms.Padding(2);
             this.dateTimePIcker_ActivityStart.Name = "dateTimePIcker_ActivityStart";
             this.dateTimePIcker_ActivityStart.Size = new System.Drawing.Size(205, 26);
             this.dateTimePIcker_ActivityStart.TabIndex = 11;
@@ -415,14 +419,16 @@
             // 
             // txtActivityDesc
             // 
-            this.txtActivityDesc.Location = new System.Drawing.Point(382, 737);
+            this.txtActivityDesc.Location = new System.Drawing.Point(255, 479);
+            this.txtActivityDesc.Margin = new System.Windows.Forms.Padding(2);
             this.txtActivityDesc.Name = "txtActivityDesc";
             this.txtActivityDesc.Size = new System.Drawing.Size(151, 26);
             this.txtActivityDesc.TabIndex = 9;
             // 
             // txtActivityID
             // 
-            this.txtActivityID.Location = new System.Drawing.Point(172, 737);
+            this.txtActivityID.Location = new System.Drawing.Point(115, 479);
+            this.txtActivityID.Margin = new System.Windows.Forms.Padding(2);
             this.txtActivityID.Name = "txtActivityID";
             this.txtActivityID.Size = new System.Drawing.Size(100, 26);
             this.txtActivityID.TabIndex = 9;
@@ -921,7 +927,8 @@
             this.listViewCRDrinks.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.listViewCRDrinks.FullRowSelect = true;
             this.listViewCRDrinks.HideSelection = false;
-            this.listViewCRDrinks.Location = new System.Drawing.Point(885, 223);
+            this.listViewCRDrinks.Location = new System.Drawing.Point(590, 145);
+            this.listViewCRDrinks.Margin = new System.Windows.Forms.Padding(2);
             this.listViewCRDrinks.Name = "listViewCRDrinks";
             this.listViewCRDrinks.Size = new System.Drawing.Size(637, 404);
             this.listViewCRDrinks.TabIndex = 14;
@@ -959,7 +966,8 @@
             this.listViewCRStudent.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.listViewCRStudent.FullRowSelect = true;
             this.listViewCRStudent.HideSelection = false;
-            this.listViewCRStudent.Location = new System.Drawing.Point(158, 223);
+            this.listViewCRStudent.Location = new System.Drawing.Point(105, 145);
+            this.listViewCRStudent.Margin = new System.Windows.Forms.Padding(2);
             this.listViewCRStudent.Name = "listViewCRStudent";
             this.listViewCRStudent.Size = new System.Drawing.Size(354, 404);
             this.listViewCRStudent.TabIndex = 14;
@@ -1050,7 +1058,8 @@
             // 
             this.txtBDrinkPrice.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.txtBDrinkPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtBDrinkPrice.Location = new System.Drawing.Point(1034, 729);
+            this.txtBDrinkPrice.Location = new System.Drawing.Point(689, 474);
+            this.txtBDrinkPrice.Margin = new System.Windows.Forms.Padding(2);
             this.txtBDrinkPrice.Name = "txtBDrinkPrice";
             this.txtBDrinkPrice.Size = new System.Drawing.Size(139, 40);
             this.txtBDrinkPrice.TabIndex = 12;
@@ -1059,7 +1068,8 @@
             // 
             this.txtBStudentName.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.txtBStudentName.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtBStudentName.Location = new System.Drawing.Point(351, 729);
+            this.txtBStudentName.Location = new System.Drawing.Point(234, 474);
+            this.txtBStudentName.Margin = new System.Windows.Forms.Padding(2);
             this.txtBStudentName.Name = "txtBStudentName";
             this.txtBStudentName.Size = new System.Drawing.Size(242, 40);
             this.txtBStudentName.TabIndex = 12;
@@ -1068,7 +1078,8 @@
             // 
             this.txtBDrinkName.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.txtBDrinkName.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtBDrinkName.Location = new System.Drawing.Point(694, 729);
+            this.txtBDrinkName.Location = new System.Drawing.Point(463, 474);
+            this.txtBDrinkName.Margin = new System.Windows.Forms.Padding(2);
             this.txtBDrinkName.Name = "txtBDrinkName";
             this.txtBDrinkName.Size = new System.Drawing.Size(254, 40);
             this.txtBDrinkName.TabIndex = 12;
@@ -1078,7 +1089,8 @@
             this.btnCheckOut.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCheckOut.BackColor = System.Drawing.Color.Transparent;
             this.btnCheckOut.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCheckOut.Location = new System.Drawing.Point(1290, 689);
+            this.btnCheckOut.Location = new System.Drawing.Point(860, 448);
+            this.btnCheckOut.Margin = new System.Windows.Forms.Padding(2);
             this.btnCheckOut.Name = "btnCheckOut";
             this.btnCheckOut.Size = new System.Drawing.Size(278, 85);
             this.btnCheckOut.TabIndex = 11;
@@ -1090,7 +1102,8 @@
             // 
             this.txtBStudentID.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.txtBStudentID.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtBStudentID.Location = new System.Drawing.Point(158, 729);
+            this.txtBStudentID.Location = new System.Drawing.Point(105, 474);
+            this.txtBStudentID.Margin = new System.Windows.Forms.Padding(2);
             this.txtBStudentID.Name = "txtBStudentID";
             this.txtBStudentID.Size = new System.Drawing.Size(98, 40);
             this.txtBStudentID.TabIndex = 12;
@@ -1251,36 +1264,35 @@
             this.listViewNotSupervisors.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeaderID,
             this.columnHeaderName});
-            this.listViewNotSupervisors.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.listViewNotSupervisors.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.listViewNotSupervisors.FullRowSelect = true;
             this.listViewNotSupervisors.HideSelection = false;
-            this.listViewNotSupervisors.Location = new System.Drawing.Point(1208, 592);
-            this.listViewNotSupervisors.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.listViewNotSupervisors.Location = new System.Drawing.Point(777, 308);
             this.listViewNotSupervisors.Name = "listViewNotSupervisors";
-            this.listViewNotSupervisors.Size = new System.Drawing.Size(378, 207);
+            this.listViewNotSupervisors.Size = new System.Drawing.Size(234, 135);
             this.listViewNotSupervisors.TabIndex = 9;
             this.listViewNotSupervisors.UseCompatibleStateImageBehavior = false;
             this.listViewNotSupervisors.View = System.Windows.Forms.View.Details;
+            this.listViewNotSupervisors.SelectedIndexChanged += new System.EventHandler(this.listViewNotSupervisors_SelectedIndexChanged);
             // 
             // columnHeaderID
             // 
             this.columnHeaderID.Text = "ID";
-            this.columnHeaderID.Width = 40;
+            this.columnHeaderID.Width = 30;
             // 
             // columnHeaderName
             // 
             this.columnHeaderName.Text = "Name";
-            this.columnHeaderName.Width = 200;
+            this.columnHeaderName.Width = 180;
             // 
             // lblNotSupervisors
             // 
             this.lblNotSupervisors.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.lblNotSupervisors.AutoSize = true;
-            this.lblNotSupervisors.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNotSupervisors.Location = new System.Drawing.Point(957, 543);
-            this.lblNotSupervisors.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblNotSupervisors.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNotSupervisors.Location = new System.Drawing.Point(716, 275);
             this.lblNotSupervisors.Name = "lblNotSupervisors";
-            this.lblNotSupervisors.Size = new System.Drawing.Size(674, 40);
+            this.lblNotSupervisors.Size = new System.Drawing.Size(353, 24);
             this.lblNotSupervisors.TabIndex = 8;
             this.lblNotSupervisors.Text = "Teachers who don\'t supervise the activity";
             // 
@@ -1292,13 +1304,12 @@
             this.listViewSupervisors.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeaderSupervisorID,
             this.columnHeaderSupervisorName});
-            this.listViewSupervisors.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.listViewSupervisors.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.listViewSupervisors.FullRowSelect = true;
             this.listViewSupervisors.HideSelection = false;
-            this.listViewSupervisors.Location = new System.Drawing.Point(1227, 298);
-            this.listViewSupervisors.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.listViewSupervisors.Location = new System.Drawing.Point(91, 308);
             this.listViewSupervisors.Name = "listViewSupervisors";
-            this.listViewSupervisors.Size = new System.Drawing.Size(378, 207);
+            this.listViewSupervisors.Size = new System.Drawing.Size(234, 135);
             this.listViewSupervisors.TabIndex = 7;
             this.listViewSupervisors.UseCompatibleStateImageBehavior = false;
             this.listViewSupervisors.View = System.Windows.Forms.View.Details;
@@ -1306,22 +1317,21 @@
             // columnHeaderSupervisorID
             // 
             this.columnHeaderSupervisorID.Text = "ID";
-            this.columnHeaderSupervisorID.Width = 40;
+            this.columnHeaderSupervisorID.Width = 30;
             // 
             // columnHeaderSupervisorName
             // 
             this.columnHeaderSupervisorName.Text = "Name";
-            this.columnHeaderSupervisorName.Width = 200;
+            this.columnHeaderSupervisorName.Width = 180;
             // 
             // lblActivities
             // 
             this.lblActivities.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.lblActivities.AutoSize = true;
-            this.lblActivities.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblActivities.Location = new System.Drawing.Point(368, 52);
-            this.lblActivities.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblActivities.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblActivities.Location = new System.Drawing.Point(514, 23);
             this.lblActivities.Name = "lblActivities";
-            this.lblActivities.Size = new System.Drawing.Size(195, 52);
+            this.lblActivities.Size = new System.Drawing.Size(107, 29);
             this.lblActivities.TabIndex = 6;
             this.lblActivities.Text = "Activities";
             // 
@@ -1338,11 +1348,10 @@
             this.listViewSupervisorActivities.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.listViewSupervisorActivities.FullRowSelect = true;
             this.listViewSupervisorActivities.HideSelection = false;
-            this.listViewSupervisorActivities.Location = new System.Drawing.Point(42, 125);
-            this.listViewSupervisorActivities.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.listViewSupervisorActivities.Location = new System.Drawing.Point(286, 55);
             this.listViewSupervisorActivities.MultiSelect = false;
             this.listViewSupervisorActivities.Name = "listViewSupervisorActivities";
-            this.listViewSupervisorActivities.Size = new System.Drawing.Size(922, 293);
+            this.listViewSupervisorActivities.Size = new System.Drawing.Size(541, 191);
             this.listViewSupervisorActivities.TabIndex = 5;
             this.listViewSupervisorActivities.UseCompatibleStateImageBehavior = false;
             this.listViewSupervisorActivities.View = System.Windows.Forms.View.Details;
@@ -1364,7 +1373,7 @@
             // columnActivityEnd
             // 
             this.columnActivityEnd.Text = "End date & time";
-            this.columnActivityEnd.Width = 200;
+            this.columnActivityEnd.Width = 160;
             // 
             // pictureBox8
             // 
@@ -1382,13 +1391,23 @@
             // 
             this.lblSupervisors.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.lblSupervisors.AutoSize = true;
-            this.lblSupervisors.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSupervisors.Location = new System.Drawing.Point(1048, 229);
-            this.lblSupervisors.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblSupervisors.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSupervisors.Location = new System.Drawing.Point(47, 275);
             this.lblSupervisors.Name = "lblSupervisors";
-            this.lblSupervisors.Size = new System.Drawing.Size(587, 40);
+            this.lblSupervisors.Size = new System.Drawing.Size(307, 24);
             this.lblSupervisors.TabIndex = 3;
             this.lblSupervisors.Text = "Teachers who supervise the activity";
+            // 
+            // btnAddSupervisor
+            // 
+            this.btnAddSupervisor.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAddSupervisor.Location = new System.Drawing.Point(808, 459);
+            this.btnAddSupervisor.Name = "btnAddSupervisor";
+            this.btnAddSupervisor.Size = new System.Drawing.Size(195, 42);
+            this.btnAddSupervisor.TabIndex = 10;
+            this.btnAddSupervisor.Text = "Add supervisor to activity";
+            this.btnAddSupervisor.UseVisualStyleBackColor = true;
+            this.btnAddSupervisor.Click += new System.EventHandler(this.btnAddSupervisor_Click);
             // 
             // SomerenUI
             // 

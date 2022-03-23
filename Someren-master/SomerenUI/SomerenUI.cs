@@ -623,5 +623,94 @@ namespace SomerenUI
             pnlActivity.Hide();
         }
 
+        private void SupervisorsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            showPanel("Supervisors");
+        }
+
+        private void listViewSupervisorActivities_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (listViewSupervisorActivities.SelectedIndices.Count == 0)
+                {
+                    listViewSupervisors.Items.Clear();
+                    listViewNotSupervisors.Items.Clear();
+                }
+                else
+
+                {
+                    int activityID = int.Parse(listViewSupervisorActivities.SelectedItems[0].SubItems[0].Text);
+                    SupervisorService supervisorService = new SupervisorService();
+                    List<Teacher> supervisors = supervisorService.GetSupervisors(activityID);
+                    List<Teacher> teachers = supervisorService.GetTeachersNotSupervising(activityID);
+                    btnAddSupervisor.Enabled = false;
+
+                    foreach (Teacher t in supervisors)
+                    {
+                        //add these items to the listview
+                        ListViewItem li = new ListViewItem(t.Number.ToString());
+                        li.SubItems.Add(t.Name);
+
+                        //add items to listview
+                        listViewSupervisors.Items.Add(li);
+                    }
+
+                    foreach (Teacher t in teachers)
+                    {
+                        //add these items to the listview
+                        ListViewItem li = new ListViewItem(t.Number.ToString());
+                        li.SubItems.Add(t.Name);
+
+                        //add items to listview
+                        listViewNotSupervisors.Items.Add(li);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Something went wrong while loading the supervisors: " + ex.Message); //error pop up
+                LogError(ex); //error log
+            }
+        }
+
+        private void btnAddSupervisor_Click(object sender, EventArgs e)
+        {
+
+            SupervisorService supervisorService = new SupervisorService();
+            int teacherID = int.Parse(listViewNotSupervisors.SelectedItems[0].SubItems[0].Text);
+            int activityID = int.Parse(listViewSupervisorActivities.SelectedItems[0].SubItems[0].Text);
+
+            supervisorService.AddSupervisor(teacherID, activityID);
+            btnAddSupervisor.Enabled = false;
+            listViewSupervisors.Items.Clear();
+            listViewNotSupervisors.Items.Clear();
+            List<Teacher> supervisors = supervisorService.GetSupervisors(activityID);
+            List<Teacher> teachers = supervisorService.GetTeachersNotSupervising(activityID);
+            foreach (Teacher t in supervisors)
+            {
+                //add these items to the listview
+                ListViewItem li = new ListViewItem(t.Number.ToString());
+                li.SubItems.Add(t.Name);
+
+                //add items to listview
+                listViewSupervisors.Items.Add(li);
+            }
+
+            foreach (Teacher t in teachers)
+            {
+                //add these items to the listview
+                ListViewItem li = new ListViewItem(t.Number.ToString());
+                li.SubItems.Add(t.Name);
+
+                //add items to listview
+                listViewNotSupervisors.Items.Add(li);
+            }
+        }
+
+        private void listViewNotSupervisors_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            btnAddSupervisor.Enabled = true;
+        }
     }
 }
