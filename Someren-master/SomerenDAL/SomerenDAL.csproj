@@ -51,6 +51,7 @@
     <Compile Include="RevenueReportDAO.cs" />
     <Compile Include="RoomDAO.cs" />
     <Compile Include="StudentDao.cs" />
+    <Compile Include="SupervisorDAO.cs" />
     <Compile Include="TeacherDAO.cs" />
   </ItemGroup>
   <ItemGroup>

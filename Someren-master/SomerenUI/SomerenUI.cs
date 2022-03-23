@@ -297,6 +297,7 @@ namespace SomerenUI
                 HidePanels();
 
                 pnlSupervisors.Show();
+                btnAddSupervisor.Enabled = false;
 
                 try
                 {

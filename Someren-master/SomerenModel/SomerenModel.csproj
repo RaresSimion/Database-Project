@@ -52,6 +52,7 @@
     </Compile>
     <Compile Include="RevenueReport.cs" />
     <Compile Include="Room.cs" />
+    <Compile Include="Supervisor.cs" />
     <Compile Include="Teacher.cs" />
     <Compile Include="Student.cs" />
   </ItemGroup>

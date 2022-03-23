@@ -1229,6 +1229,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pnlSupervisors.BackColor = System.Drawing.Color.White;
+            this.pnlSupervisors.Controls.Add(this.btnAddSupervisor);
             this.pnlSupervisors.Controls.Add(this.listViewNotSupervisors);
             this.pnlSupervisors.Controls.Add(this.lblNotSupervisors);
             this.pnlSupervisors.Controls.Add(this.listViewSupervisors);
@@ -1334,7 +1335,7 @@
             this.columnActivityName,
             this.columnActivityStart,
             this.columnActivityEnd});
-            this.listViewSupervisorActivities.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.listViewSupervisorActivities.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.listViewSupervisorActivities.FullRowSelect = true;
             this.listViewSupervisorActivities.HideSelection = false;
             this.listViewSupervisorActivities.Location = new System.Drawing.Point(42, 125);
@@ -1358,7 +1359,7 @@
             // columnActivityStart
             // 
             this.columnActivityStart.Text = "Start date & time";
-            this.columnActivityStart.Width = 200;
+            this.columnActivityStart.Width = 160;
             // 
             // columnActivityEnd
             // 
@@ -1569,6 +1570,7 @@
         private System.Windows.Forms.ColumnHeader columnHeaderID;
         private System.Windows.Forms.ColumnHeader columnHeaderName;
         private System.Windows.Forms.Label lblNotSupervisors;
+        private System.Windows.Forms.Button btnAddSupervisor;
     }
 }
 
