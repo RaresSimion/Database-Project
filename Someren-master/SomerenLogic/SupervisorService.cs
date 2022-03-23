@@ -33,5 +33,10 @@ namespace SomerenLogic
         {
             supervisordb.AddSupervisor(teacherID, activityID);
         }
+
+        public void RemoveSupervisor(int teacherID, int activityID)
+        {
+            supervisordb.RemoveSupervisor(teacherID, activityID);
+        }
     }
 }

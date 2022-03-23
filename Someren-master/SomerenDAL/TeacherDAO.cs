@@ -19,6 +19,19 @@ namespace SomerenDAL
             return ReadTables(ExecuteSelectQuery(query, sqlParameters));
         }
 
+        public void AddIsSupervisor()
+        {
+            string query = $"UPDATE Teacher SET IsSupervisor = 'true' WHERE Teacher_number IN (SELECT DISTINCT Lecturer_id FROM Activity_supervisor);";
+            SqlParameter[] sqlParameters = new SqlParameter[0];
+            ExecuteEditQuery(query, sqlParameters);
+        }
+        public void RemoveIsSupervisor()
+        {
+            string query = $"UPDATE Teacher SET IsSupervisor = 'false' WHERE Teacher_number NOT IN (SELECT DISTINCT Lecturer_id FROM Activity_supervisor);";
+            SqlParameter[] sqlParameters = new SqlParameter[0];
+            ExecuteEditQuery(query, sqlParameters);
+        }
+
         private List<Teacher> ReadTables(DataTable dataTable)
         {
             List<Teacher> teachers = new List<Teacher>();

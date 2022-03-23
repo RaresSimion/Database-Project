@@ -32,6 +32,13 @@ namespace SomerenDAL
             ExecuteEditQuery(query, sqlParameters);
         }
 
+        public void RemoveSupervisor(int teacherID, int activityID)
+        {
+            string query = $"DELETE FROM Activity_supervisor WHERE Lecturer_id = {teacherID} AND Activity_id = {activityID}";
+            SqlParameter[] sqlParameters = new SqlParameter[0];
+            ExecuteEditQuery(query, sqlParameters);
+        }
+
         private List<Teacher> ReadTables(DataTable dataTable)
         {
             List<Teacher> teachers = new List<Teacher>();

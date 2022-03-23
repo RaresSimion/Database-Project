@@ -148,6 +148,7 @@
             this.columnActivityEnd = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.pictureBox8 = new System.Windows.Forms.PictureBox();
             this.lblSupervisors = new System.Windows.Forms.Label();
+            this.btnRemoveSupervisor = new System.Windows.Forms.Button();
             teacherNumber = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             ((System.ComponentModel.ISupportInitialize)(this.imgDashboard)).BeginInit();
             this.menuStrip1.SuspendLayout();
@@ -304,8 +305,10 @@
             // 
             // SupervisorsToolStripMenuItem
             // 
+            this.SupervisorsToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SupervisorsToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.SupervisorsToolStripMenuItem.Name = "SupervisorsToolStripMenuItem";
-            this.SupervisorsToolStripMenuItem.Size = new System.Drawing.Size(79, 25);
+            this.SupervisorsToolStripMenuItem.Size = new System.Drawing.Size(104, 25);
             this.SupervisorsToolStripMenuItem.Text = "Supervisors";
             this.SupervisorsToolStripMenuItem.Click += new System.EventHandler(this.SupervisorsToolStripMenuItem_Click);
             // 
@@ -1207,6 +1210,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pnlSupervisors.BackColor = System.Drawing.Color.White;
+            this.pnlSupervisors.Controls.Add(this.btnRemoveSupervisor);
             this.pnlSupervisors.Controls.Add(this.btnAddSupervisor);
             this.pnlSupervisors.Controls.Add(this.listViewNotSupervisors);
             this.pnlSupervisors.Controls.Add(this.lblNotSupervisors);
@@ -1222,18 +1226,20 @@
             // 
             // btnAddSupervisor
             // 
+            this.btnAddSupervisor.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnAddSupervisor.BackColor = System.Drawing.Color.Transparent;
             this.btnAddSupervisor.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAddSupervisor.Location = new System.Drawing.Point(808, 459);
             this.btnAddSupervisor.Name = "btnAddSupervisor";
             this.btnAddSupervisor.Size = new System.Drawing.Size(195, 42);
             this.btnAddSupervisor.TabIndex = 10;
             this.btnAddSupervisor.Text = "Add supervisor to activity";
-            this.btnAddSupervisor.UseVisualStyleBackColor = true;
+            this.btnAddSupervisor.UseVisualStyleBackColor = false;
             this.btnAddSupervisor.Click += new System.EventHandler(this.btnAddSupervisor_Click);
             // 
             // listViewNotSupervisors
             // 
-            this.listViewNotSupervisors.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.listViewNotSupervisors.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.listViewNotSupervisors.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(126)))), ((int)(((byte)(172)))));
             this.listViewNotSupervisors.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.listViewNotSupervisors.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
@@ -1262,7 +1268,7 @@
             // 
             // lblNotSupervisors
             // 
-            this.lblNotSupervisors.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.lblNotSupervisors.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.lblNotSupervisors.AutoSize = true;
             this.lblNotSupervisors.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblNotSupervisors.Location = new System.Drawing.Point(716, 275);
@@ -1273,7 +1279,7 @@
             // 
             // listViewSupervisors
             // 
-            this.listViewSupervisors.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.listViewSupervisors.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.listViewSupervisors.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(126)))), ((int)(((byte)(172)))));
             this.listViewSupervisors.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.listViewSupervisors.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
@@ -1288,6 +1294,7 @@
             this.listViewSupervisors.TabIndex = 7;
             this.listViewSupervisors.UseCompatibleStateImageBehavior = false;
             this.listViewSupervisors.View = System.Windows.Forms.View.Details;
+            this.listViewSupervisors.SelectedIndexChanged += new System.EventHandler(this.listViewSupervisors_SelectedIndexChanged);
             // 
             // columnHeaderSupervisorID
             // 
@@ -1312,7 +1319,7 @@
             // 
             // listViewSupervisorActivities
             // 
-            this.listViewSupervisorActivities.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.listViewSupervisorActivities.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.listViewSupervisorActivities.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(126)))), ((int)(((byte)(172)))));
             this.listViewSupervisorActivities.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.listViewSupervisorActivities.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
@@ -1323,7 +1330,7 @@
             this.listViewSupervisorActivities.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.listViewSupervisorActivities.FullRowSelect = true;
             this.listViewSupervisorActivities.HideSelection = false;
-            this.listViewSupervisorActivities.Location = new System.Drawing.Point(286, 55);
+            this.listViewSupervisorActivities.Location = new System.Drawing.Point(290, 55);
             this.listViewSupervisorActivities.MultiSelect = false;
             this.listViewSupervisorActivities.Name = "listViewSupervisorActivities";
             this.listViewSupervisorActivities.Size = new System.Drawing.Size(541, 191);
@@ -1364,7 +1371,7 @@
             // 
             // lblSupervisors
             // 
-            this.lblSupervisors.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.lblSupervisors.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lblSupervisors.AutoSize = true;
             this.lblSupervisors.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblSupervisors.Location = new System.Drawing.Point(47, 275);
@@ -1373,6 +1380,18 @@
             this.lblSupervisors.TabIndex = 3;
             this.lblSupervisors.Text = "Teachers who supervise the activity";
             // 
+            // btnRemoveSupervisor
+            // 
+            this.btnRemoveSupervisor.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnRemoveSupervisor.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRemoveSupervisor.Location = new System.Drawing.Point(109, 455);
+            this.btnRemoveSupervisor.Name = "btnRemoveSupervisor";
+            this.btnRemoveSupervisor.Size = new System.Drawing.Size(195, 42);
+            this.btnRemoveSupervisor.TabIndex = 11;
+            this.btnRemoveSupervisor.Text = "Remove supervisor";
+            this.btnRemoveSupervisor.UseVisualStyleBackColor = true;
+            this.btnRemoveSupervisor.Click += new System.EventHandler(this.btnRemoveSupervisor_Click);
+            // 
             // SomerenUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1380,6 +1399,7 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(126)))), ((int)(((byte)(172)))));
             this.ClientSize = new System.Drawing.Size(1120, 573);
             this.Controls.Add(this.menuStrip1);
+            this.Controls.Add(this.pnlSupervisors);
             this.Controls.Add(this.pnlActivity);
             this.Controls.Add(this.pnlRevenueReport);
             this.Controls.Add(this.pnlTeachers);
@@ -1388,7 +1408,6 @@
             this.Controls.Add(this.pnlDrink);
             this.Controls.Add(this.pnlDashboard);
             this.Controls.Add(this.pnlRooms);
-            this.Controls.Add(this.pnlSupervisors);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "SomerenUI";
@@ -1553,6 +1572,7 @@
         private System.Windows.Forms.ColumnHeader columnHeaderName;
         private System.Windows.Forms.Label lblNotSupervisors;
         private System.Windows.Forms.Button btnAddSupervisor;
+        private System.Windows.Forms.Button btnRemoveSupervisor;
     }
 }
 
