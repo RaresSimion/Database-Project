@@ -687,6 +687,8 @@ namespace SomerenUI
             btnRemoveSupervisor.Enabled = true;
             btnRemoveSupervisor.BackColor = Color.FromArgb(39, 126, 172);
         }
+
+        #region What happens in someren
         private void pictureBox6_Click(object sender, EventArgs e)
         {
             MessageBox.Show("What happens in Someren, stays in Someren!");
@@ -696,6 +698,9 @@ namespace SomerenUI
         {
             MessageBox.Show("What happens in Someren, stays in Someren!");
         }
+        #endregion
+
+        #region Hide Panels
         public void HidePanels()
         {
             // hide all other panels
@@ -711,7 +716,9 @@ namespace SomerenUI
             pnlActivity.Hide();
             pnlSupervisors.Hide();
         }
+        #endregion
 
+        #region error log
         //method to log the errors to file
         private void LogError(Exception ex)
         {
@@ -730,6 +737,9 @@ namespace SomerenUI
                 writer.Close();
             }
         }
+        #endregion
+
+        #region Show panel Methods
         /******************SHOW PANEL COMMANDS *****************/
         private void dashboardToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -804,5 +814,6 @@ namespace SomerenUI
         {
             showPanel("Revenue Report");
         }
+        #endregion
     }
 }

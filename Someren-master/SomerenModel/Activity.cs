@@ -8,9 +8,9 @@ namespace SomerenModel
 {
     public class Activity
     {
-        public int Id { get; set; }
-        public string Name { get; set; }    
-        public DateTime StartDateTime { get; set; }
-        public DateTime EndDateTime { get; set; }
+        public int Id { get; set; }// the id number 
+        public string Name { get; set; }  // name of the activity eg hockey  
+        public DateTime StartDateTime { get; set; }// start date and time of the activity
+        public DateTime EndDateTime { get; set; }//end and time of the activity
     }
 }

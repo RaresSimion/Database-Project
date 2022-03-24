@@ -14,7 +14,7 @@ namespace SomerenDAL
     {
         public List<Activity> GetAllActivities()
         {
-            // select columns from database
+  
             // string query = "SELECT ActivityID,Activity_name,ActicityStartDateTime,ActivityEndDateTime FROM Activity";
             string query = "SELECT Activity_id, Activity_name, Activity_start_datetime, Activity_end_datetime FROM Activity";
             SqlParameter[] sqlParameters = new SqlParameter[0];
@@ -22,7 +22,7 @@ namespace SomerenDAL
         }
         private List<Activity> ReadTables(DataTable dataTable)
         {
-            //create list to store the rooms 
+            //create list to store the activities 
             List<Activity> activities = new List<Activity>();
 
             foreach (DataRow dr in dataTable.Rows)
@@ -42,8 +42,8 @@ namespace SomerenDAL
 
         public void UpdateActivity(Activity activity)
         {
-            //lower the stock by one for every order
-            string query = $"UPDATE Activity SET Activity_name='{activity.Name}' WHERE Activity_id={activity.Id}";
+            //change the activity details
+            string query = $"UPDATE Activity SET Activity_name='{activity.Name}',Activity_start_datetime= '{activity.StartDateTime}',Activity_end_datetime='{activity.EndDateTime}'  WHERE Activity_id={activity.Id}";
             SqlParameter[] sqlParameters = new SqlParameter[0];
             ExecuteEditQuery(query, sqlParameters);
         }
@@ -55,6 +55,7 @@ namespace SomerenDAL
         }
         public void DeleteActivity(Activity activity)
         {
+            //delete the activity 
             string query = $"DELETE FROM Activity WHERE Activity_id={activity.Id}";
             SqlParameter[] sqlParameters = new SqlParameter[0];
             ExecuteEditQuery(query, sqlParameters);
