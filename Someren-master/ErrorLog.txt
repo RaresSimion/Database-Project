@@ -386,3 +386,9 @@ Time: 23/03/2022 03:55:42 PM
 Message: Column 'Activit_id' does not belong to table Table.
 -----------------------------------------------------------
 
+Time: 23/03/2022 04:37:38 pm
+-----------------------------------------------------------
+Message: The DELETE statement conflicted with the REFERENCE constraint "FK__Activity___Activ__59FA5E80". The conflict occurred in database "2122_IT1b_db7", table "dbo.Activity_supervisor", column 'Activity_id'.
+The statement has been terminated.
+-----------------------------------------------------------
+

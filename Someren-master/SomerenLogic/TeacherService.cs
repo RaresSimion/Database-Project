@@ -25,16 +25,14 @@ namespace SomerenLogic
             return teachers;
         }
 
-        public List<Teacher> GetSupervisors(int activityID)
+        public void AddIsSupervisor()
         {
-            List<Teacher> teachers = teacherdb.GetSupervisors(activityID);
-            return teachers;
+            teacherdb.AddIsSupervisor();
         }
 
-        public List<Teacher> GetTeachersNotSupervising(int activityID)
+        public void RemoveIsSupervisor()
         {
-            List<Teacher> teachers = teacherdb.GetTeachersNotSupervising(activityID);
-            return teachers;
+            teacherdb.RemoveIsSupervisor();
         }
     }
 }

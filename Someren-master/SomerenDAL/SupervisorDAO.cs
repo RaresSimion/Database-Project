@@ -1,33 +1,40 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Data.SqlClient;
-using System.Data;
-using System.Collections.ObjectModel;
 using SomerenModel;
 
 namespace SomerenDAL
 {
-    public class TeacherDAO : BaseDao
+    public class SupervisorDAO : BaseDao
     {
-        public List<Teacher> GetAllTeachers()
+        public List<Teacher> GetSupervisors(int activityID)
         {
-            string query = "SELECT Teacher_number, Teacher_name, IsSupervisor FROM [Teacher]";
+            string query = $"SELECT Teacher_number, Teacher_name, IsSupervisor FROM [Teacher] WHERE Teacher_number IN (SELECT Lecturer_id FROM Activity_supervisor WHERE Activity_id={activityID})";
             SqlParameter[] sqlParameters = new SqlParameter[0];
             return ReadTables(ExecuteSelectQuery(query, sqlParameters));
         }
 
-        public void AddIsSupervisor()
+        public List<Teacher> GetTeachersNotSupervising(int activityID)
         {
-            string query = $"UPDATE Teacher SET IsSupervisor = 'true' WHERE Teacher_number IN (SELECT DISTINCT Lecturer_id FROM Activity_supervisor);";
+            string query = $"SELECT Teacher_number, Teacher_name, IsSupervisor FROM [Teacher] WHERE Teacher_number NOT IN (SELECT Lecturer_id FROM Activity_supervisor WHERE Activity_id={activityID})";
+            SqlParameter[] sqlParameters = new SqlParameter[0];
+            return ReadTables(ExecuteSelectQuery(query, sqlParameters));
+        }
+
+        public void AddSupervisor(int teacherID, int activityID)
+        {
+            string query = $"INSERT INTO Activity_supervisor VALUES ({teacherID}, {activityID});";
             SqlParameter[] sqlParameters = new SqlParameter[0];
             ExecuteEditQuery(query, sqlParameters);
         }
-        public void RemoveIsSupervisor()
+
+        public void RemoveSupervisor(int teacherID, int activityID)
         {
-            string query = $"UPDATE Teacher SET IsSupervisor = 'false' WHERE Teacher_number NOT IN (SELECT DISTINCT Lecturer_id FROM Activity_supervisor);";
+            string query = $"DELETE FROM Activity_supervisor WHERE Lecturer_id = {teacherID} AND Activity_id = {activityID}";
             SqlParameter[] sqlParameters = new SqlParameter[0];
             ExecuteEditQuery(query, sqlParameters);
         }

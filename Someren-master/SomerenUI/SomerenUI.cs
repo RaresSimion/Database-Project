@@ -204,6 +204,7 @@ namespace SomerenUI
                 {
                     //disable button until student and drink are selected
                     btnCheckOut.Enabled = false;
+                    btnCheckOut.BackColor = Color.Transparent;
 
                     //DRINKS
                     DrinkService drinkService = new DrinkService(); ;// create connection to the drink service layer
@@ -297,6 +298,8 @@ namespace SomerenUI
                 HidePanels();
 
                 pnlSupervisors.Show();
+                btnAddSupervisor.Enabled = false;
+                btnRemoveSupervisor.Enabled = false;
 
                 try
                 {
@@ -582,24 +585,7 @@ namespace SomerenUI
             //refresh the panel
             showPanel("Activities");
         }
-        private void btn_removeActivity_Click(object sender, EventArgs e)
-        {
-            //create activity object
-            Activity activity = new Activity();
-            {
-                activity.Id = int.Parse(txtActivityID.Text);
-                activity.Name = txtActivityDesc.Text;
-                activity.StartDateTime = DateTime.Parse(dateTimePIcker_ActivityStart.Text);
-                activity.EndDateTime = DateTime.Parse(dateTimePicker_ActivityEnd.Text);
-            };
-
-            //delete activity
-            activityService.DeleteActivity(activity);
-            // show that delete was successfull
-            MessageBox.Show("Succeesfully deleted actiivty!");
-            //refresh panel
-            showPanel("Activities");
-        }
+ 
         private void pictureBox6_Click(object sender, EventArgs e)
         {
             MessageBox.Show("What happens in Someren, stays in Someren!");
@@ -622,7 +608,183 @@ namespace SomerenUI
             pnlCashRegister.Hide();
             pnlRevenueReport.Hide();
             pnlActivity.Hide();
+            pnlSupervisors.Hide();
         }
 
+        private void SupervisorsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            showPanel("Supervisors");
+        }
+
+        private void listViewSupervisorActivities_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (listViewSupervisorActivities.SelectedIndices.Count == 0)
+                {
+                    listViewSupervisors.Items.Clear();
+                    listViewNotSupervisors.Items.Clear();
+                }
+                else
+
+                {
+                    int activityID = int.Parse(listViewSupervisorActivities.SelectedItems[0].SubItems[0].Text);
+                    SupervisorService supervisorService = new SupervisorService();
+                    List<Teacher> supervisors = supervisorService.GetSupervisors(activityID);
+                    List<Teacher> teachers = supervisorService.GetTeachersNotSupervising(activityID);
+                    btnAddSupervisor.Enabled = false;
+                    btnRemoveSupervisor.Enabled = false;
+
+                    foreach (Teacher t in supervisors)
+                    {
+                        //add these items to the listview
+                        ListViewItem li = new ListViewItem(t.Number.ToString());
+                        li.SubItems.Add(t.Name);
+
+                        //add items to listview
+                        listViewSupervisors.Items.Add(li);
+                    }
+
+                    foreach (Teacher t in teachers)
+                    {
+                        //add these items to the listview
+                        ListViewItem li = new ListViewItem(t.Number.ToString());
+                        li.SubItems.Add(t.Name);
+
+                        //add items to listview
+                        listViewNotSupervisors.Items.Add(li);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Something went wrong while loading the supervisors: " + ex.Message); //error pop up
+                LogError(ex); //error log
+            }
+        }
+
+        private void btnAddSupervisor_Click(object sender, EventArgs e)
+        {
+            TeacherService teacherService = new TeacherService();
+            SupervisorService supervisorService = new SupervisorService();
+            int teacherID = int.Parse(listViewNotSupervisors.SelectedItems[0].SubItems[0].Text);
+            int activityID = int.Parse(listViewSupervisorActivities.SelectedItems[0].SubItems[0].Text);
+
+            supervisorService.AddSupervisor(teacherID, activityID);
+            teacherService.AddIsSupervisor();
+
+            btnAddSupervisor.Enabled = false;
+            btnAddSupervisor.BackColor = Color.Transparent;
+
+            listViewSupervisors.Items.Clear();
+            listViewNotSupervisors.Items.Clear();
+            List<Teacher> supervisors = supervisorService.GetSupervisors(activityID);
+            List<Teacher> teachers = supervisorService.GetTeachersNotSupervising(activityID);
+            foreach (Teacher t in supervisors)
+            {
+                //add these items to the listview
+                ListViewItem li = new ListViewItem(t.Number.ToString());
+                li.SubItems.Add(t.Name);
+
+                //add items to listview
+                listViewSupervisors.Items.Add(li);
+            }
+
+            foreach (Teacher t in teachers)
+            {
+                //add these items to the listview
+                ListViewItem li = new ListViewItem(t.Number.ToString());
+                li.SubItems.Add(t.Name);
+
+                //add items to listview
+                listViewNotSupervisors.Items.Add(li);
+            }
+        }
+
+        private void listViewNotSupervisors_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            btnAddSupervisor.Enabled = true;
+            btnAddSupervisor.BackColor = Color.FromArgb(39, 126, 172);
+
+        }
+
+        private void btn_removeActivity_Click_1(object sender, EventArgs e)
+        {
+            DialogResult dialogResult = MessageBox.Show("Are you sure you wish to remove this activity? ", "Remove activity", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
+            {
+                //create activity object
+                Activity activity = new Activity();
+                {
+                    activity.Id = int.Parse(txtActivityID.Text);
+                    activity.Name = txtActivityDesc.Text;
+                    activity.StartDateTime = DateTime.Parse(dateTimePIcker_ActivityStart.Text);
+                    activity.EndDateTime = DateTime.Parse(dateTimePicker_ActivityEnd.Text);
+                };
+
+                //delete activity
+                activityService.DeleteActivity(activity);
+                // show that delete was successfull
+                MessageBox.Show("Succeesfully deleted actiivty!");
+                //refresh panel
+                showPanel("Activities");
+            }
+            else if (dialogResult == DialogResult.No)
+            {
+                return;
+            }
+        }
+
+        private void btnRemoveSupervisor_Click(object sender, EventArgs e)
+        {
+            DialogResult dialogResult = MessageBox.Show("Are you sure you wish to remove this supervisor? ", "Remove supservisor", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
+            {
+                TeacherService teacherService = new TeacherService();
+                SupervisorService supervisorService = new SupervisorService();
+                int teacherID = int.Parse(listViewSupervisors.SelectedItems[0].SubItems[0].Text);
+                int activityID = int.Parse(listViewSupervisorActivities.SelectedItems[0].SubItems[0].Text);
+
+                supervisorService.RemoveSupervisor(teacherID, activityID);
+                teacherService.RemoveIsSupervisor();
+
+                btnRemoveSupervisor.Enabled = false;
+                btnRemoveSupervisor.BackColor = Color.Transparent;
+
+                listViewSupervisors.Items.Clear();
+                listViewNotSupervisors.Items.Clear();
+                List<Teacher> supervisors = supervisorService.GetSupervisors(activityID);
+                List<Teacher> teachers = supervisorService.GetTeachersNotSupervising(activityID);
+                foreach (Teacher t in supervisors)
+                {
+                    //add these items to the listview
+                    ListViewItem li = new ListViewItem(t.Number.ToString());
+                    li.SubItems.Add(t.Name);
+
+                    //add items to listview
+                    listViewSupervisors.Items.Add(li);
+                }
+
+                foreach (Teacher t in teachers)
+                {
+                    //add these items to the listview
+                    ListViewItem li = new ListViewItem(t.Number.ToString());
+                    li.SubItems.Add(t.Name);
+
+                    //add items to listview
+                    listViewNotSupervisors.Items.Add(li);
+                }
+            }
+            else if (dialogResult == DialogResult.No)
+            {
+                return;
+            }
+        }
+
+        private void listViewSupervisors_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            btnRemoveSupervisor.Enabled = true;
+            btnRemoveSupervisor.BackColor = Color.FromArgb(39, 126, 172);
+        }
     }
 }
