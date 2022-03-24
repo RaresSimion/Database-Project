@@ -363,7 +363,7 @@ namespace SomerenUI
 
         }
 
-        #region Listviews and Buttons
+     
 
         #region Revenue Listview and buttons
         /********************REVENUE LISTVIEW & PANEL***************************/
@@ -717,7 +717,7 @@ namespace SomerenUI
         }
         #endregion
 
-        #endregion
+
 
 
         #region What happens in someren
