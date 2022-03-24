@@ -28,7 +28,7 @@ namespace SomerenUI
 
         private void showPanel(string panelName)
         {
-
+            #region Dashboard
             /***************DASHBOARD PANEL************************/
             if (panelName == "Dashboard")
             {
@@ -38,8 +38,10 @@ namespace SomerenUI
                 pnlDashboard.Show();
                 imgDashboard.Show();
             }
+            #endregion
 
-            /***************STUDDENTS PANEL************************/
+            #region Students panel
+            /***************STUDENTS PANEL************************/
             else if (panelName == "Students")
             {
                 // hide all other panels
@@ -78,7 +80,9 @@ namespace SomerenUI
                     LogError(e); //error log
                 }
             }
+            #endregion
 
+            #region Rooms panel
             /***************ROOMS PANEL************************/
             else if (panelName == "Rooms")
             {
@@ -119,7 +123,9 @@ namespace SomerenUI
                 }
 
             }
+            #endregion
 
+            #region Lecturers panel
             /***************LECTURERS PANEL************************/
             else if (panelName == "Lecturers")
             {
@@ -161,6 +167,9 @@ namespace SomerenUI
                     LogError(e); //error log
                 }
             }
+            #endregion
+
+            #region Drinks panel
             /***************DRINKS PANEL************************/
             else if (panelName == "Drinks")
             {
@@ -200,7 +209,9 @@ namespace SomerenUI
                     LogError(e); //error log
                 }
             }
+            #endregion
 
+            #region Cash register panel
             /***************CASH REGISTER PANEL************************/
             else if (panelName == "Cash Register")
             {
@@ -256,7 +267,9 @@ namespace SomerenUI
                     LogError(e); //error log
                 }
             }
+            #endregion
 
+            #region Revenue panel
             /***************REVENUE REPORT PANEL************************/
             else if (panelName == "Revenue Report")
             {
@@ -273,7 +286,9 @@ namespace SomerenUI
                 dateTimePickerEnd.Enabled = false;
                 listViewRevenueReport.Items.Clear();
             }
+            #endregion
 
+            #region Activities Panel
             /*************ACTIVITIES PANEL************/
             else if (panelName == "Activities")
             {
@@ -306,6 +321,9 @@ namespace SomerenUI
                     LogError(e); //error log
                 }
             }
+            #endregion
+
+            #region Supervisor Panel
             /***************SUPERVISOR PANEL************************/
             else if (panelName == "Supervisors")
             {
@@ -341,9 +359,13 @@ namespace SomerenUI
                     LogError(e); //error log
                 }
             }
+            #endregion
 
         }
-        
+
+        #region Listviews and Buttons
+
+        #region Revenue Listview and buttons
         /********************REVENUE LISTVIEW & PANEL***************************/
         private void dateTimePickerStart_ValueChanged(object sender, EventArgs e)
         {
@@ -373,6 +395,9 @@ namespace SomerenUI
                 LogError(ex);
             }
         }
+        #endregion
+
+        #region Cash Register Listviews and buttons 
         /********************CASH REGISTER LISTVIEWS***************************/
         private void listViewCRDrinks_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -441,8 +466,9 @@ namespace SomerenUI
             //refresh the panel
             showPanel("Cash Register");
         }
+        #endregion
 
-
+        #region Activity listview and buttons 
         /****************ACTIVITY LIST VIEW***************/
         private void listViewActivities_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -511,8 +537,10 @@ namespace SomerenUI
             //refresh the panel
             showPanel("Activities");
         }
- 
-       /******************SUPERVISORS LISTVIEW AND BUTTONS ***********************/
+        #endregion
+
+        #region Supervisor Lisitview and buttons
+        /******************SUPERVISORS LISTVIEW AND BUTTONS ***********************/
 
         private void SupervisorsToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -687,6 +715,10 @@ namespace SomerenUI
             btnRemoveSupervisor.Enabled = true;
             btnRemoveSupervisor.BackColor = Color.FromArgb(39, 126, 172);
         }
+        #endregion
+
+        #endregion
+
 
         #region What happens in someren
         private void pictureBox6_Click(object sender, EventArgs e)
