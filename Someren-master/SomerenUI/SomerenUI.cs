@@ -512,7 +512,7 @@ namespace SomerenUI
             showPanel("Activities");
         }
  
-       
+       /******************SUPERVISORS LISTVIEW AND BUTTONS ***********************/
 
         private void SupervisorsToolStripMenuItem_Click(object sender, EventArgs e)
         {
