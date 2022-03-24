@@ -559,6 +559,8 @@ namespace SomerenUI
 
             //add the data to the register database
             activityService.UpdateActivity(activity);
+            
+
             //refresh panel
             showPanel("Activities");
         }
