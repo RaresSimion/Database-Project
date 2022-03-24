@@ -20,7 +20,7 @@ namespace SomerenUI
         {
             InitializeComponent();
         }
-
+        //Show dashboard panel
         private void SomerenUI_Load(object sender, EventArgs e)
         {
             showPanel("Dashboard");
@@ -29,6 +29,7 @@ namespace SomerenUI
         private void showPanel(string panelName)
         {
 
+            /***************DASHBOARD PANEL************************/
             if (panelName == "Dashboard")
             {
                 HidePanels();
@@ -37,6 +38,8 @@ namespace SomerenUI
                 pnlDashboard.Show();
                 imgDashboard.Show();
             }
+
+            /***************STUDDENTS PANEL************************/
             else if (panelName == "Students")
             {
                 // hide all other panels
@@ -75,6 +78,8 @@ namespace SomerenUI
                     LogError(e); //error log
                 }
             }
+
+            /***************ROOMS PANEL************************/
             else if (panelName == "Rooms")
             {
                 //hide these panels
@@ -114,6 +119,8 @@ namespace SomerenUI
                 }
 
             }
+
+            /***************LECTURERS PANEL************************/
             else if (panelName == "Lecturers")
             {
                 //hide these panels
@@ -154,6 +161,7 @@ namespace SomerenUI
                     LogError(e); //error log
                 }
             }
+            /***************DRINKS PANEL************************/
             else if (panelName == "Drinks")
             {
                 //hide these panels
@@ -192,6 +200,8 @@ namespace SomerenUI
                     LogError(e); //error log
                 }
             }
+
+            /***************CASH REGISTER PANEL************************/
             else if (panelName == "Cash Register")
             {
                 //hide these panels
@@ -246,6 +256,8 @@ namespace SomerenUI
                     LogError(e); //error log
                 }
             }
+
+            /***************REVENUE REPORT PANEL************************/
             else if (panelName == "Revenue Report")
             {
                 //hide these panels
@@ -261,7 +273,8 @@ namespace SomerenUI
                 dateTimePickerEnd.Enabled = false;
                 listViewRevenueReport.Items.Clear();
             }
-            /*************ACTIVITIES************/
+
+            /*************ACTIVITIES PANEL************/
             else if (panelName == "Activities")
             {
                 //hide these panels
@@ -293,6 +306,7 @@ namespace SomerenUI
                     LogError(e); //error log
                 }
             }
+            /***************SUPERVISOR PANEL************************/
             else if (panelName == "Supervisors")
             {
                 HidePanels();
@@ -329,99 +343,8 @@ namespace SomerenUI
             }
 
         }
-        //method to log the errors to file
-        private void LogError(Exception ex)
-        {
-            string message = string.Format($"Time: {DateTime.Now:dd/MM/yyyy hh:mm:ss tt}");
-            message += Environment.NewLine;
-            message += "-----------------------------------------------------------";
-            message += Environment.NewLine;
-            message += string.Format($"Message: {ex.Message}");
-            message += Environment.NewLine;
-            message += "-----------------------------------------------------------";
-            message += Environment.NewLine;
-            string path = "../../../ErrorLog.txt";
-            using (StreamWriter writer = new StreamWriter(path, true))
-            {
-                writer.WriteLine(message);
-                writer.Close();
-            }
-        }
-
-        private void dashboardToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            //
-        }
-
-        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Application.Exit();
-        }
-
-        private void dashboardToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-            showPanel("Dashboard");
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void imgDashboard_Click(object sender, EventArgs e)
-        {
-            MessageBox.Show("What happens in Someren, stays in Someren!");
-        }
-
-        private void studentsToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            showPanel("Students");
-        }
-
-        private void lecturersToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            showPanel("Lecturers");
-        }
-
-        private void roomsToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            showPanel("Rooms");
-        }
-
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-            MessageBox.Show("What happens in Someren, stays in Someren!");
-        }
-
-        private void pictureBox2_Click(object sender, EventArgs e)
-        {
-            MessageBox.Show("What happens in Someren, stays in Someren!");
-        }
-
-        private void pictureBox3_Click(object sender, EventArgs e)
-        {
-            MessageBox.Show("What happens in Someren, stays in Someren!");
-        }
-
-        private void drinktoolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-            showPanel("Drinks");
-        }
-        private void activitiesToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            showPanel("Activities");
-        }
-
-        private void CashRegtoolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-            showPanel("Cash Register");
-        }
-
-        private void RevenueReportToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            showPanel("Revenue Report");
-        }
-
+        
+        /********************REVENUE LISTVIEW & PANEL***************************/
         private void dateTimePickerStart_ValueChanged(object sender, EventArgs e)
         {
             dateTimePickerEnd.Enabled = true; //once a start date has been chosen, the end date picker is enabled
@@ -450,28 +373,7 @@ namespace SomerenUI
                 LogError(ex);
             }
         }
-
-        private void listViewCRStudent_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (listViewCRStudent.SelectedItems.Count == 0)
-            {
-                txtBStudentID.Text = "";
-                txtBStudentName.Text = "";
-            }
-            else
-            {
-                //Student student = (Student)listViewCRStudent.SelectedItems[0].Tag;
-
-                txtBStudentID.Text = listViewCRStudent.SelectedItems[0].SubItems[0].Text;
-                txtBStudentName.Text = listViewCRStudent.SelectedItems[0].SubItems[1].Text;
-            }
-            if (txtBDrinkName.Text != "" && txtBDrinkPrice.Text != "" && txtBStudentID.Text != "" && txtBStudentName.Text != "")
-            {
-                btnCheckOut.Enabled = true;
-                btnCheckOut.BackColor = Color.FromArgb(39, 126, 172);
-            }
-        }
-
+        /********************CASH REGISTER LISTVIEWS***************************/
         private void listViewCRDrinks_SelectedIndexChanged(object sender, EventArgs e)
         {
             //if nothing is selected the textbox remains empty
@@ -493,31 +395,27 @@ namespace SomerenUI
                 btnCheckOut.BackColor = Color.FromArgb(39, 126, 172);
             }
         }
-        /****************ACTIVITY LIST VIEW***************/
-        private void listViewActivities_SelectedIndexChanged(object sender, EventArgs e)
+        private void listViewCRStudent_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (listViewActivities.SelectedItems.Count == 0)
+            if (listViewCRStudent.SelectedItems.Count == 0)
             {
-                txtActivityID.Text = "";
-                txtActivityDesc.Text = "";
+                txtBStudentID.Text = "";
+                txtBStudentName.Text = "";
             }
             else
             {
-                //if the txtbox is not empty fill it with the details of the selected activities
-                txtActivityID.Text = listViewActivities.SelectedItems[0].SubItems[0].Text;
-                txtActivityDesc.Text = listViewActivities.SelectedItems[0].SubItems[1].Text;
-                dateTimePIcker_ActivityStart.Value = Convert.ToDateTime(listViewActivities.SelectedItems[0].SubItems[2].Text);
-                dateTimePicker_ActivityEnd.Value = Convert.ToDateTime(listViewActivities.SelectedItems[0].SubItems[3].Text);
+                //Student student = (Student)listViewCRStudent.SelectedItems[0].Tag;
 
+                txtBStudentID.Text = listViewCRStudent.SelectedItems[0].SubItems[0].Text;
+                txtBStudentName.Text = listViewCRStudent.SelectedItems[0].SubItems[1].Text;
             }
-            // if the textbox of the activities arent empty enable the button 
-            if (txtActivityID.Text != "" && txtActivityDesc.Text != "" && dateTimePIcker_ActivityStart.Value != null && dateTimePicker_ActivityEnd.Value != null)
+            if (txtBDrinkName.Text != "" && txtBDrinkPrice.Text != "" && txtBStudentID.Text != "" && txtBStudentName.Text != "")
             {
-                btn_addActivity.Enabled = true;
-                btn_removeActivity.Enabled = true;
-                btn_updateActivity.Enabled = true;
+                btnCheckOut.Enabled = true;
+                btnCheckOut.BackColor = Color.FromArgb(39, 126, 172);
             }
         }
+     
         /********************CASH REGISTER BUTTONS***************************/
         private void btnCheckOut_Click(object sender, EventArgs e)
         {
@@ -544,13 +442,41 @@ namespace SomerenUI
             showPanel("Cash Register");
         }
 
+
+        /****************ACTIVITY LIST VIEW***************/
+        private void listViewActivities_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (listViewActivities.SelectedItems.Count == 0)
+            {
+                txtActivityID.Text = "";
+                txtActivityDesc.Text = "";
+            }
+            else
+            {
+                //if the txtbox is not empty fill it with the details of the selected activities
+                txtActivityID.Text = listViewActivities.SelectedItems[0].SubItems[0].Text;
+                txtActivityDesc.Text = listViewActivities.SelectedItems[0].SubItems[1].Text;
+                dateTimePIcker_ActivityStart.Value = Convert.ToDateTime(listViewActivities.SelectedItems[0].SubItems[2].Text);
+                dateTimePicker_ActivityEnd.Value = Convert.ToDateTime(listViewActivities.SelectedItems[0].SubItems[3].Text);
+
+            }
+            // if the textbox of the activities arent empty enable the buttons on the activity panel
+            if (txtActivityID.Text != "" && txtActivityDesc.Text != "" && dateTimePIcker_ActivityStart.Value != null && dateTimePicker_ActivityEnd.Value != null)
+            {
+                btn_addActivity.Enabled = true;
+                btn_removeActivity.Enabled = true;
+                btn_updateActivity.Enabled = true;
+            }
+        }
+       
+
         /*****************ACTIVITY BUTTONS****************/
 
         //create connection to register database
         ActivityService activityService = new ActivityService();
 
         private void btn_updateActivity_Click(object sender, EventArgs e)
-        {
+        {            
             //create activity object
             Activity activity = new Activity();
             {
@@ -562,14 +488,14 @@ namespace SomerenUI
 
             //add the data to the register database
             activityService.UpdateActivity(activity);
-            
 
+            MessageBox.Show("Succeesfully updated actiivty!");
             //refresh panel
             showPanel("Activities");
         }
         private void btn_addActivity_Click(object sender, EventArgs e)
         {
-            //create activity object
+            //create activity object and link to textboxes
             Activity activity = new Activity();
             {
                 activity.Id = int.Parse(txtActivityID.Text);
@@ -586,30 +512,7 @@ namespace SomerenUI
             showPanel("Activities");
         }
  
-        private void pictureBox6_Click(object sender, EventArgs e)
-        {
-            MessageBox.Show("What happens in Someren, stays in Someren!");
-        }
-
-        private void pictureBox5_Click(object sender, EventArgs e)
-        {
-            MessageBox.Show("What happens in Someren, stays in Someren!");
-        }
-        public void HidePanels()
-        {
-            // hide all other panels
-
-            pnlDashboard.Hide();
-            imgDashboard.Hide();
-            pnlStudents.Hide();
-            pnlTeachers.Hide();
-            pnlRooms.Hide();
-            pnlDrink.Hide();
-            pnlCashRegister.Hide();
-            pnlRevenueReport.Hide();
-            pnlActivity.Hide();
-            pnlSupervisors.Hide();
-        }
+       
 
         private void SupervisorsToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -705,7 +608,6 @@ namespace SomerenUI
         {
             btnAddSupervisor.Enabled = true;
             btnAddSupervisor.BackColor = Color.FromArgb(39, 126, 172);
-
         }
 
         private void btn_removeActivity_Click_1(object sender, EventArgs e)
@@ -764,7 +666,6 @@ namespace SomerenUI
                     //add items to listview
                     listViewSupervisors.Items.Add(li);
                 }
-
                 foreach (Teacher t in teachers)
                 {
                     //add these items to the listview
@@ -785,6 +686,123 @@ namespace SomerenUI
         {
             btnRemoveSupervisor.Enabled = true;
             btnRemoveSupervisor.BackColor = Color.FromArgb(39, 126, 172);
+        }
+        private void pictureBox6_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("What happens in Someren, stays in Someren!");
+        }
+
+        private void pictureBox5_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("What happens in Someren, stays in Someren!");
+        }
+        public void HidePanels()
+        {
+            // hide all other panels
+
+            pnlDashboard.Hide();
+            imgDashboard.Hide();
+            pnlStudents.Hide();
+            pnlTeachers.Hide();
+            pnlRooms.Hide();
+            pnlDrink.Hide();
+            pnlCashRegister.Hide();
+            pnlRevenueReport.Hide();
+            pnlActivity.Hide();
+            pnlSupervisors.Hide();
+        }
+
+        //method to log the errors to file
+        private void LogError(Exception ex)
+        {
+            string message = string.Format($"Time: {DateTime.Now:dd/MM/yyyy hh:mm:ss tt}");
+            message += Environment.NewLine;
+            message += "-----------------------------------------------------------";
+            message += Environment.NewLine;
+            message += string.Format($"Message: {ex.Message}");
+            message += Environment.NewLine;
+            message += "-----------------------------------------------------------";
+            message += Environment.NewLine;
+            string path = "../../../ErrorLog.txt";
+            using (StreamWriter writer = new StreamWriter(path, true))
+            {
+                writer.WriteLine(message);
+                writer.Close();
+            }
+        }
+        /******************SHOW PANEL COMMANDS *****************/
+        private void dashboardToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //
+        }
+
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void dashboardToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            showPanel("Dashboard");
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void imgDashboard_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("What happens in Someren, stays in Someren!");
+        }
+
+        private void studentsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            showPanel("Students");
+        }
+
+        private void lecturersToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            showPanel("Lecturers");
+        }
+
+        private void roomsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            showPanel("Rooms");
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("What happens in Someren, stays in Someren!");
+        }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("What happens in Someren, stays in Someren!");
+        }
+
+        private void pictureBox3_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("What happens in Someren, stays in Someren!");
+        }
+
+        private void drinktoolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            showPanel("Drinks");
+        }
+        private void activitiesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            showPanel("Activities");
+        }
+
+        private void CashRegtoolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            showPanel("Cash Register");
+        }
+
+        private void RevenueReportToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            showPanel("Revenue Report");
         }
     }
 }
