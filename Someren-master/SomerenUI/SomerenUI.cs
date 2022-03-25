@@ -474,25 +474,25 @@ namespace SomerenUI
         {
             if (listViewActivities.SelectedItems.Count == 0)
             {
-                txtActivityID.Text = "";
                 txtActivityDesc.Text = "";
             }
             else
             {
                 //if the txtbox is not empty fill it with the details of the selected activities
-                txtActivityID.Text = listViewActivities.SelectedItems[0].SubItems[0].Text;
                 txtActivityDesc.Text = listViewActivities.SelectedItems[0].SubItems[1].Text;
                 dateTimePIcker_ActivityStart.Value = Convert.ToDateTime(listViewActivities.SelectedItems[0].SubItems[2].Text);
                 dateTimePicker_ActivityEnd.Value = Convert.ToDateTime(listViewActivities.SelectedItems[0].SubItems[3].Text);
 
             }
             // if the textbox of the activities arent empty enable the buttons on the activity panel
-            if (txtActivityID.Text != "" && txtActivityDesc.Text != "" && dateTimePIcker_ActivityStart.Value != null && dateTimePicker_ActivityEnd.Value != null)
+            if (txtActivityDesc.Text != "" && dateTimePIcker_ActivityStart.Value != null && dateTimePicker_ActivityEnd.Value != null)
             {
                 btn_addActivity.Enabled = true;
                 btn_removeActivity.Enabled = true;
                 btn_updateActivity.Enabled = true;
             }
+
+
         }
        
 
@@ -506,7 +506,6 @@ namespace SomerenUI
             //create activity object
             Activity activity = new Activity();
             {
-                activity.Id = int.Parse(txtActivityID.Text);
                 activity.Name = txtActivityDesc.Text;
                 activity.StartDateTime = DateTime.Parse(dateTimePIcker_ActivityStart.Text);
                 activity.EndDateTime = DateTime.Parse(dateTimePicker_ActivityEnd.Text);
@@ -524,11 +523,22 @@ namespace SomerenUI
             //create activity object and link to textboxes
             Activity activity = new Activity();
             {
-                activity.Id = int.Parse(txtActivityID.Text);
                 activity.Name = txtActivityDesc.Text;
                 activity.StartDateTime = DateTime.Parse(dateTimePIcker_ActivityStart.Text);
                 activity.EndDateTime = DateTime.Parse(dateTimePicker_ActivityEnd.Text);
             };
+
+            List<Activity> listActivities = activityService.GetActivity();
+            foreach (Activity a  in listActivities)
+            {
+                if (a.Name==activity.Name)
+                {
+                    MessageBox.Show("Name already exists, choose a new name");
+                    return;
+                }  
+            }
+
+
             //add the data to the activity database
             activityService.AddToActivity(activity);
             //show that the add was successful
@@ -646,7 +656,6 @@ namespace SomerenUI
                 //create activity object
                 Activity activity = new Activity();
                 {
-                    activity.Id = int.Parse(txtActivityID.Text);
                     activity.Name = txtActivityDesc.Text;
                     activity.StartDateTime = DateTime.Parse(dateTimePIcker_ActivityStart.Text);
                     activity.EndDateTime = DateTime.Parse(dateTimePicker_ActivityEnd.Text);

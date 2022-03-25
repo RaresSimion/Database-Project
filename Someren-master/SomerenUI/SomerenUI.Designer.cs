@@ -52,9 +52,7 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
             this.txtActivityDesc = new System.Windows.Forms.TextBox();
-            this.txtActivityID = new System.Windows.Forms.TextBox();
             this.btn_removeActivity = new System.Windows.Forms.Button();
             this.btn_updateActivity = new System.Windows.Forms.Button();
             this.btn_addActivity = new System.Windows.Forms.Button();
@@ -191,7 +189,6 @@
             // menuStrip1
             // 
             this.menuStrip1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(126)))), ((int)(((byte)(172)))));
-            this.menuStrip1.GripMargin = new System.Windows.Forms.Padding(2, 2, 0, 2);
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.dashboardToolStripMenuItem,
@@ -205,7 +202,6 @@
             this.SupervisorsToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Padding = new System.Windows.Forms.Padding(6, 2, 0, 2);
             this.menuStrip1.Size = new System.Drawing.Size(1680, 40);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
@@ -349,9 +345,7 @@
             this.pnlActivity.Controls.Add(this.label6);
             this.pnlActivity.Controls.Add(this.label5);
             this.pnlActivity.Controls.Add(this.label4);
-            this.pnlActivity.Controls.Add(this.label3);
             this.pnlActivity.Controls.Add(this.txtActivityDesc);
-            this.pnlActivity.Controls.Add(this.txtActivityID);
             this.pnlActivity.Controls.Add(this.btn_removeActivity);
             this.pnlActivity.Controls.Add(this.btn_updateActivity);
             this.pnlActivity.Controls.Add(this.btn_addActivity);
@@ -377,7 +371,7 @@
             // 
             this.dateTimePIcker_ActivityStart.CustomFormat = "dd-MM-yyyy HH:mm:ss";
             this.dateTimePIcker_ActivityStart.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePIcker_ActivityStart.Location = new System.Drawing.Point(656, 737);
+            this.dateTimePIcker_ActivityStart.Location = new System.Drawing.Point(608, 737);
             this.dateTimePIcker_ActivityStart.Name = "dateTimePIcker_ActivityStart";
             this.dateTimePIcker_ActivityStart.Size = new System.Drawing.Size(205, 26);
             this.dateTimePIcker_ActivityStart.TabIndex = 11;
@@ -385,7 +379,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(928, 709);
+            this.label6.Location = new System.Drawing.Point(880, 709);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(146, 20);
             this.label6.TabIndex = 10;
@@ -394,7 +388,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(651, 709);
+            this.label5.Location = new System.Drawing.Point(603, 709);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(152, 20);
             this.label5.TabIndex = 10;
@@ -403,34 +397,18 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(412, 709);
+            this.label4.Location = new System.Drawing.Point(364, 709);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(89, 20);
             this.label4.TabIndex = 10;
             this.label4.Text = "Description";
             // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(192, 709);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(26, 20);
-            this.label3.TabIndex = 10;
-            this.label3.Text = "ID";
-            // 
             // txtActivityDesc
             // 
-            this.txtActivityDesc.Location = new System.Drawing.Point(382, 737);
+            this.txtActivityDesc.Location = new System.Drawing.Point(334, 737);
             this.txtActivityDesc.Name = "txtActivityDesc";
             this.txtActivityDesc.Size = new System.Drawing.Size(151, 26);
             this.txtActivityDesc.TabIndex = 9;
-            // 
-            // txtActivityID
-            // 
-            this.txtActivityID.Location = new System.Drawing.Point(172, 737);
-            this.txtActivityID.Name = "txtActivityID";
-            this.txtActivityID.Size = new System.Drawing.Size(100, 26);
-            this.txtActivityID.TabIndex = 9;
             // 
             // btn_removeActivity
             // 
@@ -1584,9 +1562,7 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtActivityDesc;
-        private System.Windows.Forms.TextBox txtActivityID;
         private System.Windows.Forms.DateTimePicker dateTimePicker_ActivityEnd;
         private System.Windows.Forms.DateTimePicker dateTimePIcker_ActivityStart;
         private System.Windows.Forms.ToolStripMenuItem SupervisorsToolStripMenuItem;
