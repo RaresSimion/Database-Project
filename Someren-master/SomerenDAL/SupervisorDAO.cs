@@ -11,6 +11,7 @@ namespace SomerenDAL
 {
     public class SupervisorDAO : BaseDao
     {
+        //getting the supervisors of the selected activity
         public List<Teacher> GetSupervisors(int activityID)
         {
             string query = $"SELECT Teacher_number, Teacher_name, IsSupervisor FROM [Teacher] WHERE Teacher_number IN (SELECT Lecturer_id FROM Activity_supervisor WHERE Activity_id={activityID})";
@@ -18,6 +19,7 @@ namespace SomerenDAL
             return ReadTables(ExecuteSelectQuery(query, sqlParameters));
         }
 
+        //getting the list of teachers who are not supervising the selected activity
         public List<Teacher> GetTeachersNotSupervising(int activityID)
         {
             string query = $"SELECT Teacher_number, Teacher_name, IsSupervisor FROM [Teacher] WHERE Teacher_number NOT IN (SELECT Lecturer_id FROM Activity_supervisor WHERE Activity_id={activityID})";
@@ -25,6 +27,8 @@ namespace SomerenDAL
             return ReadTables(ExecuteSelectQuery(query, sqlParameters));
         }
 
+
+        //adding a supervisor to the selected activity
         public void AddSupervisor(int teacherID, int activityID)
         {
             string query = $"INSERT INTO Activity_supervisor VALUES ({teacherID}, {activityID});";
@@ -32,6 +36,8 @@ namespace SomerenDAL
             ExecuteEditQuery(query, sqlParameters);
         }
 
+
+        //removing a supervisor from the selected activity
         public void RemoveSupervisor(int teacherID, int activityID)
         {
             string query = $"DELETE FROM Activity_supervisor WHERE Lecturer_id = {teacherID} AND Activity_id = {activityID}";

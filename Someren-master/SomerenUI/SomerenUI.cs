@@ -330,14 +330,22 @@ namespace SomerenUI
                 HidePanels();
 
                 pnlSupervisors.Show();
+
+                //disable the buttons and make them gray until an activity is selected
                 btnAddSupervisor.Enabled = false;
                 btnRemoveSupervisor.Enabled = false;
+                btnAddSupervisor.BackColor = Color.Transparent;
+                btnRemoveSupervisor.BackColor = Color.Transparent;
 
                 try
                 {
+                    //create connection to activity layer
                     ActivityService activityService = new ActivityService(); ;
+
+                    //retrieve activities
                     List<Activity> activityList = activityService.GetActivity(); ;
 
+                    //clear lists
                     listViewSupervisorActivities.Items.Clear();
                     listViewSupervisors.Items.Clear();
                     listViewNotSupervisors.Items.Clear();
@@ -350,7 +358,7 @@ namespace SomerenUI
                         li.SubItems.Add(a.StartDateTime.ToString("yyyy-MM-dd    HH:mm"));
                         li.SubItems.Add(a.EndDateTime.ToString("yyyy-MM-dd    HH:mm"));
 
-                        listViewSupervisorActivities.Items.Add(li);// add items to listview
+                        listViewSupervisorActivities.Items.Add(li);
                     }
                 }
                 catch (Exception e)
@@ -547,6 +555,38 @@ namespace SomerenUI
             //refresh the panel
             showPanel("Activities");
         }
+
+        private void btn_removeActivity_Click_1(object sender, EventArgs e)
+        {
+            //dialog pop up asking the user if he is sure of the action
+            DialogResult dialogResult = MessageBox.Show("Are you sure you wish to remove this activity? ", "Remove activity", MessageBoxButtons.YesNo);
+
+            //if the answer is yes proceed to remove activity
+            if (dialogResult == DialogResult.Yes)
+            {
+                //create activity object
+                Activity activity = new Activity();
+                {
+                    activity.Id = int.Parse(txtActivityID.Text);
+                    activity.Name = txtActivityDesc.Text;
+                    activity.StartDateTime = DateTime.Parse(dateTimePIcker_ActivityStart.Text);
+                    activity.EndDateTime = DateTime.Parse(dateTimePicker_ActivityEnd.Text);
+                };
+
+                //delete activity
+                activityService.DeleteActivity(activity);
+                // show that delete was successfull
+                MessageBox.Show("Succeesfully deleted actiivty!");
+                //refresh panel
+                showPanel("Activities");
+            }
+
+            //if the answer is no do nothing
+            else if (dialogResult == DialogResult.No)
+            {
+                return;
+            }
+        }
         #endregion
 
         #region Supervisor Lisitview and buttons
@@ -563,18 +603,30 @@ namespace SomerenUI
             {
                 if (listViewSupervisorActivities.SelectedIndices.Count == 0)
                 {
+                    //if no activity is selected clear the lists
                     listViewSupervisors.Items.Clear();
                     listViewNotSupervisors.Items.Clear();
                 }
                 else
 
                 {
+                    //get the id of the selected activity
                     int activityID = int.Parse(listViewSupervisorActivities.SelectedItems[0].SubItems[0].Text);
+
+                    //create connection to supervisor service
                     SupervisorService supervisorService = new SupervisorService();
+
+                    //get list of supervisors of the selected activity
                     List<Teacher> supervisors = supervisorService.GetSupervisors(activityID);
+
+                    //get list of teachers who are not supervisors of the selected activity
                     List<Teacher> teachers = supervisorService.GetTeachersNotSupervising(activityID);
+
+                    //disable the add and remove buttons until a teacher or supervisor is selected
                     btnAddSupervisor.Enabled = false;
                     btnRemoveSupervisor.Enabled = false;
+                    btnAddSupervisor.BackColor = Color.Transparent;
+                    btnRemoveSupervisor.BackColor = Color.Transparent;
 
                     foreach (Teacher t in supervisors)
                     {
@@ -606,21 +658,32 @@ namespace SomerenUI
 
         private void btnAddSupervisor_Click(object sender, EventArgs e)
         {
+            //create connections to teacher and supervisor service
             TeacherService teacherService = new TeacherService();
             SupervisorService supervisorService = new SupervisorService();
+
+            //get the id of the teacher to be added as supervisor and the id of the selected activity
             int teacherID = int.Parse(listViewNotSupervisors.SelectedItems[0].SubItems[0].Text);
             int activityID = int.Parse(listViewSupervisorActivities.SelectedItems[0].SubItems[0].Text);
 
+            //add the supervisor
             supervisorService.AddSupervisor(teacherID, activityID);
+
+            //modify the IsSupervisor column in Teacher to true
             teacherService.AddIsSupervisor();
 
+            //disable the add button until another teacher is selected
             btnAddSupervisor.Enabled = false;
             btnAddSupervisor.BackColor = Color.Transparent;
 
+            //clear the lists to update them
             listViewSupervisors.Items.Clear();
             listViewNotSupervisors.Items.Clear();
+
+            //get the new teacher and supervisor lists
             List<Teacher> supervisors = supervisorService.GetSupervisors(activityID);
             List<Teacher> teachers = supervisorService.GetTeachersNotSupervising(activityID);
+
             foreach (Teacher t in supervisors)
             {
                 //add these items to the listview
@@ -644,56 +707,45 @@ namespace SomerenUI
 
         private void listViewNotSupervisors_SelectedIndexChanged(object sender, EventArgs e)
         {
+            //enable the button and color it to stand out
             btnAddSupervisor.Enabled = true;
             btnAddSupervisor.BackColor = Color.FromArgb(39, 126, 172);
         }
 
-        private void btn_removeActivity_Click_1(object sender, EventArgs e)
-        {
-            DialogResult dialogResult = MessageBox.Show("Are you sure you wish to remove this activity? ", "Remove activity", MessageBoxButtons.YesNo);
-            if (dialogResult == DialogResult.Yes)
-            {
-                //create activity object
-                Activity activity = new Activity();
-                {
-                    activity.Name = txtActivityDesc.Text;
-                    activity.StartDateTime = DateTime.Parse(dateTimePIcker_ActivityStart.Text);
-                    activity.EndDateTime = DateTime.Parse(dateTimePicker_ActivityEnd.Text);
-                };
-
-                //delete activity
-                activityService.DeleteActivity(activity);
-                // show that delete was successfull
-                MessageBox.Show("Succeesfully deleted actiivty!");
-                //refresh panel
-                showPanel("Activities");
-            }
-            else if (dialogResult == DialogResult.No)
-            {
-                return;
-            }
-        }
-
         private void btnRemoveSupervisor_Click(object sender, EventArgs e)
         {
+            //dialog pop up asking the user if he is sure of the action
             DialogResult dialogResult = MessageBox.Show("Are you sure you wish to remove this supervisor? ", "Remove supservisor", MessageBoxButtons.YesNo);
+
+            //if the answer is yes proceed to remove the supervisor
             if (dialogResult == DialogResult.Yes)
             {
+                //create connection to teacher and supervisor service
                 TeacherService teacherService = new TeacherService();
                 SupervisorService supervisorService = new SupervisorService();
+
+                //get the id of the selected teacher and the id of the selected activity
                 int teacherID = int.Parse(listViewSupervisors.SelectedItems[0].SubItems[0].Text);
                 int activityID = int.Parse(listViewSupervisorActivities.SelectedItems[0].SubItems[0].Text);
-
+                
+                //remove the supervisor
                 supervisorService.RemoveSupervisor(teacherID, activityID);
+
+                //modify the IsSupervisor column in Teacher to false if the teacher is not supervising another activity
                 teacherService.RemoveIsSupervisor();
 
+                //disable the button and color it gray until another teacher is selected
                 btnRemoveSupervisor.Enabled = false;
                 btnRemoveSupervisor.BackColor = Color.Transparent;
 
+                //clear the lits
                 listViewSupervisors.Items.Clear();
                 listViewNotSupervisors.Items.Clear();
+
+                //get the new lists
                 List<Teacher> supervisors = supervisorService.GetSupervisors(activityID);
                 List<Teacher> teachers = supervisorService.GetTeachersNotSupervising(activityID);
+
                 foreach (Teacher t in supervisors)
                 {
                     //add these items to the listview
@@ -713,6 +765,8 @@ namespace SomerenUI
                     listViewNotSupervisors.Items.Add(li);
                 }
             }
+
+            //if the answer is no do nothing
             else if (dialogResult == DialogResult.No)
             {
                 return;
@@ -721,6 +775,7 @@ namespace SomerenUI
 
         private void listViewSupervisors_SelectedIndexChanged(object sender, EventArgs e)
         {
+            //enable the button and color it to stand out
             btnRemoveSupervisor.Enabled = true;
             btnRemoveSupervisor.BackColor = Color.FromArgb(39, 126, 172);
         }
@@ -736,6 +791,15 @@ namespace SomerenUI
         }
 
         private void pictureBox5_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("What happens in Someren, stays in Someren!");
+        }
+
+        private void pictureBox8_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("What happens in Someren, stays in Someren!");
+        }
+        private void pictureBox7_Click(object sender, EventArgs e)
         {
             MessageBox.Show("What happens in Someren, stays in Someren!");
         }
