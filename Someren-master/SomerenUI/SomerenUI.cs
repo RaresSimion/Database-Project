@@ -567,7 +567,6 @@ namespace SomerenUI
                 //create activity object
                 Activity activity = new Activity();
                 {
-                    activity.Id = int.Parse(txtActivityID.Text);
                     activity.Name = txtActivityDesc.Text;
                     activity.StartDateTime = DateTime.Parse(dateTimePIcker_ActivityStart.Text);
                     activity.EndDateTime = DateTime.Parse(dateTimePicker_ActivityEnd.Text);

@@ -420,16 +420,16 @@
             // 
             // label3
             // 
-            this.label3.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(111, 468);
-            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(26, 20);
-            this.label3.TabIndex = 10;
-            this.label3.Text = "ID";
-            // 
+            //this.label3.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            //this.label3.AutoSize = true;
+            //this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            //this.label3.Location = new System.Drawing.Point(111, 468);
+            //this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            //this.label3.Name = "label3";
+            //this.label3.Size = new System.Drawing.Size(26, 20);
+            //this.label3.TabIndex = 10;
+            //this.label3.Text = "ID";
+            //// 
             // txtActivityDesc
             // 
             this.txtActivityDesc.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
@@ -442,13 +442,13 @@
             // 
             // txtActivityID
             // 
-            this.txtActivityID.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.txtActivityID.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtActivityID.Location = new System.Drawing.Point(115, 490);
-            this.txtActivityID.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.txtActivityID.Name = "txtActivityID";
-            this.txtActivityID.Size = new System.Drawing.Size(68, 26);
-            this.txtActivityID.TabIndex = 9;
+            //this.txtActivityID.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            //this.txtActivityID.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            //this.txtActivityID.Location = new System.Drawing.Point(115, 490);
+            //this.txtActivityID.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            //this.txtActivityID.Name = "txtActivityID";
+            //this.txtActivityID.Size = new System.Drawing.Size(68, 26);
+            //this.txtActivityID.TabIndex = 9;
             // 
             // btn_removeActivity
             // 
