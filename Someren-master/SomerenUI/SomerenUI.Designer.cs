@@ -147,6 +147,11 @@
             this.columnActivityEnd = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.pictureBox8 = new System.Windows.Forms.PictureBox();
             this.lblSupervisors = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.lbl_Username = new System.Windows.Forms.Label();
+            this.lbl_Password = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             teacherNumber = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             ((System.ComponentModel.ISupportInitialize)(this.imgDashboard)).BeginInit();
             this.menuStrip1.SuspendLayout();
@@ -178,7 +183,7 @@
             // 
             this.imgDashboard.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.imgDashboard.Image = global::SomerenUI.Properties.Resources.someren;
-            this.imgDashboard.Location = new System.Drawing.Point(694, 338);
+            this.imgDashboard.Location = new System.Drawing.Point(1295, 190);
             this.imgDashboard.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.imgDashboard.Name = "imgDashboard";
             this.imgDashboard.Size = new System.Drawing.Size(206, 188);
@@ -189,6 +194,7 @@
             // menuStrip1
             // 
             this.menuStrip1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(126)))), ((int)(((byte)(172)))));
+            this.menuStrip1.GripMargin = new System.Windows.Forms.Padding(2, 2, 0, 2);
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.dashboardToolStripMenuItem,
@@ -202,6 +208,7 @@
             this.SupervisorsToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Padding = new System.Windows.Forms.Padding(6, 2, 0, 2);
             this.menuStrip1.Size = new System.Drawing.Size(1680, 40);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
@@ -316,6 +323,11 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pnlDashboard.BackColor = System.Drawing.Color.White;
+            this.pnlDashboard.Controls.Add(this.button1);
+            this.pnlDashboard.Controls.Add(this.lbl_Password);
+            this.pnlDashboard.Controls.Add(this.lbl_Username);
+            this.pnlDashboard.Controls.Add(this.textBox2);
+            this.pnlDashboard.Controls.Add(this.textBox1);
             this.pnlDashboard.Controls.Add(this.lbl_Dashboard);
             this.pnlDashboard.Controls.Add(this.imgDashboard);
             this.pnlDashboard.Location = new System.Drawing.Point(18, 42);
@@ -328,11 +340,11 @@
             // 
             this.lbl_Dashboard.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.lbl_Dashboard.AutoSize = true;
-            this.lbl_Dashboard.Font = new System.Drawing.Font("Microsoft Sans Serif", 39.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_Dashboard.Location = new System.Drawing.Point(141, 148);
+            this.lbl_Dashboard.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.75F);
+            this.lbl_Dashboard.Location = new System.Drawing.Point(388, 97);
             this.lbl_Dashboard.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_Dashboard.Name = "lbl_Dashboard";
-            this.lbl_Dashboard.Size = new System.Drawing.Size(1362, 91);
+            this.lbl_Dashboard.Size = new System.Drawing.Size(719, 48);
             this.lbl_Dashboard.TabIndex = 1;
             this.lbl_Dashboard.Text = "Welcome to the Someren Application!";
             this.lbl_Dashboard.Click += new System.EventHandler(this.label1_Click);
@@ -1432,12 +1444,55 @@
             this.lblSupervisors.TabIndex = 3;
             this.lblSupervisors.Text = "Teachers who supervise the activity";
             // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(605, 332);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(365, 26);
+            this.textBox1.TabIndex = 2;
+            // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(605, 425);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.PasswordChar = '*';
+            this.textBox2.Size = new System.Drawing.Size(365, 26);
+            this.textBox2.TabIndex = 2;
+            // 
+            // lbl_Username
+            // 
+            this.lbl_Username.AutoSize = true;
+            this.lbl_Username.Location = new System.Drawing.Point(482, 335);
+            this.lbl_Username.Name = "lbl_Username";
+            this.lbl_Username.Size = new System.Drawing.Size(91, 20);
+            this.lbl_Username.TabIndex = 3;
+            this.lbl_Username.Text = "Username: ";
+            // 
+            // lbl_Password
+            // 
+            this.lbl_Password.AutoSize = true;
+            this.lbl_Password.Location = new System.Drawing.Point(482, 428);
+            this.lbl_Password.Name = "lbl_Password";
+            this.lbl_Password.Size = new System.Drawing.Size(86, 20);
+            this.lbl_Password.TabIndex = 3;
+            this.lbl_Password.Text = "Password: ";
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(642, 569);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(238, 45);
+            this.button1.TabIndex = 4;
+            this.button1.Text = "Log in";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
             // SomerenUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(126)))), ((int)(((byte)(172)))));
             this.ClientSize = new System.Drawing.Size(1680, 882);
+            this.Controls.Add(this.pnlDashboard);
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.pnlActivity);
             this.Controls.Add(this.pnlRevenueReport);
@@ -1445,7 +1500,6 @@
             this.Controls.Add(this.pnlStudents);
             this.Controls.Add(this.pnlCashRegister);
             this.Controls.Add(this.pnlDrink);
-            this.Controls.Add(this.pnlDashboard);
             this.Controls.Add(this.pnlRooms);
             this.Controls.Add(this.pnlSupervisors);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -1612,6 +1666,11 @@
         private System.Windows.Forms.Label lblNotSupervisors;
         private System.Windows.Forms.Button btnAddSupervisor;
         private System.Windows.Forms.Button btnRemoveSupervisor;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label lbl_Password;
+        private System.Windows.Forms.Label lbl_Username;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox textBox1;
     }
 }
 
