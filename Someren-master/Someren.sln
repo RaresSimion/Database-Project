@@ -11,7 +11,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SomerenModel", "SomerenMode
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SomerenUI", "SomerenUI\SomerenUI.csproj", "{8086AFF6-7CAB-4421-87B8-719B409533AB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Password Hashing", "Password Hashing\Password Hashing.csproj", "{951B8FC6-A7E6-4F22-972B-DC11E7574EDB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PasswordHashing", "Password Hashing\PasswordHashing.csproj", "{951B8FC6-A7E6-4F22-972B-DC11E7574EDB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

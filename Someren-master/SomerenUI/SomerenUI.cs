@@ -821,6 +821,7 @@ namespace SomerenUI
             pnlRevenueReport.Hide();
             pnlActivity.Hide();
             pnlSupervisors.Hide();
+            pnlRegister.Hide();
         }
         #endregion
 
@@ -921,5 +922,16 @@ namespace SomerenUI
             showPanel("Revenue Report");
         }
         #endregion
+
+        private void btnRegister_Click(object sender, EventArgs e)
+        {
+            HidePanels();
+            pnlRegister.Show();
+        }
+
+        private void btnRegisterNow_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
