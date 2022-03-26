@@ -18,6 +18,10 @@ namespace SomerenModel
             Salt = salt;
             Digest = digest;
         }
+        public Password()
+        {
+
+        }
 
         public Password HashWithSalt(string password, int saltLength, HashAlgorithm hashAlgo)
         {

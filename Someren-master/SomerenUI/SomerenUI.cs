@@ -929,10 +929,17 @@ namespace SomerenUI
             HidePanels();
             pnlRegister.Show();
         }
-
+                
         private void btnRegisterNow_Click(object sender, EventArgs e)
         {
 
         }
+
+        private void btn_Login_Click(object sender, EventArgs e)
+        {
+            User user = new User();
+            user.Username=txtLoginUsername.Text;
+            user.Password=txtLoginPassword.Text;
     }
 }
+   
