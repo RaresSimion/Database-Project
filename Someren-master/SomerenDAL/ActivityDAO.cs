@@ -14,7 +14,6 @@ namespace SomerenDAL
     {
         public List<Activity> GetAllActivities()
         {
-  
             // string query = "SELECT ActivityID,Activity_name,ActicityStartDateTime,ActivityEndDateTime FROM Activity";
             string query = "SELECT Activity_id, Activity_name, Activity_start_datetime, Activity_end_datetime FROM Activity";
             SqlParameter[] sqlParameters = new SqlParameter[0];

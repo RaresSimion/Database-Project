@@ -372,7 +372,7 @@ namespace SomerenUI
 
         }
 
-     
+
 
         #region Revenue Listview and buttons
         /********************REVENUE LISTVIEW & PANEL***************************/
@@ -449,7 +449,7 @@ namespace SomerenUI
                 btnCheckOut.BackColor = Color.FromArgb(39, 126, 172);
             }
         }
-     
+
         /********************CASH REGISTER BUTTONS***************************/
         private void btnCheckOut_Click(object sender, EventArgs e)
         {
@@ -503,7 +503,7 @@ namespace SomerenUI
 
 
         }
-       
+
 
         /*****************ACTIVITY BUTTONS****************/
 
@@ -511,7 +511,7 @@ namespace SomerenUI
         ActivityService activityService = new ActivityService();
 
         private void btn_updateActivity_Click(object sender, EventArgs e)
-        {            
+        {
             //create activity object
             Activity activity = new Activity();
             {
@@ -539,13 +539,13 @@ namespace SomerenUI
             };
 
             List<Activity> listActivities = activityService.GetActivity();
-            foreach (Activity a  in listActivities)
+            foreach (Activity a in listActivities)
             {
-                if (a.Name==activity.Name)
+                if (a.Name == activity.Name)
                 {
                     MessageBox.Show("Name already exists, choose a new name");
                     return;
-                }  
+                }
             }
 
 
@@ -729,7 +729,7 @@ namespace SomerenUI
                 //get the id of the selected teacher and the id of the selected activity
                 int teacherID = int.Parse(listViewSupervisors.SelectedItems[0].SubItems[0].Text);
                 int activityID = int.Parse(listViewSupervisorActivities.SelectedItems[0].SubItems[0].Text);
-                
+
                 //remove the supervisor
                 supervisorService.RemoveSupervisor(teacherID, activityID);
 
@@ -924,12 +924,16 @@ namespace SomerenUI
         }
         #endregion
 
+
+        #region Login buttons/ panel
+        //connect to user database
+        UserService userService = new UserService();
         private void btnRegister_Click(object sender, EventArgs e)
         {
             HidePanels();
             pnlRegister.Show();
         }
-                
+
         private void btnRegisterNow_Click(object sender, EventArgs e)
         {
 
@@ -937,9 +941,30 @@ namespace SomerenUI
 
         private void btn_Login_Click(object sender, EventArgs e)
         {
-            User user = new User();
-            user.Username=txtLoginUsername.Text;
-            user.Password=txtLoginPassword.Text;
+            User user =new User();
+            user.Username = txtLoginUsername.Text;
+            user.Password = txtLoginPassword.Text;
+
+             List<User> users= userService.GetAllUsers();
+            foreach (User u in users)
+            {
+                if (user.Username == u.Username && user.Password == u.Password)
+                {
+                    MessageBox.Show("Login successful");
+                    showPanel("Students");
+                }
+                else
+                    MessageBox.Show("Credentials were incorrect");
+                return;
+            }
+            
+
+        }
+        #endregion
+
+        private void pnlDashboard_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }
-   

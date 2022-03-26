@@ -346,6 +346,7 @@
             this.pnlDashboard.Name = "pnlDashboard";
             this.pnlDashboard.Size = new System.Drawing.Size(1644, 811);
             this.pnlDashboard.TabIndex = 2;
+            this.pnlDashboard.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlDashboard_Paint);
             // 
             // label3
             // 

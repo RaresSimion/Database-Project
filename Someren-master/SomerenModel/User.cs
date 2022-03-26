@@ -10,5 +10,6 @@ namespace SomerenModel
     {
         public string Username { get; set; } // for the username
         public string Password { get; set; }   // for the password  
+        public bool Role { get; set; }// 1= admin 0= user
     }
 }
