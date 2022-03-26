@@ -15,13 +15,13 @@ namespace SomerenDAL
         public void AddToRegister(string username, string password, string salt)
         {
 
-            string query = $"INSERT INTO Users_test (Username, Password, Salt) VALUES ('{username}', {password}, '{salt}')";
+            string query = $"INSERT INTO Users_test (Username, [Password], Salt) VALUES ('{username}', {password}, '{salt}')";
             SqlParameter[] sqlParameters = new SqlParameter[0];
             ExecuteEditQuery(query, sqlParameters);
         }
-        public void GetUser(User user)
+        public void GetUser(string username)
         {
-            string query = $"SELECT UserID, Username, Password, Role FROM [User] WHERE Username ='{user.Username}'";
+            string query = $"SELECT UserID, Username, Password, Role FROM [User] WHERE Username ='{username}'";
             SqlParameter[] sqlParameters = new SqlParameter[0];
             ExecuteEditQuery(query, sqlParameters);
         }

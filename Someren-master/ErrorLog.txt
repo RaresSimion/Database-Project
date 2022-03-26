@@ -392,3 +392,18 @@ Message: The DELETE statement conflicted with the REFERENCE constraint "FK__Acti
 The statement has been terminated.
 -----------------------------------------------------------
 
+Time: 26/03/2022 05:57:55 PM
+-----------------------------------------------------------
+Message: Incorrect syntax near 'txF5SxylwOiRPdknU0NeQ2JDw3myIgkqAsyVvAl8'.
+-----------------------------------------------------------
+
+Time: 26/03/2022 06:05:03 PM
+-----------------------------------------------------------
+Message: Incorrect syntax near '='.
+-----------------------------------------------------------
+
+Time: 26/03/2022 06:09:04 PM
+-----------------------------------------------------------
+Message: Incorrect syntax near '='.
+-----------------------------------------------------------
+

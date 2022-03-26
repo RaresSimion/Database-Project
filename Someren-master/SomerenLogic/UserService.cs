@@ -17,10 +17,14 @@ namespace SomerenLogic
             //create connection to database
             userDb = new UserDAO();
         }
-        public void GetUser(User user)
+        public void AddToRegister(string username, string password, string salt)
+        {
+            userDb.AddToRegister(username, password, salt);
+        }
+        public void GetUser(string username)
         {
             //update the activity stock in the database
-            userDb.GetUser(user);
+            userDb.GetUser(username);
         }
         public List<User> GetAllUsers()
         {

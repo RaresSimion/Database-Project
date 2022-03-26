@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 using System.Diagnostics;
-
+using System.Security.Cryptography;
 
 namespace SomerenUI
 {
@@ -925,7 +925,7 @@ namespace SomerenUI
         #endregion
 
 
-        #region Login buttons/ panel
+        #region Registration buttons/ panel
         //connect to user database
         UserService userService = new UserService();
         private void btnRegister_Click(object sender, EventArgs e)
@@ -936,9 +936,24 @@ namespace SomerenUI
 
         private void btnRegisterNow_Click(object sender, EventArgs e)
         {
+            PasswordWithSaltHasher pwHasher = new PasswordWithSaltHasher();
+            User user = new User();
+            user.Username= txtUserName.Text;
+            user.Password= txtPassword.Text;    
 
+            //this hashes the password
+            HashWithSaltResult hashPassword= pwHasher.HashWithSalt(txtPassword.Text, 64, SHA256.Create());
+
+            // add the username, hashed password and salt to the database
+            userService.AddToRegister(user.Username,hashPassword.Digest, hashPassword.Salt);
+
+            MessageBox.Show("Succesfully Registered! You can now login.");
+            showPanel("Dashboard");
+            
         }
+        #endregion
 
+        #region Login buttons/ panel
         private void btn_Login_Click(object sender, EventArgs e)
         {
             User user =new User();
@@ -957,8 +972,6 @@ namespace SomerenUI
                     MessageBox.Show("Credentials were incorrect");
                 return;
             }
-            
-
         }
         #endregion
 

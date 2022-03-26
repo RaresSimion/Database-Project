@@ -218,7 +218,7 @@
             this.SupervisorsToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1680, 40);
+            this.menuStrip1.Size = new System.Drawing.Size(1680, 42);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -231,7 +231,7 @@
             this.dashboardToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dashboardToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.dashboardToolStripMenuItem.Name = "dashboardToolStripMenuItem";
-            this.dashboardToolStripMenuItem.Size = new System.Drawing.Size(150, 36);
+            this.dashboardToolStripMenuItem.Size = new System.Drawing.Size(150, 38);
             this.dashboardToolStripMenuItem.Text = "Application";
             this.dashboardToolStripMenuItem.Click += new System.EventHandler(this.dashboardToolStripMenuItem_Click);
             // 
@@ -259,7 +259,7 @@
             this.studentsToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.studentsToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.studentsToolStripMenuItem.Name = "studentsToolStripMenuItem";
-            this.studentsToolStripMenuItem.Size = new System.Drawing.Size(123, 36);
+            this.studentsToolStripMenuItem.Size = new System.Drawing.Size(123, 38);
             this.studentsToolStripMenuItem.Text = "Students";
             this.studentsToolStripMenuItem.Click += new System.EventHandler(this.studentsToolStripMenuItem_Click);
             // 
@@ -268,7 +268,7 @@
             this.lecturersToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lecturersToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.lecturersToolStripMenuItem.Name = "lecturersToolStripMenuItem";
-            this.lecturersToolStripMenuItem.Size = new System.Drawing.Size(126, 36);
+            this.lecturersToolStripMenuItem.Size = new System.Drawing.Size(126, 38);
             this.lecturersToolStripMenuItem.Text = "Lecturers";
             this.lecturersToolStripMenuItem.Click += new System.EventHandler(this.lecturersToolStripMenuItem_Click);
             // 
@@ -277,7 +277,7 @@
             this.activitiesToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.activitiesToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.activitiesToolStripMenuItem.Name = "activitiesToolStripMenuItem";
-            this.activitiesToolStripMenuItem.Size = new System.Drawing.Size(125, 36);
+            this.activitiesToolStripMenuItem.Size = new System.Drawing.Size(125, 38);
             this.activitiesToolStripMenuItem.Text = "Activities";
             this.activitiesToolStripMenuItem.Click += new System.EventHandler(this.activitiesToolStripMenuItem_Click);
             // 
@@ -286,7 +286,7 @@
             this.roomsToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.roomsToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.roomsToolStripMenuItem.Name = "roomsToolStripMenuItem";
-            this.roomsToolStripMenuItem.Size = new System.Drawing.Size(102, 36);
+            this.roomsToolStripMenuItem.Size = new System.Drawing.Size(102, 38);
             this.roomsToolStripMenuItem.Text = "Rooms";
             this.roomsToolStripMenuItem.Click += new System.EventHandler(this.roomsToolStripMenuItem_Click);
             // 
@@ -295,7 +295,7 @@
             this.drinktoolStripMenuItem1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.drinktoolStripMenuItem1.ForeColor = System.Drawing.Color.White;
             this.drinktoolStripMenuItem1.Name = "drinktoolStripMenuItem1";
-            this.drinktoolStripMenuItem1.Size = new System.Drawing.Size(97, 36);
+            this.drinktoolStripMenuItem1.Size = new System.Drawing.Size(97, 38);
             this.drinktoolStripMenuItem1.Text = "Drinks";
             this.drinktoolStripMenuItem1.Click += new System.EventHandler(this.drinktoolStripMenuItem1_Click);
             // 
@@ -304,7 +304,7 @@
             this.CashRegtoolStripMenuItem1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CashRegtoolStripMenuItem1.ForeColor = System.Drawing.Color.White;
             this.CashRegtoolStripMenuItem1.Name = "CashRegtoolStripMenuItem1";
-            this.CashRegtoolStripMenuItem1.Size = new System.Drawing.Size(173, 36);
+            this.CashRegtoolStripMenuItem1.Size = new System.Drawing.Size(173, 38);
             this.CashRegtoolStripMenuItem1.Text = "Cash Register";
             this.CashRegtoolStripMenuItem1.Click += new System.EventHandler(this.CashRegtoolStripMenuItem1_Click);
             // 
@@ -313,7 +313,7 @@
             this.RevenueReportToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.RevenueReportToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.RevenueReportToolStripMenuItem.Name = "RevenueReportToolStripMenuItem";
-            this.RevenueReportToolStripMenuItem.Size = new System.Drawing.Size(199, 36);
+            this.RevenueReportToolStripMenuItem.Size = new System.Drawing.Size(199, 38);
             this.RevenueReportToolStripMenuItem.Text = "Revenue Report";
             this.RevenueReportToolStripMenuItem.Click += new System.EventHandler(this.RevenueReportToolStripMenuItem_Click);
             // 
@@ -322,7 +322,7 @@
             this.SupervisorsToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SupervisorsToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.SupervisorsToolStripMenuItem.Name = "SupervisorsToolStripMenuItem";
-            this.SupervisorsToolStripMenuItem.Size = new System.Drawing.Size(152, 36);
+            this.SupervisorsToolStripMenuItem.Size = new System.Drawing.Size(152, 38);
             this.SupervisorsToolStripMenuItem.Text = "Supervisors";
             this.SupervisorsToolStripMenuItem.Click += new System.EventHandler(this.SupervisorsToolStripMenuItem_Click);
             // 
@@ -1595,8 +1595,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(126)))), ((int)(((byte)(172)))));
             this.ClientSize = new System.Drawing.Size(1680, 882);
-            this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.pnlDashboard);
+            this.Controls.Add(this.pnlRegister);
+            this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.pnlActivity);
             this.Controls.Add(this.pnlRevenueReport);
             this.Controls.Add(this.pnlTeachers);
@@ -1605,7 +1606,6 @@
             this.Controls.Add(this.pnlDrink);
             this.Controls.Add(this.pnlRooms);
             this.Controls.Add(this.pnlSupervisors);
-            this.Controls.Add(this.pnlRegister);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
