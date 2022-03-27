@@ -155,6 +155,12 @@
             this.pictureBox8 = new System.Windows.Forms.PictureBox();
             this.lblSupervisors = new System.Windows.Forms.Label();
             this.pnlRegister = new System.Windows.Forms.Panel();
+            this.lblLicenceKey = new System.Windows.Forms.Label();
+            this.txtLicenceKey = new System.Windows.Forms.TextBox();
+            this.txtName = new System.Windows.Forms.TextBox();
+            this.lblName = new System.Windows.Forms.Label();
+            this.lblPassword = new System.Windows.Forms.Label();
+            this.lblUsername = new System.Windows.Forms.Label();
             this.txtPassword = new System.Windows.Forms.TextBox();
             this.txtUserName = new System.Windows.Forms.TextBox();
             this.btnRegisterNow = new System.Windows.Forms.Button();
@@ -193,10 +199,9 @@
             // 
             this.imgDashboard.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.imgDashboard.Image = global::SomerenUI.Properties.Resources.someren;
-            this.imgDashboard.Location = new System.Drawing.Point(1294, 189);
-            this.imgDashboard.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.imgDashboard.Location = new System.Drawing.Point(862, 123);
             this.imgDashboard.Name = "imgDashboard";
-            this.imgDashboard.Size = new System.Drawing.Size(206, 188);
+            this.imgDashboard.Size = new System.Drawing.Size(137, 122);
             this.imgDashboard.TabIndex = 0;
             this.imgDashboard.TabStop = false;
             this.imgDashboard.Click += new System.EventHandler(this.imgDashboard_Click);
@@ -204,7 +209,6 @@
             // menuStrip1
             // 
             this.menuStrip1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(126)))), ((int)(((byte)(172)))));
-            this.menuStrip1.GripMargin = new System.Windows.Forms.Padding(2, 2, 0, 2);
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.dashboardToolStripMenuItem,
@@ -218,7 +222,8 @@
             this.SupervisorsToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1680, 42);
+            this.menuStrip1.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
+            this.menuStrip1.Size = new System.Drawing.Size(1120, 29);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -231,26 +236,26 @@
             this.dashboardToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dashboardToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.dashboardToolStripMenuItem.Name = "dashboardToolStripMenuItem";
-            this.dashboardToolStripMenuItem.Size = new System.Drawing.Size(150, 38);
+            this.dashboardToolStripMenuItem.Size = new System.Drawing.Size(100, 25);
             this.dashboardToolStripMenuItem.Text = "Application";
             this.dashboardToolStripMenuItem.Click += new System.EventHandler(this.dashboardToolStripMenuItem_Click);
             // 
             // dashboardToolStripMenuItem1
             // 
             this.dashboardToolStripMenuItem1.Name = "dashboardToolStripMenuItem1";
-            this.dashboardToolStripMenuItem1.Size = new System.Drawing.Size(233, 40);
+            this.dashboardToolStripMenuItem1.Size = new System.Drawing.Size(156, 26);
             this.dashboardToolStripMenuItem1.Text = "Dashboard";
             this.dashboardToolStripMenuItem1.Click += new System.EventHandler(this.dashboardToolStripMenuItem1_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(230, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(153, 6);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(233, 40);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(156, 26);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
@@ -259,7 +264,7 @@
             this.studentsToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.studentsToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.studentsToolStripMenuItem.Name = "studentsToolStripMenuItem";
-            this.studentsToolStripMenuItem.Size = new System.Drawing.Size(123, 38);
+            this.studentsToolStripMenuItem.Size = new System.Drawing.Size(82, 25);
             this.studentsToolStripMenuItem.Text = "Students";
             this.studentsToolStripMenuItem.Click += new System.EventHandler(this.studentsToolStripMenuItem_Click);
             // 
@@ -268,7 +273,7 @@
             this.lecturersToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lecturersToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.lecturersToolStripMenuItem.Name = "lecturersToolStripMenuItem";
-            this.lecturersToolStripMenuItem.Size = new System.Drawing.Size(126, 38);
+            this.lecturersToolStripMenuItem.Size = new System.Drawing.Size(86, 25);
             this.lecturersToolStripMenuItem.Text = "Lecturers";
             this.lecturersToolStripMenuItem.Click += new System.EventHandler(this.lecturersToolStripMenuItem_Click);
             // 
@@ -277,7 +282,7 @@
             this.activitiesToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.activitiesToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.activitiesToolStripMenuItem.Name = "activitiesToolStripMenuItem";
-            this.activitiesToolStripMenuItem.Size = new System.Drawing.Size(125, 38);
+            this.activitiesToolStripMenuItem.Size = new System.Drawing.Size(84, 25);
             this.activitiesToolStripMenuItem.Text = "Activities";
             this.activitiesToolStripMenuItem.Click += new System.EventHandler(this.activitiesToolStripMenuItem_Click);
             // 
@@ -286,7 +291,7 @@
             this.roomsToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.roomsToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.roomsToolStripMenuItem.Name = "roomsToolStripMenuItem";
-            this.roomsToolStripMenuItem.Size = new System.Drawing.Size(102, 38);
+            this.roomsToolStripMenuItem.Size = new System.Drawing.Size(71, 25);
             this.roomsToolStripMenuItem.Text = "Rooms";
             this.roomsToolStripMenuItem.Click += new System.EventHandler(this.roomsToolStripMenuItem_Click);
             // 
@@ -295,7 +300,7 @@
             this.drinktoolStripMenuItem1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.drinktoolStripMenuItem1.ForeColor = System.Drawing.Color.White;
             this.drinktoolStripMenuItem1.Name = "drinktoolStripMenuItem1";
-            this.drinktoolStripMenuItem1.Size = new System.Drawing.Size(97, 38);
+            this.drinktoolStripMenuItem1.Size = new System.Drawing.Size(67, 25);
             this.drinktoolStripMenuItem1.Text = "Drinks";
             this.drinktoolStripMenuItem1.Click += new System.EventHandler(this.drinktoolStripMenuItem1_Click);
             // 
@@ -304,7 +309,7 @@
             this.CashRegtoolStripMenuItem1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CashRegtoolStripMenuItem1.ForeColor = System.Drawing.Color.White;
             this.CashRegtoolStripMenuItem1.Name = "CashRegtoolStripMenuItem1";
-            this.CashRegtoolStripMenuItem1.Size = new System.Drawing.Size(173, 38);
+            this.CashRegtoolStripMenuItem1.Size = new System.Drawing.Size(117, 25);
             this.CashRegtoolStripMenuItem1.Text = "Cash Register";
             this.CashRegtoolStripMenuItem1.Click += new System.EventHandler(this.CashRegtoolStripMenuItem1_Click);
             // 
@@ -313,7 +318,7 @@
             this.RevenueReportToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.RevenueReportToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.RevenueReportToolStripMenuItem.Name = "RevenueReportToolStripMenuItem";
-            this.RevenueReportToolStripMenuItem.Size = new System.Drawing.Size(199, 38);
+            this.RevenueReportToolStripMenuItem.Size = new System.Drawing.Size(133, 25);
             this.RevenueReportToolStripMenuItem.Text = "Revenue Report";
             this.RevenueReportToolStripMenuItem.Click += new System.EventHandler(this.RevenueReportToolStripMenuItem_Click);
             // 
@@ -322,7 +327,7 @@
             this.SupervisorsToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SupervisorsToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.SupervisorsToolStripMenuItem.Name = "SupervisorsToolStripMenuItem";
-            this.SupervisorsToolStripMenuItem.Size = new System.Drawing.Size(152, 38);
+            this.SupervisorsToolStripMenuItem.Size = new System.Drawing.Size(104, 25);
             this.SupervisorsToolStripMenuItem.Text = "Supervisors";
             this.SupervisorsToolStripMenuItem.Click += new System.EventHandler(this.SupervisorsToolStripMenuItem_Click);
             // 
@@ -341,28 +346,27 @@
             this.pnlDashboard.Controls.Add(this.txtLoginUsername);
             this.pnlDashboard.Controls.Add(this.lbl_Dashboard);
             this.pnlDashboard.Controls.Add(this.imgDashboard);
-            this.pnlDashboard.Location = new System.Drawing.Point(18, 42);
-            this.pnlDashboard.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.pnlDashboard.Location = new System.Drawing.Point(12, 28);
             this.pnlDashboard.Name = "pnlDashboard";
-            this.pnlDashboard.Size = new System.Drawing.Size(1644, 811);
+            this.pnlDashboard.Size = new System.Drawing.Size(1096, 527);
             this.pnlDashboard.TabIndex = 2;
             this.pnlDashboard.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlDashboard_Paint);
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(257, 698);
+            this.label3.Location = new System.Drawing.Point(171, 453);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(370, 20);
+            this.label3.Size = new System.Drawing.Size(251, 13);
             this.label3.TabIndex = 6;
             this.label3.Text = "Are you new? Create a new  account by registering.";
             // 
             // btnRegister
             // 
-            this.btnRegister.Location = new System.Drawing.Point(654, 668);
-            this.btnRegister.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnRegister.Location = new System.Drawing.Point(436, 434);
             this.btnRegister.Name = "btnRegister";
-            this.btnRegister.Size = new System.Drawing.Size(240, 71);
+            this.btnRegister.Size = new System.Drawing.Size(160, 46);
             this.btnRegister.TabIndex = 5;
             this.btnRegister.Text = "Register new user";
             this.btnRegister.UseVisualStyleBackColor = true;
@@ -370,9 +374,10 @@
             // 
             // btn_Login
             // 
-            this.btn_Login.Location = new System.Drawing.Point(642, 569);
+            this.btn_Login.Location = new System.Drawing.Point(428, 370);
+            this.btn_Login.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btn_Login.Name = "btn_Login";
-            this.btn_Login.Size = new System.Drawing.Size(238, 45);
+            this.btn_Login.Size = new System.Drawing.Size(159, 29);
             this.btn_Login.TabIndex = 4;
             this.btn_Login.Text = "Log in";
             this.btn_Login.UseVisualStyleBackColor = true;
@@ -381,34 +386,38 @@
             // lbl_Password
             // 
             this.lbl_Password.AutoSize = true;
-            this.lbl_Password.Location = new System.Drawing.Point(482, 428);
+            this.lbl_Password.Location = new System.Drawing.Point(321, 278);
+            this.lbl_Password.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbl_Password.Name = "lbl_Password";
-            this.lbl_Password.Size = new System.Drawing.Size(86, 20);
+            this.lbl_Password.Size = new System.Drawing.Size(59, 13);
             this.lbl_Password.TabIndex = 3;
             this.lbl_Password.Text = "Password: ";
             // 
             // lbl_Username
             // 
             this.lbl_Username.AutoSize = true;
-            this.lbl_Username.Location = new System.Drawing.Point(482, 335);
+            this.lbl_Username.Location = new System.Drawing.Point(321, 218);
+            this.lbl_Username.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbl_Username.Name = "lbl_Username";
-            this.lbl_Username.Size = new System.Drawing.Size(91, 20);
+            this.lbl_Username.Size = new System.Drawing.Size(61, 13);
             this.lbl_Username.TabIndex = 3;
             this.lbl_Username.Text = "Username: ";
             // 
             // txtLoginPassword
             // 
-            this.txtLoginPassword.Location = new System.Drawing.Point(604, 425);
+            this.txtLoginPassword.Location = new System.Drawing.Point(403, 276);
+            this.txtLoginPassword.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtLoginPassword.Name = "txtLoginPassword";
             this.txtLoginPassword.PasswordChar = '*';
-            this.txtLoginPassword.Size = new System.Drawing.Size(366, 26);
+            this.txtLoginPassword.Size = new System.Drawing.Size(246, 20);
             this.txtLoginPassword.TabIndex = 2;
             // 
             // txtLoginUsername
             // 
-            this.txtLoginUsername.Location = new System.Drawing.Point(604, 332);
+            this.txtLoginUsername.Location = new System.Drawing.Point(403, 216);
+            this.txtLoginUsername.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtLoginUsername.Name = "txtLoginUsername";
-            this.txtLoginUsername.Size = new System.Drawing.Size(366, 26);
+            this.txtLoginUsername.Size = new System.Drawing.Size(246, 20);
             this.txtLoginUsername.TabIndex = 2;
             // 
             // lbl_Dashboard
@@ -416,10 +425,9 @@
             this.lbl_Dashboard.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.lbl_Dashboard.AutoSize = true;
             this.lbl_Dashboard.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.75F);
-            this.lbl_Dashboard.Location = new System.Drawing.Point(388, 97);
-            this.lbl_Dashboard.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbl_Dashboard.Location = new System.Drawing.Point(259, 63);
             this.lbl_Dashboard.Name = "lbl_Dashboard";
-            this.lbl_Dashboard.Size = new System.Drawing.Size(719, 48);
+            this.lbl_Dashboard.Size = new System.Drawing.Size(489, 32);
             this.lbl_Dashboard.TabIndex = 1;
             this.lbl_Dashboard.Text = "Welcome to the Someren Application!";
             this.lbl_Dashboard.Click += new System.EventHandler(this.label1_Click);
@@ -442,10 +450,9 @@
             this.pnlActivity.Controls.Add(this.listViewActivities);
             this.pnlActivity.Controls.Add(this.pictureBox7);
             this.pnlActivity.Controls.Add(this.label2);
-            this.pnlActivity.Location = new System.Drawing.Point(57, 42);
-            this.pnlActivity.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.pnlActivity.Location = new System.Drawing.Point(38, 28);
             this.pnlActivity.Name = "pnlActivity";
-            this.pnlActivity.Size = new System.Drawing.Size(1594, 811);
+            this.pnlActivity.Size = new System.Drawing.Size(1063, 527);
             this.pnlActivity.TabIndex = 9;
             // 
             // dateTimePicker_ActivityEnd
@@ -454,9 +461,10 @@
             this.dateTimePicker_ActivityEnd.CustomFormat = "dd-MM-yyyy HH:mm:ss";
             this.dateTimePicker_ActivityEnd.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dateTimePicker_ActivityEnd.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePicker_ActivityEnd.Location = new System.Drawing.Point(837, 752);
+            this.dateTimePicker_ActivityEnd.Location = new System.Drawing.Point(558, 489);
+            this.dateTimePicker_ActivityEnd.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dateTimePicker_ActivityEnd.Name = "dateTimePicker_ActivityEnd";
-            this.dateTimePicker_ActivityEnd.Size = new System.Drawing.Size(276, 35);
+            this.dateTimePicker_ActivityEnd.Size = new System.Drawing.Size(186, 26);
             this.dateTimePicker_ActivityEnd.TabIndex = 11;
             // 
             // dateTimePIcker_ActivityStart
@@ -465,9 +473,10 @@
             this.dateTimePIcker_ActivityStart.CustomFormat = "dd-MM-yyyy HH:mm:ss";
             this.dateTimePIcker_ActivityStart.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dateTimePIcker_ActivityStart.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePIcker_ActivityStart.Location = new System.Drawing.Point(520, 755);
+            this.dateTimePIcker_ActivityStart.Location = new System.Drawing.Point(346, 491);
+            this.dateTimePIcker_ActivityStart.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dateTimePIcker_ActivityStart.Name = "dateTimePIcker_ActivityStart";
-            this.dateTimePIcker_ActivityStart.Size = new System.Drawing.Size(278, 35);
+            this.dateTimePIcker_ActivityStart.Size = new System.Drawing.Size(187, 26);
             this.dateTimePIcker_ActivityStart.TabIndex = 11;
             // 
             // label6
@@ -475,9 +484,10 @@
             this.label6.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(862, 718);
+            this.label6.Location = new System.Drawing.Point(574, 466);
+            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(220, 29);
+            this.label6.Size = new System.Drawing.Size(146, 20);
             this.label6.TabIndex = 10;
             this.label6.Text = "End Date and Time";
             // 
@@ -486,9 +496,10 @@
             this.label5.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(514, 718);
+            this.label5.Location = new System.Drawing.Point(343, 466);
+            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(226, 29);
+            this.label5.Size = new System.Drawing.Size(152, 20);
             this.label5.TabIndex = 10;
             this.label5.Text = "Start Date and Time";
             // 
@@ -497,9 +508,10 @@
             this.label4.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(279, 718);
+            this.label4.Location = new System.Drawing.Point(186, 466);
+            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(135, 29);
+            this.label4.Size = new System.Drawing.Size(89, 20);
             this.label4.TabIndex = 10;
             this.label4.Text = "Description";
             // 
@@ -507,19 +519,19 @@
             // 
             this.txtActivityDesc.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.txtActivityDesc.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtActivityDesc.Location = new System.Drawing.Point(285, 755);
+            this.txtActivityDesc.Location = new System.Drawing.Point(190, 491);
+            this.txtActivityDesc.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtActivityDesc.Name = "txtActivityDesc";
-            this.txtActivityDesc.Size = new System.Drawing.Size(151, 35);
+            this.txtActivityDesc.Size = new System.Drawing.Size(102, 26);
             this.txtActivityDesc.TabIndex = 9;
             // 
             // btn_removeActivity
             // 
             this.btn_removeActivity.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.btn_removeActivity.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_removeActivity.Location = new System.Drawing.Point(1190, 500);
-            this.btn_removeActivity.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btn_removeActivity.Location = new System.Drawing.Point(794, 325);
             this.btn_removeActivity.Name = "btn_removeActivity";
-            this.btn_removeActivity.Size = new System.Drawing.Size(232, 58);
+            this.btn_removeActivity.Size = new System.Drawing.Size(154, 37);
             this.btn_removeActivity.TabIndex = 8;
             this.btn_removeActivity.Text = "&Remove activity";
             this.btn_removeActivity.UseVisualStyleBackColor = true;
@@ -529,10 +541,9 @@
             // 
             this.btn_updateActivity.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.btn_updateActivity.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_updateActivity.Location = new System.Drawing.Point(1190, 377);
-            this.btn_updateActivity.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btn_updateActivity.Location = new System.Drawing.Point(794, 245);
             this.btn_updateActivity.Name = "btn_updateActivity";
-            this.btn_updateActivity.Size = new System.Drawing.Size(232, 58);
+            this.btn_updateActivity.Size = new System.Drawing.Size(154, 37);
             this.btn_updateActivity.TabIndex = 7;
             this.btn_updateActivity.Text = "&Update activity";
             this.btn_updateActivity.UseVisualStyleBackColor = true;
@@ -542,10 +553,9 @@
             // 
             this.btn_addActivity.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.btn_addActivity.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_addActivity.Location = new System.Drawing.Point(1190, 263);
-            this.btn_addActivity.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btn_addActivity.Location = new System.Drawing.Point(794, 171);
             this.btn_addActivity.Name = "btn_addActivity";
-            this.btn_addActivity.Size = new System.Drawing.Size(232, 58);
+            this.btn_addActivity.Size = new System.Drawing.Size(154, 37);
             this.btn_addActivity.TabIndex = 6;
             this.btn_addActivity.Text = "&Add activity";
             this.btn_addActivity.UseVisualStyleBackColor = true;
@@ -566,10 +576,9 @@
             this.listViewActivities.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.listViewActivities.FullRowSelect = true;
             this.listViewActivities.HideSelection = false;
-            this.listViewActivities.Location = new System.Drawing.Point(172, 166);
-            this.listViewActivities.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.listViewActivities.Location = new System.Drawing.Point(115, 108);
             this.listViewActivities.Name = "listViewActivities";
-            this.listViewActivities.Size = new System.Drawing.Size(941, 524);
+            this.listViewActivities.Size = new System.Drawing.Size(628, 342);
             this.listViewActivities.TabIndex = 5;
             this.listViewActivities.UseCompatibleStateImageBehavior = false;
             this.listViewActivities.View = System.Windows.Forms.View.Details;
@@ -599,10 +608,9 @@
             this.pictureBox7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox7.Image = global::SomerenUI.Properties.Resources.someren;
             this.pictureBox7.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox7.InitialImage")));
-            this.pictureBox7.Location = new System.Drawing.Point(1400, 0);
-            this.pictureBox7.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.pictureBox7.Location = new System.Drawing.Point(933, 0);
             this.pictureBox7.Name = "pictureBox7";
-            this.pictureBox7.Size = new System.Drawing.Size(195, 189);
+            this.pictureBox7.Size = new System.Drawing.Size(130, 123);
             this.pictureBox7.TabIndex = 0;
             this.pictureBox7.TabStop = false;
             this.pictureBox7.Click += new System.EventHandler(this.pictureBox7_Click);
@@ -612,10 +620,9 @@
             this.label2.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(591, 72);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Location = new System.Drawing.Point(394, 47);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(269, 69);
+            this.label2.Size = new System.Drawing.Size(178, 46);
             this.label2.TabIndex = 3;
             this.label2.Text = "Activities";
             // 
@@ -628,10 +635,9 @@
             this.pnlStudents.Controls.Add(this.listViewStudents);
             this.pnlStudents.Controls.Add(this.pictureBox1);
             this.pnlStudents.Controls.Add(this.lbl_Students);
-            this.pnlStudents.Location = new System.Drawing.Point(18, 42);
-            this.pnlStudents.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.pnlStudents.Location = new System.Drawing.Point(12, 28);
             this.pnlStudents.Name = "pnlStudents";
-            this.pnlStudents.Size = new System.Drawing.Size(1644, 811);
+            this.pnlStudents.Size = new System.Drawing.Size(1096, 527);
             this.pnlStudents.TabIndex = 4;
             // 
             // listViewStudents
@@ -645,10 +651,9 @@
             this.studentLastName});
             this.listViewStudents.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.listViewStudents.HideSelection = false;
-            this.listViewStudents.Location = new System.Drawing.Point(462, 246);
-            this.listViewStudents.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.listViewStudents.Location = new System.Drawing.Point(308, 160);
             this.listViewStudents.Name = "listViewStudents";
-            this.listViewStudents.Size = new System.Drawing.Size(714, 471);
+            this.listViewStudents.Size = new System.Drawing.Size(477, 307);
             this.listViewStudents.TabIndex = 5;
             this.listViewStudents.UseCompatibleStateImageBehavior = false;
             this.listViewStudents.View = System.Windows.Forms.View.Details;
@@ -673,10 +678,9 @@
             this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox1.Image = global::SomerenUI.Properties.Resources.someren;
             this.pictureBox1.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.InitialImage")));
-            this.pictureBox1.Location = new System.Drawing.Point(1449, 0);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.pictureBox1.Location = new System.Drawing.Point(966, 0);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(195, 189);
+            this.pictureBox1.Size = new System.Drawing.Size(130, 123);
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
@@ -686,10 +690,9 @@
             this.lbl_Students.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.lbl_Students.AutoSize = true;
             this.lbl_Students.Font = new System.Drawing.Font("Microsoft Sans Serif", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_Students.Location = new System.Drawing.Point(598, 106);
-            this.lbl_Students.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbl_Students.Location = new System.Drawing.Point(399, 69);
             this.lbl_Students.Name = "lbl_Students";
-            this.lbl_Students.Size = new System.Drawing.Size(423, 108);
+            this.lbl_Students.Size = new System.Drawing.Size(287, 73);
             this.lbl_Students.TabIndex = 3;
             this.lbl_Students.Text = "Students";
             // 
@@ -704,10 +707,9 @@
             this.pnlTeachers.Controls.Add(this.pictureBox2);
             this.pnlTeachers.Controls.Add(this.lblTeacher);
             this.pnlTeachers.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
-            this.pnlTeachers.Location = new System.Drawing.Point(18, 42);
-            this.pnlTeachers.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.pnlTeachers.Location = new System.Drawing.Point(12, 28);
             this.pnlTeachers.Name = "pnlTeachers";
-            this.pnlTeachers.Size = new System.Drawing.Size(1643, 810);
+            this.pnlTeachers.Size = new System.Drawing.Size(1096, 527);
             this.pnlTeachers.TabIndex = 6;
             // 
             // listViewTeachers
@@ -722,10 +724,9 @@
             this.teacherIsSupervisor});
             this.listViewTeachers.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.listViewTeachers.HideSelection = false;
-            this.listViewTeachers.Location = new System.Drawing.Point(297, 248);
-            this.listViewTeachers.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.listViewTeachers.Location = new System.Drawing.Point(198, 161);
             this.listViewTeachers.Name = "listViewTeachers";
-            this.listViewTeachers.Size = new System.Drawing.Size(1076, 471);
+            this.listViewTeachers.Size = new System.Drawing.Size(718, 307);
             this.listViewTeachers.TabIndex = 5;
             this.listViewTeachers.UseCompatibleStateImageBehavior = false;
             this.listViewTeachers.View = System.Windows.Forms.View.Details;
@@ -750,10 +751,9 @@
             this.pictureBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox2.Image = global::SomerenUI.Properties.Resources.someren;
             this.pictureBox2.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox2.InitialImage")));
-            this.pictureBox2.Location = new System.Drawing.Point(1448, 0);
-            this.pictureBox2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.pictureBox2.Location = new System.Drawing.Point(965, 0);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(195, 189);
+            this.pictureBox2.Size = new System.Drawing.Size(130, 123);
             this.pictureBox2.TabIndex = 0;
             this.pictureBox2.TabStop = false;
             this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
@@ -763,10 +763,9 @@
             this.lblTeacher.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.lblTeacher.AutoSize = true;
             this.lblTeacher.Font = new System.Drawing.Font("Microsoft Sans Serif", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTeacher.Location = new System.Drawing.Point(597, 94);
-            this.lblTeacher.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblTeacher.Location = new System.Drawing.Point(398, 61);
             this.lblTeacher.Name = "lblTeacher";
-            this.lblTeacher.Size = new System.Drawing.Size(444, 108);
+            this.lblTeacher.Size = new System.Drawing.Size(300, 73);
             this.lblTeacher.TabIndex = 3;
             this.lblTeacher.Text = "Teachers";
             // 
@@ -779,10 +778,9 @@
             this.pnlRooms.Controls.Add(this.listViewRoom);
             this.pnlRooms.Controls.Add(this.pictureBox3);
             this.pnlRooms.Controls.Add(this.label_Rooms);
-            this.pnlRooms.Location = new System.Drawing.Point(16, 46);
-            this.pnlRooms.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.pnlRooms.Location = new System.Drawing.Point(10, 30);
             this.pnlRooms.Name = "pnlRooms";
-            this.pnlRooms.Size = new System.Drawing.Size(1641, 806);
+            this.pnlRooms.Size = new System.Drawing.Size(1094, 524);
             this.pnlRooms.TabIndex = 7;
             // 
             // listViewRoom
@@ -796,10 +794,9 @@
             this.colHeadRoomType});
             this.listViewRoom.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.listViewRoom.HideSelection = false;
-            this.listViewRoom.Location = new System.Drawing.Point(352, 218);
-            this.listViewRoom.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.listViewRoom.Location = new System.Drawing.Point(235, 141);
             this.listViewRoom.Name = "listViewRoom";
-            this.listViewRoom.Size = new System.Drawing.Size(910, 471);
+            this.listViewRoom.Size = new System.Drawing.Size(607, 307);
             this.listViewRoom.TabIndex = 5;
             this.listViewRoom.UseCompatibleStateImageBehavior = false;
             this.listViewRoom.View = System.Windows.Forms.View.Details;
@@ -824,10 +821,9 @@
             this.pictureBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox3.Image = global::SomerenUI.Properties.Resources.someren;
             this.pictureBox3.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox3.InitialImage")));
-            this.pictureBox3.Location = new System.Drawing.Point(1446, 0);
-            this.pictureBox3.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.pictureBox3.Location = new System.Drawing.Point(964, 0);
             this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(195, 189);
+            this.pictureBox3.Size = new System.Drawing.Size(130, 123);
             this.pictureBox3.TabIndex = 0;
             this.pictureBox3.TabStop = false;
             this.pictureBox3.Click += new System.EventHandler(this.pictureBox3_Click);
@@ -837,10 +833,9 @@
             this.label_Rooms.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label_Rooms.AutoSize = true;
             this.label_Rooms.Font = new System.Drawing.Font("Microsoft Sans Serif", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_Rooms.Location = new System.Drawing.Point(614, 54);
-            this.label_Rooms.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label_Rooms.Location = new System.Drawing.Point(410, 35);
             this.label_Rooms.Name = "label_Rooms";
-            this.label_Rooms.Size = new System.Drawing.Size(348, 108);
+            this.label_Rooms.Size = new System.Drawing.Size(235, 73);
             this.label_Rooms.TabIndex = 3;
             this.label_Rooms.Text = "Rooms";
             // 
@@ -853,38 +848,34 @@
             this.pnlDrink.Controls.Add(this.listViewDrink);
             this.pnlDrink.Controls.Add(this.pictureBox4);
             this.pnlDrink.Controls.Add(this.label1);
-            this.pnlDrink.Location = new System.Drawing.Point(81, 77);
-            this.pnlDrink.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.pnlDrink.Location = new System.Drawing.Point(54, 50);
             this.pnlDrink.Name = "pnlDrink";
-            this.pnlDrink.Size = new System.Drawing.Size(1530, 766);
+            this.pnlDrink.Size = new System.Drawing.Size(1020, 498);
             this.pnlDrink.TabIndex = 8;
             // 
             // btnRemoveDrink
             // 
-            this.btnRemoveDrink.Location = new System.Drawing.Point(1190, 500);
-            this.btnRemoveDrink.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnRemoveDrink.Location = new System.Drawing.Point(794, 325);
             this.btnRemoveDrink.Name = "btnRemoveDrink";
-            this.btnRemoveDrink.Size = new System.Drawing.Size(232, 58);
+            this.btnRemoveDrink.Size = new System.Drawing.Size(154, 37);
             this.btnRemoveDrink.TabIndex = 8;
             this.btnRemoveDrink.Text = "Remove drink";
             this.btnRemoveDrink.UseVisualStyleBackColor = true;
             // 
             // btnUpdateDrink
             // 
-            this.btnUpdateDrink.Location = new System.Drawing.Point(1190, 377);
-            this.btnUpdateDrink.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnUpdateDrink.Location = new System.Drawing.Point(794, 245);
             this.btnUpdateDrink.Name = "btnUpdateDrink";
-            this.btnUpdateDrink.Size = new System.Drawing.Size(232, 58);
+            this.btnUpdateDrink.Size = new System.Drawing.Size(154, 37);
             this.btnUpdateDrink.TabIndex = 7;
             this.btnUpdateDrink.Text = "Update drink";
             this.btnUpdateDrink.UseVisualStyleBackColor = true;
             // 
             // btnAddDrink
             // 
-            this.btnAddDrink.Location = new System.Drawing.Point(1190, 263);
-            this.btnAddDrink.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnAddDrink.Location = new System.Drawing.Point(794, 171);
             this.btnAddDrink.Name = "btnAddDrink";
-            this.btnAddDrink.Size = new System.Drawing.Size(232, 58);
+            this.btnAddDrink.Size = new System.Drawing.Size(154, 37);
             this.btnAddDrink.TabIndex = 6;
             this.btnAddDrink.Text = "Add drink";
             this.btnAddDrink.UseVisualStyleBackColor = true;
@@ -902,10 +893,9 @@
             this.listViewDrink.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.listViewDrink.FullRowSelect = true;
             this.listViewDrink.HideSelection = false;
-            this.listViewDrink.Location = new System.Drawing.Point(172, 166);
-            this.listViewDrink.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.listViewDrink.Location = new System.Drawing.Point(115, 108);
             this.listViewDrink.Name = "listViewDrink";
-            this.listViewDrink.Size = new System.Drawing.Size(941, 524);
+            this.listViewDrink.Size = new System.Drawing.Size(628, 342);
             this.listViewDrink.TabIndex = 5;
             this.listViewDrink.UseCompatibleStateImageBehavior = false;
             this.listViewDrink.View = System.Windows.Forms.View.Details;
@@ -938,10 +928,9 @@
             // 
             this.pictureBox4.Image = global::SomerenUI.Properties.Resources.someren;
             this.pictureBox4.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox4.InitialImage")));
-            this.pictureBox4.Location = new System.Drawing.Point(1208, 0);
-            this.pictureBox4.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.pictureBox4.Location = new System.Drawing.Point(806, 0);
             this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(195, 189);
+            this.pictureBox4.Size = new System.Drawing.Size(130, 123);
             this.pictureBox4.TabIndex = 0;
             this.pictureBox4.TabStop = false;
             // 
@@ -949,10 +938,9 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(591, 72);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(394, 47);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(200, 69);
+            this.label1.Size = new System.Drawing.Size(133, 46);
             this.label1.TabIndex = 3;
             this.label1.Text = "Drinks";
             // 
@@ -977,10 +965,9 @@
             this.pnlCashRegister.Controls.Add(this.txtBDrinkName);
             this.pnlCashRegister.Controls.Add(this.btnCheckOut);
             this.pnlCashRegister.Controls.Add(this.txtBStudentID);
-            this.pnlCashRegister.Location = new System.Drawing.Point(40, 42);
-            this.pnlCashRegister.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.pnlCashRegister.Location = new System.Drawing.Point(27, 28);
             this.pnlCashRegister.Name = "pnlCashRegister";
-            this.pnlCashRegister.Size = new System.Drawing.Size(1622, 806);
+            this.pnlCashRegister.Size = new System.Drawing.Size(1082, 524);
             this.pnlCashRegister.TabIndex = 9;
             // 
             // lblCRDrink
@@ -988,10 +975,9 @@
             this.lblCRDrink.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblCRDrink.AutoSize = true;
             this.lblCRDrink.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCRDrink.Location = new System.Drawing.Point(1059, 160);
-            this.lblCRDrink.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblCRDrink.Location = new System.Drawing.Point(706, 104);
             this.lblCRDrink.Name = "lblCRDrink";
-            this.lblCRDrink.Size = new System.Drawing.Size(271, 47);
+            this.lblCRDrink.Size = new System.Drawing.Size(178, 31);
             this.lblCRDrink.TabIndex = 16;
             this.lblCRDrink.Text = "Select a drink";
             // 
@@ -999,10 +985,9 @@
             // 
             this.lblCRStudent.AutoSize = true;
             this.lblCRStudent.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCRStudent.Location = new System.Drawing.Point(166, 157);
-            this.lblCRStudent.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblCRStudent.Location = new System.Drawing.Point(111, 102);
             this.lblCRStudent.Name = "lblCRStudent";
-            this.lblCRStudent.Size = new System.Drawing.Size(315, 47);
+            this.lblCRStudent.Size = new System.Drawing.Size(209, 31);
             this.lblCRStudent.TabIndex = 15;
             this.lblCRStudent.Text = "Select a student";
             // 
@@ -1018,9 +1003,10 @@
             this.listViewCRDrinks.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.listViewCRDrinks.FullRowSelect = true;
             this.listViewCRDrinks.HideSelection = false;
-            this.listViewCRDrinks.Location = new System.Drawing.Point(885, 223);
+            this.listViewCRDrinks.Location = new System.Drawing.Point(590, 145);
+            this.listViewCRDrinks.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.listViewCRDrinks.Name = "listViewCRDrinks";
-            this.listViewCRDrinks.Size = new System.Drawing.Size(637, 404);
+            this.listViewCRDrinks.Size = new System.Drawing.Size(426, 264);
             this.listViewCRDrinks.TabIndex = 14;
             this.listViewCRDrinks.UseCompatibleStateImageBehavior = false;
             this.listViewCRDrinks.View = System.Windows.Forms.View.Details;
@@ -1056,9 +1042,10 @@
             this.listViewCRStudent.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.listViewCRStudent.FullRowSelect = true;
             this.listViewCRStudent.HideSelection = false;
-            this.listViewCRStudent.Location = new System.Drawing.Point(158, 223);
+            this.listViewCRStudent.Location = new System.Drawing.Point(105, 145);
+            this.listViewCRStudent.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.listViewCRStudent.Name = "listViewCRStudent";
-            this.listViewCRStudent.Size = new System.Drawing.Size(354, 404);
+            this.listViewCRStudent.Size = new System.Drawing.Size(237, 264);
             this.listViewCRStudent.TabIndex = 14;
             this.listViewCRStudent.UseCompatibleStateImageBehavior = false;
             this.listViewCRStudent.View = System.Windows.Forms.View.Details;
@@ -1079,9 +1066,10 @@
             this.lblDrinkPrice.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.lblDrinkPrice.AutoSize = true;
             this.lblDrinkPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDrinkPrice.Location = new System.Drawing.Point(1028, 689);
+            this.lblDrinkPrice.Location = new System.Drawing.Point(686, 448);
+            this.lblDrinkPrice.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblDrinkPrice.Name = "lblDrinkPrice";
-            this.lblDrinkPrice.Size = new System.Drawing.Size(159, 33);
+            this.lblDrinkPrice.Size = new System.Drawing.Size(101, 24);
             this.lblDrinkPrice.TabIndex = 13;
             this.lblDrinkPrice.Text = "Drink Price";
             // 
@@ -1090,9 +1078,10 @@
             this.lblDrinkName.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.lblDrinkName.AutoSize = true;
             this.lblDrinkName.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDrinkName.Location = new System.Drawing.Point(688, 689);
+            this.lblDrinkName.Location = new System.Drawing.Point(459, 448);
+            this.lblDrinkName.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblDrinkName.Name = "lblDrinkName";
-            this.lblDrinkName.Size = new System.Drawing.Size(170, 33);
+            this.lblDrinkName.Size = new System.Drawing.Size(109, 24);
             this.lblDrinkName.TabIndex = 13;
             this.lblDrinkName.Text = "Drink Name";
             // 
@@ -1101,9 +1090,10 @@
             this.lblStudentName.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.lblStudentName.AutoSize = true;
             this.lblStudentName.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblStudentName.Location = new System.Drawing.Point(345, 689);
+            this.lblStudentName.Location = new System.Drawing.Point(230, 448);
+            this.lblStudentName.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblStudentName.Name = "lblStudentName";
-            this.lblStudentName.Size = new System.Drawing.Size(200, 33);
+            this.lblStudentName.Size = new System.Drawing.Size(130, 24);
             this.lblStudentName.TabIndex = 13;
             this.lblStudentName.Text = "Student Name";
             // 
@@ -1112,10 +1102,9 @@
             this.pictureBox5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox5.Image = global::SomerenUI.Properties.Resources.someren;
             this.pictureBox5.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox5.InitialImage")));
-            this.pictureBox5.Location = new System.Drawing.Point(1426, 0);
-            this.pictureBox5.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.pictureBox5.Location = new System.Drawing.Point(951, 0);
             this.pictureBox5.Name = "pictureBox5";
-            this.pictureBox5.Size = new System.Drawing.Size(195, 189);
+            this.pictureBox5.Size = new System.Drawing.Size(130, 123);
             this.pictureBox5.TabIndex = 0;
             this.pictureBox5.TabStop = false;
             this.pictureBox5.Click += new System.EventHandler(this.pictureBox5_Click);
@@ -1125,9 +1114,10 @@
             this.lblStudentID.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.lblStudentID.AutoSize = true;
             this.lblStudentID.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblStudentID.Location = new System.Drawing.Point(152, 689);
+            this.lblStudentID.Location = new System.Drawing.Point(101, 448);
+            this.lblStudentID.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblStudentID.Name = "lblStudentID";
-            this.lblStudentID.Size = new System.Drawing.Size(151, 33);
+            this.lblStudentID.Size = new System.Drawing.Size(96, 24);
             this.lblStudentID.TabIndex = 13;
             this.lblStudentID.Text = "Student ID";
             // 
@@ -1136,10 +1126,9 @@
             this.lblCashRegister.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.lblCashRegister.AutoSize = true;
             this.lblCashRegister.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCashRegister.Location = new System.Drawing.Point(513, 35);
-            this.lblCashRegister.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblCashRegister.Location = new System.Drawing.Point(342, 23);
             this.lblCashRegister.Name = "lblCashRegister";
-            this.lblCashRegister.Size = new System.Drawing.Size(491, 82);
+            this.lblCashRegister.Size = new System.Drawing.Size(329, 55);
             this.lblCashRegister.TabIndex = 3;
             this.lblCashRegister.Text = "Cash Register";
             // 
@@ -1147,27 +1136,30 @@
             // 
             this.txtBDrinkPrice.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.txtBDrinkPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtBDrinkPrice.Location = new System.Drawing.Point(1034, 729);
+            this.txtBDrinkPrice.Location = new System.Drawing.Point(689, 474);
+            this.txtBDrinkPrice.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtBDrinkPrice.Name = "txtBDrinkPrice";
-            this.txtBDrinkPrice.Size = new System.Drawing.Size(139, 40);
+            this.txtBDrinkPrice.Size = new System.Drawing.Size(94, 29);
             this.txtBDrinkPrice.TabIndex = 12;
             // 
             // txtBStudentName
             // 
             this.txtBStudentName.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.txtBStudentName.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtBStudentName.Location = new System.Drawing.Point(351, 729);
+            this.txtBStudentName.Location = new System.Drawing.Point(234, 474);
+            this.txtBStudentName.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtBStudentName.Name = "txtBStudentName";
-            this.txtBStudentName.Size = new System.Drawing.Size(242, 40);
+            this.txtBStudentName.Size = new System.Drawing.Size(163, 29);
             this.txtBStudentName.TabIndex = 12;
             // 
             // txtBDrinkName
             // 
             this.txtBDrinkName.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.txtBDrinkName.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtBDrinkName.Location = new System.Drawing.Point(694, 729);
+            this.txtBDrinkName.Location = new System.Drawing.Point(463, 474);
+            this.txtBDrinkName.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtBDrinkName.Name = "txtBDrinkName";
-            this.txtBDrinkName.Size = new System.Drawing.Size(254, 40);
+            this.txtBDrinkName.Size = new System.Drawing.Size(170, 29);
             this.txtBDrinkName.TabIndex = 12;
             // 
             // btnCheckOut
@@ -1175,9 +1167,10 @@
             this.btnCheckOut.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCheckOut.BackColor = System.Drawing.Color.Transparent;
             this.btnCheckOut.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCheckOut.Location = new System.Drawing.Point(1290, 689);
+            this.btnCheckOut.Location = new System.Drawing.Point(860, 448);
+            this.btnCheckOut.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnCheckOut.Name = "btnCheckOut";
-            this.btnCheckOut.Size = new System.Drawing.Size(278, 85);
+            this.btnCheckOut.Size = new System.Drawing.Size(185, 55);
             this.btnCheckOut.TabIndex = 11;
             this.btnCheckOut.Text = "Check Out!";
             this.btnCheckOut.UseVisualStyleBackColor = false;
@@ -1187,9 +1180,10 @@
             // 
             this.txtBStudentID.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.txtBStudentID.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtBStudentID.Location = new System.Drawing.Point(158, 729);
+            this.txtBStudentID.Location = new System.Drawing.Point(105, 474);
+            this.txtBStudentID.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtBStudentID.Name = "txtBStudentID";
-            this.txtBStudentID.Size = new System.Drawing.Size(98, 40);
+            this.txtBStudentID.Size = new System.Drawing.Size(67, 29);
             this.txtBStudentID.TabIndex = 12;
             // 
             // pnlRevenueReport
@@ -1205,10 +1199,9 @@
             this.pnlRevenueReport.Controls.Add(this.dateTimePickerStart);
             this.pnlRevenueReport.Controls.Add(this.pictureBox6);
             this.pnlRevenueReport.Controls.Add(this.lblRevenueReport);
-            this.pnlRevenueReport.Location = new System.Drawing.Point(24, 43);
-            this.pnlRevenueReport.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.pnlRevenueReport.Location = new System.Drawing.Point(16, 28);
             this.pnlRevenueReport.Name = "pnlRevenueReport";
-            this.pnlRevenueReport.Size = new System.Drawing.Size(1638, 809);
+            this.pnlRevenueReport.Size = new System.Drawing.Size(1092, 526);
             this.pnlRevenueReport.TabIndex = 10;
             // 
             // listViewRevenueReport
@@ -1221,11 +1214,10 @@
             this.columnHeaderCustomers});
             this.listViewRevenueReport.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.listViewRevenueReport.HideSelection = false;
-            this.listViewRevenueReport.Location = new System.Drawing.Point(400, 534);
-            this.listViewRevenueReport.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.listViewRevenueReport.Location = new System.Drawing.Point(267, 347);
             this.listViewRevenueReport.MultiSelect = false;
             this.listViewRevenueReport.Name = "listViewRevenueReport";
-            this.listViewRevenueReport.Size = new System.Drawing.Size(820, 121);
+            this.listViewRevenueReport.Size = new System.Drawing.Size(548, 80);
             this.listViewRevenueReport.TabIndex = 8;
             this.listViewRevenueReport.UseCompatibleStateImageBehavior = false;
             this.listViewRevenueReport.View = System.Windows.Forms.View.Details;
@@ -1252,10 +1244,9 @@
             this.lblEndDate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblEndDate.AutoSize = true;
             this.lblEndDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblEndDate.Location = new System.Drawing.Point(1060, 272);
-            this.lblEndDate.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblEndDate.Location = new System.Drawing.Point(706, 177);
             this.lblEndDate.Name = "lblEndDate";
-            this.lblEndDate.Size = new System.Drawing.Size(407, 61);
+            this.lblEndDate.Size = new System.Drawing.Size(266, 39);
             this.lblEndDate.TabIndex = 7;
             this.lblEndDate.Text = "Select end date:";
             // 
@@ -1263,10 +1254,9 @@
             // 
             this.lblStartDate.AutoSize = true;
             this.lblStartDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblStartDate.Location = new System.Drawing.Point(178, 272);
-            this.lblStartDate.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblStartDate.Location = new System.Drawing.Point(118, 177);
             this.lblStartDate.Name = "lblStartDate";
-            this.lblStartDate.Size = new System.Drawing.Size(424, 61);
+            this.lblStartDate.Size = new System.Drawing.Size(278, 39);
             this.lblStartDate.TabIndex = 6;
             this.lblStartDate.Text = "Select start date:";
             // 
@@ -1276,10 +1266,9 @@
             this.dateTimePickerEnd.CalendarFont = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dateTimePickerEnd.CalendarMonthBackground = System.Drawing.SystemColors.WindowText;
             this.dateTimePickerEnd.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateTimePickerEnd.Location = new System.Drawing.Point(903, 355);
-            this.dateTimePickerEnd.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.dateTimePickerEnd.Location = new System.Drawing.Point(602, 231);
             this.dateTimePickerEnd.Name = "dateTimePickerEnd";
-            this.dateTimePickerEnd.Size = new System.Drawing.Size(692, 57);
+            this.dateTimePickerEnd.Size = new System.Drawing.Size(463, 40);
             this.dateTimePickerEnd.TabIndex = 5;
             this.dateTimePickerEnd.ValueChanged += new System.EventHandler(this.dateTimePickerEnd_ValueChanged);
             // 
@@ -1288,10 +1277,9 @@
             this.dateTimePickerStart.CalendarFont = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dateTimePickerStart.CustomFormat = "";
             this.dateTimePickerStart.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateTimePickerStart.Location = new System.Drawing.Point(38, 355);
-            this.dateTimePickerStart.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.dateTimePickerStart.Location = new System.Drawing.Point(26, 231);
             this.dateTimePickerStart.Name = "dateTimePickerStart";
-            this.dateTimePickerStart.Size = new System.Drawing.Size(692, 57);
+            this.dateTimePickerStart.Size = new System.Drawing.Size(463, 40);
             this.dateTimePickerStart.TabIndex = 4;
             this.dateTimePickerStart.ValueChanged += new System.EventHandler(this.dateTimePickerStart_ValueChanged);
             // 
@@ -1300,10 +1288,9 @@
             this.pictureBox6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox6.Image = global::SomerenUI.Properties.Resources.someren;
             this.pictureBox6.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox6.InitialImage")));
-            this.pictureBox6.Location = new System.Drawing.Point(1443, 3);
-            this.pictureBox6.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.pictureBox6.Location = new System.Drawing.Point(962, 2);
             this.pictureBox6.Name = "pictureBox6";
-            this.pictureBox6.Size = new System.Drawing.Size(195, 189);
+            this.pictureBox6.Size = new System.Drawing.Size(130, 123);
             this.pictureBox6.TabIndex = 0;
             this.pictureBox6.TabStop = false;
             this.pictureBox6.Click += new System.EventHandler(this.pictureBox6_Click);
@@ -1313,10 +1300,9 @@
             this.lblRevenueReport.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.lblRevenueReport.AutoSize = true;
             this.lblRevenueReport.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblRevenueReport.Location = new System.Drawing.Point(532, 68);
-            this.lblRevenueReport.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblRevenueReport.Location = new System.Drawing.Point(355, 44);
             this.lblRevenueReport.Name = "lblRevenueReport";
-            this.lblRevenueReport.Size = new System.Drawing.Size(558, 82);
+            this.lblRevenueReport.Size = new System.Drawing.Size(376, 55);
             this.lblRevenueReport.TabIndex = 3;
             this.lblRevenueReport.Text = "Revenue Report";
             // 
@@ -1335,20 +1321,18 @@
             this.pnlSupervisors.Controls.Add(this.listViewSupervisorActivities);
             this.pnlSupervisors.Controls.Add(this.pictureBox8);
             this.pnlSupervisors.Controls.Add(this.lblSupervisors);
-            this.pnlSupervisors.Location = new System.Drawing.Point(15, 42);
-            this.pnlSupervisors.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.pnlSupervisors.Location = new System.Drawing.Point(10, 28);
             this.pnlSupervisors.Name = "pnlSupervisors";
-            this.pnlSupervisors.Size = new System.Drawing.Size(1641, 806);
+            this.pnlSupervisors.Size = new System.Drawing.Size(1094, 524);
             this.pnlSupervisors.TabIndex = 12;
             // 
             // btnRemoveSupervisor
             // 
             this.btnRemoveSupervisor.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnRemoveSupervisor.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRemoveSupervisor.Location = new System.Drawing.Point(164, 700);
-            this.btnRemoveSupervisor.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnRemoveSupervisor.Location = new System.Drawing.Point(110, 455);
             this.btnRemoveSupervisor.Name = "btnRemoveSupervisor";
-            this.btnRemoveSupervisor.Size = new System.Drawing.Size(292, 65);
+            this.btnRemoveSupervisor.Size = new System.Drawing.Size(195, 42);
             this.btnRemoveSupervisor.TabIndex = 11;
             this.btnRemoveSupervisor.Text = "Remove supervisor";
             this.btnRemoveSupervisor.UseVisualStyleBackColor = true;
@@ -1359,10 +1343,9 @@
             this.btnAddSupervisor.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnAddSupervisor.BackColor = System.Drawing.Color.Transparent;
             this.btnAddSupervisor.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAddSupervisor.Location = new System.Drawing.Point(1212, 706);
-            this.btnAddSupervisor.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnAddSupervisor.Location = new System.Drawing.Point(808, 459);
             this.btnAddSupervisor.Name = "btnAddSupervisor";
-            this.btnAddSupervisor.Size = new System.Drawing.Size(292, 65);
+            this.btnAddSupervisor.Size = new System.Drawing.Size(195, 42);
             this.btnAddSupervisor.TabIndex = 10;
             this.btnAddSupervisor.Text = "Add supervisor to activity";
             this.btnAddSupervisor.UseVisualStyleBackColor = false;
@@ -1379,10 +1362,9 @@
             this.listViewNotSupervisors.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.listViewNotSupervisors.FullRowSelect = true;
             this.listViewNotSupervisors.HideSelection = false;
-            this.listViewNotSupervisors.Location = new System.Drawing.Point(1166, 474);
-            this.listViewNotSupervisors.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.listViewNotSupervisors.Location = new System.Drawing.Point(777, 308);
             this.listViewNotSupervisors.Name = "listViewNotSupervisors";
-            this.listViewNotSupervisors.Size = new System.Drawing.Size(350, 207);
+            this.listViewNotSupervisors.Size = new System.Drawing.Size(234, 135);
             this.listViewNotSupervisors.TabIndex = 9;
             this.listViewNotSupervisors.UseCompatibleStateImageBehavior = false;
             this.listViewNotSupervisors.View = System.Windows.Forms.View.Details;
@@ -1403,10 +1385,9 @@
             this.lblNotSupervisors.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.lblNotSupervisors.AutoSize = true;
             this.lblNotSupervisors.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNotSupervisors.Location = new System.Drawing.Point(1074, 423);
-            this.lblNotSupervisors.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblNotSupervisors.Location = new System.Drawing.Point(716, 275);
             this.lblNotSupervisors.Name = "lblNotSupervisors";
-            this.lblNotSupervisors.Size = new System.Drawing.Size(549, 33);
+            this.lblNotSupervisors.Size = new System.Drawing.Size(353, 24);
             this.lblNotSupervisors.TabIndex = 8;
             this.lblNotSupervisors.Text = "Teachers who don\'t supervise the activity";
             // 
@@ -1421,10 +1402,9 @@
             this.listViewSupervisors.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.listViewSupervisors.FullRowSelect = true;
             this.listViewSupervisors.HideSelection = false;
-            this.listViewSupervisors.Location = new System.Drawing.Point(136, 474);
-            this.listViewSupervisors.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.listViewSupervisors.Location = new System.Drawing.Point(91, 308);
             this.listViewSupervisors.Name = "listViewSupervisors";
-            this.listViewSupervisors.Size = new System.Drawing.Size(350, 207);
+            this.listViewSupervisors.Size = new System.Drawing.Size(234, 135);
             this.listViewSupervisors.TabIndex = 7;
             this.listViewSupervisors.UseCompatibleStateImageBehavior = false;
             this.listViewSupervisors.View = System.Windows.Forms.View.Details;
@@ -1445,10 +1425,9 @@
             this.lblActivities.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.lblActivities.AutoSize = true;
             this.lblActivities.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblActivities.Location = new System.Drawing.Point(771, 35);
-            this.lblActivities.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblActivities.Location = new System.Drawing.Point(514, 23);
             this.lblActivities.Name = "lblActivities";
-            this.lblActivities.Size = new System.Drawing.Size(159, 40);
+            this.lblActivities.Size = new System.Drawing.Size(107, 29);
             this.lblActivities.TabIndex = 6;
             this.lblActivities.Text = "Activities";
             // 
@@ -1465,11 +1444,10 @@
             this.listViewSupervisorActivities.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.listViewSupervisorActivities.FullRowSelect = true;
             this.listViewSupervisorActivities.HideSelection = false;
-            this.listViewSupervisorActivities.Location = new System.Drawing.Point(435, 85);
-            this.listViewSupervisorActivities.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.listViewSupervisorActivities.Location = new System.Drawing.Point(290, 55);
             this.listViewSupervisorActivities.MultiSelect = false;
             this.listViewSupervisorActivities.Name = "listViewSupervisorActivities";
-            this.listViewSupervisorActivities.Size = new System.Drawing.Size(810, 293);
+            this.listViewSupervisorActivities.Size = new System.Drawing.Size(540, 191);
             this.listViewSupervisorActivities.TabIndex = 5;
             this.listViewSupervisorActivities.UseCompatibleStateImageBehavior = false;
             this.listViewSupervisorActivities.View = System.Windows.Forms.View.Details;
@@ -1499,10 +1477,9 @@
             this.pictureBox8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox8.Image = global::SomerenUI.Properties.Resources.someren;
             this.pictureBox8.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox8.InitialImage")));
-            this.pictureBox8.Location = new System.Drawing.Point(1446, 0);
-            this.pictureBox8.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.pictureBox8.Location = new System.Drawing.Point(964, 0);
             this.pictureBox8.Name = "pictureBox8";
-            this.pictureBox8.Size = new System.Drawing.Size(195, 189);
+            this.pictureBox8.Size = new System.Drawing.Size(130, 123);
             this.pictureBox8.TabIndex = 0;
             this.pictureBox8.TabStop = false;
             this.pictureBox8.Click += new System.EventHandler(this.pictureBox8_Click);
@@ -1512,10 +1489,9 @@
             this.lblSupervisors.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lblSupervisors.AutoSize = true;
             this.lblSupervisors.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSupervisors.Location = new System.Drawing.Point(70, 423);
-            this.lblSupervisors.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblSupervisors.Location = new System.Drawing.Point(46, 275);
             this.lblSupervisors.Name = "lblSupervisors";
-            this.lblSupervisors.Size = new System.Drawing.Size(479, 33);
+            this.lblSupervisors.Size = new System.Drawing.Size(307, 24);
             this.lblSupervisors.TabIndex = 3;
             this.lblSupervisors.Text = "Teachers who supervise the activity";
             // 
@@ -1525,43 +1501,116 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pnlRegister.BackColor = System.Drawing.Color.White;
+            this.pnlRegister.Controls.Add(this.lblLicenceKey);
+            this.pnlRegister.Controls.Add(this.txtLicenceKey);
+            this.pnlRegister.Controls.Add(this.txtName);
+            this.pnlRegister.Controls.Add(this.lblName);
+            this.pnlRegister.Controls.Add(this.lblPassword);
+            this.pnlRegister.Controls.Add(this.lblUsername);
             this.pnlRegister.Controls.Add(this.txtPassword);
             this.pnlRegister.Controls.Add(this.txtUserName);
             this.pnlRegister.Controls.Add(this.btnRegisterNow);
             this.pnlRegister.Controls.Add(this.pictureBox9);
             this.pnlRegister.Controls.Add(this.lblRegister);
-            this.pnlRegister.Location = new System.Drawing.Point(21, 35);
-            this.pnlRegister.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.pnlRegister.Location = new System.Drawing.Point(14, 23);
             this.pnlRegister.Name = "pnlRegister";
-            this.pnlRegister.Size = new System.Drawing.Size(1638, 809);
+            this.pnlRegister.Size = new System.Drawing.Size(1092, 526);
             this.pnlRegister.TabIndex = 13;
+            // 
+            // lblLicenceKey
+            // 
+            this.lblLicenceKey.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.lblLicenceKey.AutoSize = true;
+            this.lblLicenceKey.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblLicenceKey.Location = new System.Drawing.Point(398, 128);
+            this.lblLicenceKey.Name = "lblLicenceKey";
+            this.lblLicenceKey.Size = new System.Drawing.Size(114, 24);
+            this.lblLicenceKey.TabIndex = 12;
+            this.lblLicenceKey.Text = "Licence Key";
+            // 
+            // txtLicenceKey
+            // 
+            this.txtLicenceKey.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.txtLicenceKey.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtLicenceKey.Location = new System.Drawing.Point(401, 159);
+            this.txtLicenceKey.Name = "txtLicenceKey";
+            this.txtLicenceKey.Size = new System.Drawing.Size(314, 26);
+            this.txtLicenceKey.TabIndex = 11;
+            this.txtLicenceKey.TextChanged += new System.EventHandler(this.txtLicenceKey_TextChanged);
+            // 
+            // txtName
+            // 
+            this.txtName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.txtName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtName.Location = new System.Drawing.Point(401, 214);
+            this.txtName.Name = "txtName";
+            this.txtName.Size = new System.Drawing.Size(266, 26);
+            this.txtName.TabIndex = 10;
+            this.txtName.TextChanged += new System.EventHandler(this.txtName_TextChanged);
+            // 
+            // lblName
+            // 
+            this.lblName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.lblName.AutoSize = true;
+            this.lblName.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblName.Location = new System.Drawing.Point(398, 188);
+            this.lblName.Name = "lblName";
+            this.lblName.Size = new System.Drawing.Size(61, 24);
+            this.lblName.TabIndex = 9;
+            this.lblName.Text = "Name";
+            // 
+            // lblPassword
+            // 
+            this.lblPassword.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.lblPassword.AutoSize = true;
+            this.lblPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPassword.Location = new System.Drawing.Point(398, 313);
+            this.lblPassword.Name = "lblPassword";
+            this.lblPassword.Size = new System.Drawing.Size(92, 24);
+            this.lblPassword.TabIndex = 8;
+            this.lblPassword.Text = "Password";
+            // 
+            // lblUsername
+            // 
+            this.lblUsername.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.lblUsername.AutoSize = true;
+            this.lblUsername.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblUsername.Location = new System.Drawing.Point(398, 249);
+            this.lblUsername.Name = "lblUsername";
+            this.lblUsername.Size = new System.Drawing.Size(132, 24);
+            this.lblUsername.TabIndex = 7;
+            this.lblUsername.Text = "Email Address";
             // 
             // txtPassword
             // 
+            this.txtPassword.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.txtPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPassword.Location = new System.Drawing.Point(602, 331);
-            this.txtPassword.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtPassword.Location = new System.Drawing.Point(401, 345);
             this.txtPassword.Name = "txtPassword";
-            this.txtPassword.Size = new System.Drawing.Size(397, 35);
+            this.txtPassword.PasswordChar = '*';
+            this.txtPassword.Size = new System.Drawing.Size(266, 26);
             this.txtPassword.TabIndex = 6;
+            this.txtPassword.TextChanged += new System.EventHandler(this.txtPassword_TextChanged);
             // 
             // txtUserName
             // 
+            this.txtUserName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.txtUserName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtUserName.Location = new System.Drawing.Point(602, 245);
-            this.txtUserName.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtUserName.Location = new System.Drawing.Point(401, 281);
             this.txtUserName.Name = "txtUserName";
-            this.txtUserName.Size = new System.Drawing.Size(397, 35);
+            this.txtUserName.Size = new System.Drawing.Size(266, 26);
             this.txtUserName.TabIndex = 5;
+            this.txtUserName.TextChanged += new System.EventHandler(this.txtUserName_TextChanged);
             // 
             // btnRegisterNow
             // 
-            this.btnRegisterNow.Location = new System.Drawing.Point(628, 623);
-            this.btnRegisterNow.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnRegisterNow.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.btnRegisterNow.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRegisterNow.Location = new System.Drawing.Point(419, 407);
             this.btnRegisterNow.Name = "btnRegisterNow";
-            this.btnRegisterNow.Size = new System.Drawing.Size(330, 74);
+            this.btnRegisterNow.Size = new System.Drawing.Size(220, 48);
             this.btnRegisterNow.TabIndex = 4;
-            this.btnRegisterNow.Text = "Register now";
+            this.btnRegisterNow.Text = "Register now!";
             this.btnRegisterNow.UseVisualStyleBackColor = true;
             this.btnRegisterNow.Click += new System.EventHandler(this.btnRegisterNow_Click);
             // 
@@ -1570,34 +1619,32 @@
             this.pictureBox9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox9.Image = global::SomerenUI.Properties.Resources.someren;
             this.pictureBox9.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox9.InitialImage")));
-            this.pictureBox9.Location = new System.Drawing.Point(1443, 3);
-            this.pictureBox9.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.pictureBox9.Location = new System.Drawing.Point(962, 2);
             this.pictureBox9.Name = "pictureBox9";
-            this.pictureBox9.Size = new System.Drawing.Size(195, 189);
+            this.pictureBox9.Size = new System.Drawing.Size(130, 123);
             this.pictureBox9.TabIndex = 0;
             this.pictureBox9.TabStop = false;
+            this.pictureBox9.Click += new System.EventHandler(this.pictureBox9_Click);
             // 
             // lblRegister
             // 
             this.lblRegister.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.lblRegister.AutoSize = true;
             this.lblRegister.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblRegister.Location = new System.Drawing.Point(648, 65);
-            this.lblRegister.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblRegister.Location = new System.Drawing.Point(432, 42);
             this.lblRegister.Name = "lblRegister";
-            this.lblRegister.Size = new System.Drawing.Size(304, 82);
+            this.lblRegister.Size = new System.Drawing.Size(203, 55);
             this.lblRegister.TabIndex = 3;
             this.lblRegister.Text = "Register";
             // 
             // SomerenUI
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(126)))), ((int)(((byte)(172)))));
-            this.ClientSize = new System.Drawing.Size(1680, 882);
-            this.Controls.Add(this.pnlDashboard);
-            this.Controls.Add(this.pnlRegister);
+            this.ClientSize = new System.Drawing.Size(1120, 574);
             this.Controls.Add(this.menuStrip1);
+            this.Controls.Add(this.pnlRegister);
             this.Controls.Add(this.pnlActivity);
             this.Controls.Add(this.pnlRevenueReport);
             this.Controls.Add(this.pnlTeachers);
@@ -1606,9 +1653,9 @@
             this.Controls.Add(this.pnlDrink);
             this.Controls.Add(this.pnlRooms);
             this.Controls.Add(this.pnlSupervisors);
+            this.Controls.Add(this.pnlDashboard);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
-            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "SomerenUI";
             this.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.Text = "SomerenApp";
@@ -1786,6 +1833,12 @@
         private System.Windows.Forms.PictureBox pictureBox9;
         private System.Windows.Forms.Label lblRegister;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label lblPassword;
+        private System.Windows.Forms.Label lblUsername;
+        private System.Windows.Forms.Label lblLicenceKey;
+        private System.Windows.Forms.TextBox txtLicenceKey;
+        private System.Windows.Forms.TextBox txtName;
+        private System.Windows.Forms.Label lblName;
     }
 }
 

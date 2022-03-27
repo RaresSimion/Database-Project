@@ -370,6 +370,19 @@ namespace SomerenUI
             }
             #endregion
 
+            #region Register Panel
+            else if (panelName == "Register")
+            {
+                HidePanels();
+
+                pnlRegister.Show();
+                btnRegisterNow.Enabled = false;
+                btnRegisterNow.BackColor = Color.Transparent;
+                txtUserName.Enabled = false;
+                txtName.Enabled = false;
+                txtPassword.Enabled = false;
+            }
+            #endregion
         }
 
 
@@ -380,6 +393,25 @@ namespace SomerenUI
         {
             dateTimePickerEnd.Enabled = true; //once a start date has been chosen, the end date picker is enabled
             dateTimePickerEnd.MinDate = dateTimePickerStart.Value; //the minimum date for the end date picker becomes the value of the start date picker, so that the user can only choose valid dates
+            try
+            {
+                //get the revenue report for the selected date
+                RevenueReportService revenueService = new RevenueReportService();
+                RevenueReport revenueReport = revenueService.GetReport(dateTimePickerStart.Value, dateTimePickerEnd.Value);
+
+                //remove the report from before and add the new one
+                listViewRevenueReport.Items.Clear();
+                ListViewItem li = new ListViewItem(revenueReport.NumberOfDrinks.ToString());
+                li.SubItems.Add($"€{revenueReport.Turnover}");
+                li.SubItems.Add(revenueReport.NumberOfCustomers.ToString());
+                listViewRevenueReport.Items.Add(li);
+            }
+            catch (Exception ex)
+            {
+                listViewRevenueReport.Items.Clear();
+                MessageBox.Show("Something went wrong while loading the revenue report: " + ex.Message); //error pop up
+                LogError(ex);
+            }
         }
 
         private void dateTimePickerEnd_ValueChanged(object sender, EventArgs e)
@@ -805,6 +837,11 @@ namespace SomerenUI
         {
             MessageBox.Show("What happens in Someren, stays in Someren!");
         }
+
+        private void pictureBox9_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("What happens in Someren, stays in Someren!");
+        }
         #endregion
 
         #region Hide Panels
@@ -931,47 +968,178 @@ namespace SomerenUI
         private void btnRegister_Click(object sender, EventArgs e)
         {
             HidePanels();
-            pnlRegister.Show();
+            showPanel("Register");
         }
 
         private void btnRegisterNow_Click(object sender, EventArgs e)
         {
             PasswordWithSaltHasher pwHasher = new PasswordWithSaltHasher();
-            User user = new User();
-            user.Username= txtUserName.Text;
-            user.Password= txtPassword.Text;    
 
-            //this hashes the password
-            HashWithSaltResult hashPassword= pwHasher.HashWithSalt(txtPassword.Text, 64, SHA256.Create());
+            string username = txtUserName.Text;
+            string password = txtPassword.Text;
 
-            // add the username, hashed password and salt to the database
-            userService.AddToRegister(user.Username,hashPassword.Digest, hashPassword.Salt);
+            if (PasswordRequirements(password) && UsernameValidation(username))
+            {
+                //this hashes the password
+                HashWithSaltResult hashPassword = pwHasher.HashWithSalt(password, 64, SHA256.Create());
 
-            MessageBox.Show("Succesfully Registered! You can now login.");
-            showPanel("Dashboard");
-            
+                //add the username, hashed password, salt and the user role to the database
+
+                userService.AddToRegister(username, hashPassword.Digest, hashPassword.Salt, false);
+                MessageBox.Show("Succesfully Registered! You can now login.");
+
+                HidePanels();
+                showPanel("Dashboard");
+                txtUserName.Clear();
+            }
+            else if(!PasswordRequirements(password))
+            {
+                MessageBox.Show("The password does not meet the requirements");
+            }
+            else
+            {
+                MessageBox.Show("The username is already in use");
+                txtUserName.Clear();
+            }
+            txtPassword.Clear();
+
         }
+
+        private bool PasswordRequirements(string password)
+        {
+            string specialCharacters = "!#$%&()*+,-./:;<=>?@[]^_`{|}~";
+            int goodConditions = 5;
+            int conditions = 0;
+
+            if (password.Length >= 8)
+                conditions++;
+
+            foreach(char c in password)
+            {
+                if (c >= 'a' && c <= 'z')
+                {
+                    conditions++;
+                    break;
+                }
+            }
+
+            foreach(char c in password)
+            {
+                if (c >= 'A' && c <= 'Z')
+                {
+                    conditions++;
+                    break;
+                }
+            }
+
+            foreach(char c in password)
+            {
+                if (c >= '0' && c <= '9')
+                {
+                    conditions++;
+                    break;
+                }
+            }
+
+            foreach(char c in specialCharacters)
+            {
+                if(password.Contains(c))
+                {
+                    conditions++;
+                    break;
+                }
+            }
+
+            return conditions == goodConditions;
+        }
+
+        private bool UsernameValidation(string username)
+        {
+            UserService userService = new UserService();
+            List<User> users = userService.GetAllUsers();
+            foreach (User user in users)
+            {
+                if(user.Username == username)
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        private void txtPassword_TextChanged(object sender, EventArgs e)
+        {
+            if (txtPassword.Text != "" && txtUserName.Text != "" && txtName.Text != "")
+            {
+                btnRegisterNow.Enabled = true;
+                btnRegisterNow.BackColor = Color.FromArgb(39, 126, 172);
+            }
+            else
+            {
+                btnRegisterNow.Enabled = false;
+                btnRegisterNow.BackColor = Color.Transparent;
+            }
+        }
+
+            private void txtUserName_TextChanged(object sender, EventArgs e)
+        {
+            if (txtPassword.Text != "" && txtUserName.Text != "" && txtName.Text != "")
+            {
+                btnRegisterNow.Enabled = true;
+                btnRegisterNow.BackColor = Color.FromArgb(39, 126, 172);
+            }
+            else
+            {
+                btnRegisterNow.Enabled = false;
+                btnRegisterNow.BackColor = Color.Transparent;
+            }
+        }
+        private void txtName_TextChanged(object sender, EventArgs e)
+        {
+            if (txtPassword.Text != "" && txtUserName.Text != "" && txtName.Text != "")
+            {
+                btnRegisterNow.Enabled = true;
+                btnRegisterNow.BackColor = Color.FromArgb(39, 126, 172);
+            }
+            else
+            {
+                btnRegisterNow.Enabled = false;
+                btnRegisterNow.BackColor = Color.Transparent;
+            }
+        }
+        private void txtLicenceKey_TextChanged(object sender, EventArgs e)
+        {
+            if (txtLicenceKey.Text == "XsZAb - tgz3PsD - qYh69un - WQCEx")
+            {
+                txtPassword.Enabled = true;
+                txtName.Enabled = true;
+                txtUserName.Enabled = true;
+            }
+            else
+            {
+                txtPassword.Enabled = false;
+                txtName.Enabled = false;
+                txtUserName.Enabled = false;
+            }
+        }
+
         #endregion
 
         #region Login buttons/ panel
         private void btn_Login_Click(object sender, EventArgs e)
         {
-            User user =new User();
-            user.Username = txtLoginUsername.Text;
-            user.Password = txtLoginPassword.Text;
+            UserService userService = new UserService();
 
-             List<User> users= userService.GetAllUsers();
-            foreach (User u in users)
-            {
-                if (user.Username == u.Username && user.Password == u.Password)
-                {
-                    MessageBox.Show("Login successful");
-                    showPanel("Students");
-                }
-                else
-                    MessageBox.Show("Credentials were incorrect");
-                return;
-            }
+            string username = txtLoginUsername.Text;
+            string enteredPassword = txtLoginPassword.Text;
+
+            User user = userService.GetUserByUsername(username);
+            
+            PasswordWithSaltHasher passwordHasher = new PasswordWithSaltHasher();
+            if (passwordHasher.PasswordValidation(enteredPassword, user.Password, user.Salt))
+                MessageBox.Show("Login successful!");
+            else
+                MessageBox.Show("Login failed.");
         }
         #endregion
 

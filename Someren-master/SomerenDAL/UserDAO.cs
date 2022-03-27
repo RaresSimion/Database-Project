@@ -12,22 +12,22 @@ namespace SomerenDAL
 {
     public class UserDAO:BaseDao
     {
-        public void AddToRegister(string username, string password, string salt)
+        public void AddToRegister(string username, string password, string salt, bool role)
         {
 
-            string query = $"INSERT INTO Users_test (Username, [Password], Salt) VALUES ('{username}', {password}, '{salt}')";
+            string query = $"INSERT INTO [User] (Username, Password, Salt, Role) VALUES ('{username}', '{password}', '{salt}', '{role}')";
             SqlParameter[] sqlParameters = new SqlParameter[0];
             ExecuteEditQuery(query, sqlParameters);
         }
-        public void GetUser(string username)
+        public User GetUserByUsername(string username)
         {
-            string query = $"SELECT UserID, Username, Password, Role FROM [User] WHERE Username ='{username}'";
+            string query = $"SELECT Username, Password, Salt, Role FROM [User] WHERE Username ='{username}'";
             SqlParameter[] sqlParameters = new SqlParameter[0];
-            ExecuteEditQuery(query, sqlParameters);
+            return ReadTable(ExecuteSelectQuery(query, sqlParameters));
         }
         public List<User> GetAllUsers()
         {
-            string query = $"SELECT UserID, Username, Password, Role FROM [User]";
+            string query = $"SELECT Username, Password, Salt, Role FROM [User]";
             SqlParameter[] sqlParameters = new SqlParameter[0];
             return ReadTables(ExecuteSelectQuery(query, sqlParameters));
         }
@@ -43,6 +43,7 @@ namespace SomerenDAL
                 {
                     Username = (string)(dr["Username"]),
                     Password = (string)(dr["Password"]),
+                    Salt = (string)(dr["Salt"]),
                     Role = (bool)(dr["Role"])
                 };
                 users.Add(user);
@@ -50,5 +51,18 @@ namespace SomerenDAL
             return users;
         }
 
+        private User ReadTable(DataTable dataTable)
+        {
+            // create object to store values
+            User user = new User();
+            DataRow dr = dataTable.Rows[0];
+
+            user.Username=(string)(dr["Username"]);
+            user.Password=(string)(dr["Password"]);
+            user.Salt = (string)(dr["Salt"]);
+            user.Role = (bool)(dr["Role"]);
+
+            return user;
+        }
     }
 }
