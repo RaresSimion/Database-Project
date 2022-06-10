@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace SomerenModel
 {
+    //class to store the salt and new password
     public class HashWithSaltResult
     {
         public string Salt { get; }

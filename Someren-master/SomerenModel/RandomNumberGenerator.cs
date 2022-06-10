@@ -14,6 +14,7 @@ namespace SomerenModel
             return Convert.ToBase64String(GenerateRandomCryptographicBytes(keyLength));
         }
 
+        //random number generator
         public byte[] GenerateRandomCryptographicBytes(int keyLength)
         {
             RNGCryptoServiceProvider rngCryptoServiceProvider = new RNGCryptoServiceProvider();

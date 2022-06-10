@@ -17,14 +17,20 @@ namespace SomerenLogic
             //create connection to database
             userDb = new UserDAO();
         }
+
+        //adding the user to the db
         public void AddToRegister(string username, string password, string salt, bool role)
         {
             userDb.AddToRegister(username, password, salt, role);
         }
+
+        //getting the user by its username
         public User GetUserByUsername(string username)
         {
            return userDb.GetUserByUsername(username);
         }
+
+        //getting the list of all users
         public List<User> GetAllUsers()
         {
             List<User> users = userDb.GetAllUsers();

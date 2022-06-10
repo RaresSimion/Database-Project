@@ -10,6 +10,7 @@ namespace SomerenModel
 {
     public class PasswordWithSaltHasher
     {
+        //hashing password with length of salt as input
         public HashWithSaltResult HashWithSalt(string password, int saltLength, HashAlgorithm hashAlgo)
         {
             RNG rng = new RNG();
@@ -22,6 +23,7 @@ namespace SomerenModel
             return new HashWithSaltResult(Convert.ToBase64String(saltBytes), Convert.ToBase64String(digestBytes));
         }
 
+        //hashing password with known salt as input
         public HashWithSaltResult HashWithKnownSalt(string password, string salt, HashAlgorithm hashAlgo)
         {
             byte[] saltBytes = Convert.FromBase64String(salt);
@@ -33,6 +35,7 @@ namespace SomerenModel
             return new HashWithSaltResult(Convert.ToBase64String(saltBytes), Convert.ToBase64String(digestBytes));
         }
 
+        //password validation
         public bool PasswordValidation(string enteredPassword, string hashedPassword, string salt)
         {
             HashWithSaltResult hashedEnteredPassword = HashWithKnownSalt(enteredPassword, salt, SHA256.Create());

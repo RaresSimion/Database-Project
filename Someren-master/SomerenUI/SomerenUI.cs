@@ -17,6 +17,9 @@ namespace SomerenUI
 {
     public partial class SomerenUI : Form
     {
+        //store the current user in a variable
+        private User currentUser = null;
+
         public SomerenUI()
         {
             InitializeComponent();
@@ -38,6 +41,20 @@ namespace SomerenUI
                 // show dashboard
                 pnlDashboard.Show();
                 imgDashboard.Show();
+
+                //clear the text
+                txtLoginPassword.Text = "";
+                txtLoginUsername.Text = "";
+
+                //disable the button and make it transparent
+                btn_Login.Enabled = false;
+                btn_Login.BackColor = Color.Transparent;
+
+                //color the register button to make it stand out
+                btnRegister.BackColor = Color.FromArgb(39, 126, 172);
+
+                //change the program depending on its user
+                ProgramAdministration();
             }
             #endregion
 
@@ -299,6 +316,14 @@ namespace SomerenUI
                 //show drinks panel
                 pnlActivity.Show();
 
+                //disabble the buttons
+                btn_addActivity.Enabled = false;
+                btn_addActivity.BackColor = Color.Transparent;
+                btn_removeActivity.Enabled = false;
+                btn_removeActivity.BackColor = Color.Transparent;
+                btn_updateActivity.Enabled = false;
+                btn_updateActivity.BackColor = Color.Transparent;
+
                 try
                 {
                     ActivityService activityService = new ActivityService(); ;// create connection to the activity service layer
@@ -373,14 +398,23 @@ namespace SomerenUI
             #region Register Panel
             else if (panelName == "Register")
             {
+                //hide the panels
                 HidePanels();
 
+                //show the register panel
                 pnlRegister.Show();
+
+                //diable the button and make it transparent
                 btnRegisterNow.Enabled = false;
                 btnRegisterNow.BackColor = Color.Transparent;
+                
+                //disable all fields except licence key
                 txtUserName.Enabled = false;
                 txtName.Enabled = false;
                 txtPassword.Enabled = false;
+
+                //color the back to login button to make it stand out
+                btnGoBackToLogin.BackColor = Color.FromArgb(39, 126, 172);
             }
             #endregion
         }
@@ -516,6 +550,8 @@ namespace SomerenUI
             if (listViewActivities.SelectedItems.Count == 0)
             {
                 txtActivityDesc.Text = "";
+                btn_removeActivity.Enabled = false;
+                btn_updateActivity.Enabled = false;
             }
             else
             {
@@ -524,16 +560,10 @@ namespace SomerenUI
                 dateTimePIcker_ActivityStart.Value = Convert.ToDateTime(listViewActivities.SelectedItems[0].SubItems[2].Text);
                 dateTimePicker_ActivityEnd.Value = Convert.ToDateTime(listViewActivities.SelectedItems[0].SubItems[3].Text);
 
-            }
-            // if the textbox of the activities arent empty enable the buttons on the activity panel
-            if (txtActivityDesc.Text != "" && dateTimePIcker_ActivityStart.Value != null && dateTimePicker_ActivityEnd.Value != null)
-            {
                 btn_addActivity.Enabled = true;
                 btn_removeActivity.Enabled = true;
                 btn_updateActivity.Enabled = true;
             }
-
-
         }
 
 
@@ -549,14 +579,14 @@ namespace SomerenUI
             {
                 activity.Id = int.Parse(listViewActivities.SelectedItems[0].SubItems[0].Text);
                 activity.Name = txtActivityDesc.Text;
-                activity.StartDateTime = DateTime.Parse(dateTimePIcker_ActivityStart.Text);
-                activity.EndDateTime = DateTime.Parse(dateTimePicker_ActivityEnd.Text);
+                activity.StartDateTime = dateTimePIcker_ActivityStart.Value;
+                activity.EndDateTime = dateTimePicker_ActivityEnd.Value;
             };
 
             //add the data to the register database
             activityService.UpdateActivity(activity);
 
-            MessageBox.Show("Succeesfully updated actiivty!");
+            MessageBox.Show("Successfully updated activity!");
             //refresh panel
             showPanel("Activities");
         }
@@ -566,8 +596,8 @@ namespace SomerenUI
             Activity activity = new Activity();
             {
                 activity.Name = txtActivityDesc.Text;
-                activity.StartDateTime = DateTime.Parse(dateTimePIcker_ActivityStart.Text);
-                activity.EndDateTime = DateTime.Parse(dateTimePicker_ActivityEnd.Text);
+                activity.StartDateTime = dateTimePIcker_ActivityStart.Value;
+                activity.EndDateTime = dateTimePicker_ActivityEnd.Value;
             };
 
             List<Activity> listActivities = activityService.GetActivity();
@@ -603,8 +633,8 @@ namespace SomerenUI
                 {
                     activity.Id = int.Parse(listViewActivities.SelectedItems[0].SubItems[0].Text);
                     activity.Name = txtActivityDesc.Text;
-                    activity.StartDateTime = DateTime.Parse(dateTimePIcker_ActivityStart.Text);
-                    activity.EndDateTime = DateTime.Parse(dateTimePicker_ActivityEnd.Text);
+                    activity.StartDateTime = dateTimePIcker_ActivityStart.Value;
+                    activity.EndDateTime = dateTimePicker_ActivityEnd.Value;
                 };
 
                 //delete activity
@@ -619,6 +649,18 @@ namespace SomerenUI
             else if (dialogResult == DialogResult.No)
             {
                 return;
+            }
+        }
+
+        private void txtActivityDesc_TextChanged(object sender, EventArgs e)
+        {
+            if (txtActivityDesc.Text != "" && dateTimePicker_ActivityEnd != null && dateTimePIcker_ActivityStart != null)
+            {
+                btn_addActivity.Enabled = true;
+            }
+            else
+            {
+                btn_addActivity.Enabled = false;
             }
         }
         #endregion
@@ -886,10 +928,6 @@ namespace SomerenUI
 
         #region Show panel Methods
         /******************SHOW PANEL COMMANDS *****************/
-        private void dashboardToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            //
-        }
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -899,11 +937,6 @@ namespace SomerenUI
         private void dashboardToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             showPanel("Dashboard");
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void imgDashboard_Click(object sender, EventArgs e)
@@ -963,40 +996,44 @@ namespace SomerenUI
 
 
         #region Registration buttons/ panel
-        //connect to user database
-        UserService userService = new UserService();
         private void btnRegister_Click(object sender, EventArgs e)
         {
-            HidePanels();
+            //show the register panel
             showPanel("Register");
         }
 
         private void btnRegisterNow_Click(object sender, EventArgs e)
         {
+            //create connection to user layer
+            UserService userService = new UserService();
+
+            //password hasher
             PasswordWithSaltHasher pwHasher = new PasswordWithSaltHasher();
 
+            //store the username and password
             string username = txtUserName.Text;
             string password = txtPassword.Text;
 
+            //if both the password and username are valid add the user
             if (PasswordRequirements(password) && UsernameValidation(username))
             {
                 //this hashes the password
                 HashWithSaltResult hashPassword = pwHasher.HashWithSalt(password, 64, SHA256.Create());
 
                 //add the username, hashed password, salt and the user role to the database
-
                 userService.AddToRegister(username, hashPassword.Digest, hashPassword.Salt, false);
                 MessageBox.Show("Succesfully Registered! You can now login.");
 
+                //hide the panels and show the dashboard again
                 HidePanels();
                 showPanel("Dashboard");
                 txtUserName.Clear();
             }
-            else if(!PasswordRequirements(password))
+            else if(!PasswordRequirements(password)) //if the password does not meet the requirements inform the user
             {
                 MessageBox.Show("The password does not meet the requirements");
             }
-            else
+            else //if the username is taken inform the user
             {
                 MessageBox.Show("The username is already in use");
                 txtUserName.Clear();
@@ -1007,14 +1044,21 @@ namespace SomerenUI
 
         private bool PasswordRequirements(string password)
         {
+            //the special characters string
             string specialCharacters = "!#$%&()*+,-./:;<=>?@[]^_`{|}~";
+
+            //the number of conditions to be met 
             int goodConditions = 5;
+
+            //the current conditions
             int conditions = 0;
 
+            //if the length of the password is greater than 8, add 1 to the current conditions
             if (password.Length >= 8)
                 conditions++;
 
-            foreach(char c in password)
+            //if the password contains at least 1 lowercase character, add 1 to the current conditions
+            foreach (char c in password)
             {
                 if (c >= 'a' && c <= 'z')
                 {
@@ -1023,7 +1067,8 @@ namespace SomerenUI
                 }
             }
 
-            foreach(char c in password)
+            //if the password contains at least 1 uppercase character, add 1 to the current conditions
+            foreach (char c in password)
             {
                 if (c >= 'A' && c <= 'Z')
                 {
@@ -1032,7 +1077,8 @@ namespace SomerenUI
                 }
             }
 
-            foreach(char c in password)
+            //if the password contains at least 1 number, add 1 to the current conditions
+            foreach (char c in password)
             {
                 if (c >= '0' && c <= '9')
                 {
@@ -1041,7 +1087,8 @@ namespace SomerenUI
                 }
             }
 
-            foreach(char c in specialCharacters)
+            //if the password contains at least 1 special character, add 1 to the current conditions
+            foreach (char c in specialCharacters)
             {
                 if(password.Contains(c))
                 {
@@ -1050,17 +1097,23 @@ namespace SomerenUI
                 }
             }
 
+            //return true if the current conditions are the same as the goodconditions, false otherwise
             return conditions == goodConditions;
         }
 
         private bool UsernameValidation(string username)
         {
+            //connect to user layer
             UserService userService = new UserService();
+
+            //get a list of all users
             List<User> users = userService.GetAllUsers();
+
             foreach (User user in users)
             {
                 if(user.Username == username)
                 {
+                    //if the entered username is found in the db, return false
                     return false;
                 }
             }
@@ -1071,25 +1124,35 @@ namespace SomerenUI
         {
             if (txtPassword.Text != "" && txtUserName.Text != "" && txtName.Text != "")
             {
+                //enable and color the register button if the fields are not empty
                 btnRegisterNow.Enabled = true;
                 btnRegisterNow.BackColor = Color.FromArgb(39, 126, 172);
+
+                //if the entered password meets the requirements make the red label disappear
+                if (PasswordRequirements(txtPassword.Text))
+                    lblPasswordRequirements.Visible = false;
+                else
+                    lblPasswordRequirements.Visible = true;
             }
             else
             {
+                //if the password field is empty disable the button
                 btnRegisterNow.Enabled = false;
                 btnRegisterNow.BackColor = Color.Transparent;
             }
         }
 
-            private void txtUserName_TextChanged(object sender, EventArgs e)
+        private void txtUserName_TextChanged(object sender, EventArgs e)
         {
             if (txtPassword.Text != "" && txtUserName.Text != "" && txtName.Text != "")
             {
+                //enable and color the register button if the fields are not empty
                 btnRegisterNow.Enabled = true;
                 btnRegisterNow.BackColor = Color.FromArgb(39, 126, 172);
             }
             else
             {
+                //if the username field is empty disable the button
                 btnRegisterNow.Enabled = false;
                 btnRegisterNow.BackColor = Color.Transparent;
             }
@@ -1098,54 +1161,203 @@ namespace SomerenUI
         {
             if (txtPassword.Text != "" && txtUserName.Text != "" && txtName.Text != "")
             {
+                //enable and color the register button if the fields are not empty
                 btnRegisterNow.Enabled = true;
                 btnRegisterNow.BackColor = Color.FromArgb(39, 126, 172);
             }
             else
             {
+                //if the name field is empty disable the button
                 btnRegisterNow.Enabled = false;
                 btnRegisterNow.BackColor = Color.Transparent;
             }
         }
         private void txtLicenceKey_TextChanged(object sender, EventArgs e)
         {
+            //if the entered licence matches the good one enable every other field
             if (txtLicenceKey.Text == "XsZAb - tgz3PsD - qYh69un - WQCEx")
             {
                 txtPassword.Enabled = true;
                 txtName.Enabled = true;
                 txtUserName.Enabled = true;
+                lblLicenceExplained.Visible = false;
             }
+            //else diable everything
             else
             {
                 txtPassword.Enabled = false;
                 txtName.Enabled = false;
                 txtUserName.Enabled = false;
+                lblLicenceExplained.Visible = true;
             }
         }
 
+        private void btnGoBackToLogin_Click(object sender, EventArgs e)
+        {
+            //go back to the dashboard
+            showPanel("Dashboard");
+        }
         #endregion
 
         #region Login buttons/ panel
         private void btn_Login_Click(object sender, EventArgs e)
         {
-            UserService userService = new UserService();
+            try
+            {
+                //create connection to user layer
+                UserService userService = new UserService();
 
-            string username = txtLoginUsername.Text;
-            string enteredPassword = txtLoginPassword.Text;
+                //store the entered username and password
+                string username = txtLoginUsername.Text;
+                string enteredPassword = txtLoginPassword.Text;
 
-            User user = userService.GetUserByUsername(username);
-            
-            PasswordWithSaltHasher passwordHasher = new PasswordWithSaltHasher();
-            if (passwordHasher.PasswordValidation(enteredPassword, user.Password, user.Salt))
-                MessageBox.Show("Login successful!");
+                //get the user by the entered username
+                User user = userService.GetUserByUsername(username);
+
+                //password hasher
+                PasswordWithSaltHasher passwordHasher = new PasswordWithSaltHasher();
+
+                //if the entered password matches the one in the db
+                if (passwordHasher.PasswordValidation(enteredPassword, user.Password, user.Salt))
+                {
+                    MessageBox.Show("Login successful!");
+                    
+                    //the current user becomes the entered user
+                    currentUser = user;
+
+                    //hide the panels and show the dashboard again
+                    HidePanels();
+                    showPanel("Dashboard");
+                }
+                else
+                    MessageBox.Show("Login failed.");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Login failed: {ex.Message}");
+
+                //clear the text boxes
+                txtLoginPassword.Text = "";
+                txtLoginUsername.Text = "";
+
+                LogError(ex);
+            }
+        }
+        private void txtLoginUsername_TextChanged(object sender, EventArgs e)
+        {
+            //if the username and password fields are not empty enable and color the button
+            if (txtLoginUsername.Text != "" && txtLoginPassword.Text != "")
+            {
+                btn_Login.Enabled = true;
+                btn_Login.BackColor = Color.FromArgb(39, 126, 172);
+            }
+            //else disable it
             else
-                MessageBox.Show("Login failed.");
+            {
+                btn_Login.Enabled = false;
+                btn_Login.BackColor = Color.Transparent;
+            }
+        }
+        private void txtLoginPassword_TextChanged(object sender, EventArgs e)
+        {
+            //if the username and password fields are not empty enable and color the button
+            if (txtLoginUsername.Text != "" && txtLoginPassword.Text != "")
+            {
+                btn_Login.Enabled = true;
+                btn_Login.BackColor = Color.FromArgb(39, 126, 172);
+            }
+            //else diable it
+            else
+            {
+                btn_Login.Enabled = false;
+                btn_Login.BackColor = Color.Transparent;
+            }
         }
         #endregion
 
-        private void pnlDashboard_Paint(object sender, PaintEventArgs e)
-        {
 
+        #region Hide and show menu strip items
+        private void HideMenuStripItems()
+        {
+            //hide all menu strip items except dashboard
+            studentsToolStripMenuItem.Visible = false;
+            lecturersToolStripMenuItem.Visible = false;
+            activitiesToolStripMenuItem.Visible = false;
+            drinktoolStripMenuItem1.Visible = false;
+            roomsToolStripMenuItem.Visible = false;
+            CashRegtoolStripMenuItem1.Visible = false;
+            RevenueReportToolStripMenuItem.Visible = false;
+            SupervisorsToolStripMenuItem.Visible = false;
         }
+
+        private void ShowMenuStripItems()
+        {
+            //show all menu strip items
+            studentsToolStripMenuItem.Visible = true;
+            lecturersToolStripMenuItem.Visible = true;
+            activitiesToolStripMenuItem.Visible = true;
+            drinktoolStripMenuItem1.Visible = true;
+            roomsToolStripMenuItem.Visible = true;
+            CashRegtoolStripMenuItem1.Visible = true;
+            RevenueReportToolStripMenuItem.Visible = true;
+            SupervisorsToolStripMenuItem.Visible = true;
+        }
+
+        #endregion
+
+        #region Administration
+        private void ProgramAdministration()
+        {
+            if(currentUser == null)
+            {
+                //if there is no user yet hide every menu strip item
+                HideMenuStripItems();
+            }    
+            else
+            {
+                //if a user has been entered show the menu strip items
+                ShowMenuStripItems();
+
+                //make the login form invisible
+                lbl_Username.Visible = false;
+                lbl_Password.Visible = false;
+                txtLoginPassword.Visible = false;
+                txtLoginUsername.Visible = false;
+                btn_Login.Visible = false;
+                btnRegister.Visible = false;
+                label3.Visible = false;
+
+                if (currentUser.Role == false)
+                {
+                    //if the user is not an admin keep only reading rights
+                    btnAddDrink.Visible = false;
+                    btnRemoveDrink.Visible = false;
+                    btnUpdateDrink.Visible = false;
+                    btn_addActivity.Visible = false;
+                    btn_updateActivity.Visible = false;
+                    btn_removeActivity.Visible = false;
+                    btnAddSupervisor.Visible = false;
+                    btnRemoveSupervisor.Visible = false;
+                    lblStudentID.Visible = false;
+                    lblStudentName.Visible = false;
+                    lblDrinkName.Visible = false;
+                    lblDrinkPrice.Visible = false;
+                    txtBDrinkName.Visible = false;
+                    txtBDrinkPrice.Visible = false;
+                    txtBStudentID.Visible = false;
+                    txtBStudentName.Visible = false;
+                    btnCheckOut.Visible = false;
+                    label4.Visible = false;
+                    label5.Visible = false;
+                    label6.Visible = false;
+                    txtActivityDesc.Visible = false;
+                    dateTimePIcker_ActivityStart.Visible = false;
+                    dateTimePicker_ActivityEnd.Visible = false;
+                    RevenueReportToolStripMenuItem.Visible = false;
+                }
+            }
+        }
+        #endregion
+
     }
 }
